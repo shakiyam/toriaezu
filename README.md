@@ -8,7 +8,7 @@ Install some tools and dotfiles.
 ```
 git clone https://github.com/shakiyam/toriaezu
 cd toriaezu
-sudo ./privision.sh
+sudo ./provision.sh
 ```
 
 ## Target OS ##
