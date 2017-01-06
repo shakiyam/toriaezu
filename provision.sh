@@ -79,9 +79,8 @@ micro_latest=$(
   tr -d '\r' |
   awk -F'/' '/^Location:/{print $NF}'
 )
-micro_latest_number=$(echo $micro_latest | sed -e 's/v//')
-curl -sSL "https://github.com/zyedidia/micro/releases/download/${micro_latest}/micro-${micro_latest_number}-linux64.tar.gz" |
-  tar xzf - -C /usr/local/bin/ --strip=1 micro-${micro_latest_number}/micro
+curl -sSL "https://github.com/zyedidia/micro/releases/download/${micro_latest}/micro-${micro_latest//v/}-linux64.tar.gz" |
+  tar xzf - -C /usr/local/bin/ --strip=1 "micro-${micro_latest//v/}/micro"
 
 # Copy dotfiles
 cp .bashrc "~$(logname)/.bashrc"
