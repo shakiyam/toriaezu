@@ -18,7 +18,7 @@ apt-get install -y docker.io
 # apt-get -y install docker-engine
 
 ## Setup Docker Engine
-usermod -aG docker ubuntu
+usermod -aG docker "$(logname)"
 systemctl start docker
 systemctl enable docker
 
@@ -84,5 +84,5 @@ curl -sSL "https://github.com/zyedidia/micro/releases/download/${micro_latest}/m
   tar xzf - -C /usr/local/bin/ --strip=1 micro-${micro_latest_number}/micro
 
 # Copy dotfiles
-cp .bashrc ~ubuntu/.bashrc
-cp .tmux.conf ~ubuntu/.tmux.conf
+cp .bashrc "~$(logname)/.bashrc"
+cp .tmux.conf "~$(logname)/.tmux.conf"
