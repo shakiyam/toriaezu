@@ -11,6 +11,10 @@ cd toriaezu
 sudo ./privision.sh
 ```
 
+## Target OS ##
+
+* Ubuntu 16.04 LTS
+
 ## Author ##
 
 [Shinichi Akiyama](https://github.com/shakiyam)
