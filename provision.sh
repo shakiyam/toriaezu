@@ -84,4 +84,6 @@ curl -sSL "https://github.com/zyedidia/micro/releases/download/${micro_latest}/m
 
 # Copy dotfiles
 cp .bashrc "/home/$(logname)/.bashrc"
+chown "$(logname)":"$(id -g "$(logname)")" "/home/$(logname)/.bashrc"
 cp .tmux.conf "/home/$(logname)/.tmux.conf"
+chown "$(logname)":"$(id -g "$(logname)")" "/home/$(logname)/.tmux.conf"
