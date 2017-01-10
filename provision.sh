@@ -17,7 +17,7 @@ apt-get install -y docker.io
 # apt-get -y install "linux-image-extra-$(uname -r)" linux-image-extra-virtual
 # apt-get -y install docker-engine
 
-## Setup Docker Engine
+# Setup Docker Engine
 usermod -aG docker "$(logname)"
 systemctl start docker
 systemctl enable docker
@@ -48,9 +48,6 @@ hadolint_latest=$(
 )
 curl -sSL "https://github.com/lukasmartinelli/hadolint/releases/download/${hadolint_latest}/hadolint_linux_amd64" > /usr/local/bin/hadolint
 chmod +x /usr/local/bin/hadolint
-
-# Install git
-# apt-get install -y git
 
 # Install Q (http://harelba.github.io/q/install.html)
 apt-get install -y python-minimal
