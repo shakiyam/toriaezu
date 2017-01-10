@@ -51,7 +51,7 @@ chmod +x /usr/local/bin/hadolint
 
 # Install Q (http://harelba.github.io/q/install.html)
 apt-get install -y python-minimal
-curl -sSO https://github.com/harelba/packages-for-q/raw/master/deb/q-text-as-data_1.5.0-1_all.deb
+curl -sSLO https://github.com/harelba/packages-for-q/raw/master/deb/q-text-as-data_1.5.0-1_all.deb
 dpkg -i q-text-as-data_1.5.0-1_all.deb
 rm q-text-as-data_1.5.0-1_all.deb
 
