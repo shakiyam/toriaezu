@@ -13,7 +13,9 @@ sudo ./provision.sh
 
 ## Target OS ##
 
-* Ubuntu 16.04 LTS
+* Amazon Linux AMI 2016.09
+* Oracle Linux Server 7.3
+* Ubuntu 16.04.1 LTS
 
 ## Author ##
 
