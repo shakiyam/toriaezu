@@ -4,7 +4,8 @@ SHELL := /bin/bash
 .DEFAULT_GOAL := help
 .SUFFIXES:
 
-STAR_TARGETS := $(shell ./scripts/stars.sh $(MAKEFILE_LIST))
+STAR_TARGETS := $(shell ./scripts/star_targets.sh $(MAKEFILE_LIST))
+NON_PHONY_TARGETS := $(shell ./scripts/non_phony_targets.sh $(MAKEFILE_LIST))
 
 .PHONY: toriaezu
 toriaezu: $(STAR_TARGETS) ## Install star(*) tools
@@ -56,7 +57,7 @@ install_tmux: ## Install tmux
 
 .PHONY: clean
 clean: ## Clean target files
-	@rm -f install_docker install_docker-compose install_dockviz install_git install_go install_hadolint install_micro install_peco install_q install_shellcheck install_tmux
+	@rm -f $(NON_PHONY_TARGETS)
 
 .PHONY: list
 list: ## List tools
