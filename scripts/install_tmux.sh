@@ -12,7 +12,3 @@ case $os_id in
   ubuntu)
     ;;
 esac
-
-# Copy dotfiles
-cp "$(cd "$(dirname "$0")/.." && pwd)/.tmux.conf" "/home/$(logname)/.tmux.conf"
-chown "$(logname)":"$(id -g "$(logname)")" "/home/$(logname)/.tmux.conf"
