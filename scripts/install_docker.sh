@@ -46,11 +46,11 @@ fi
 usermod -aG docker "$(logname)"
 case $os_id in
   ol)
-    if [ -n "$HTTP_PROXY" ]; then
+    if [ -n "${HTTP_PROXY:-''}" ]; then
       mkdir -p /etc/systemd/system/docker.service.d
       cat >/etc/systemd/system/docker.service.d/http-proxy.conf <<EOF
 [Service]
-Environment="HTTP_PROXY=$HTTP_PROXY"
+Environment="HTTP_PROXY=${HTTP_PROXY:-''}"
 EOF
     fi
     systemctl start docker
