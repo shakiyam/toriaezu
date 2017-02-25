@@ -9,6 +9,7 @@ case $os_id in
   ol | amzn)
     cp "$(cd "$(dirname "$0")/.." && pwd)/bin/shellcheck" /usr/local/bin/shellcheck
     chmod +x /usr/local/bin/shellcheck
+    /usr/local/bin/shellcheck -V
     ;;
   ubuntu)
     apt-get install -y shellcheck
