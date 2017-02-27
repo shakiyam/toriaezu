@@ -34,7 +34,8 @@ else
     ol)
       case ${os_version%%.*} in
         6)
-          yum -y --enablerepo=public_ol6_addons install docker-engine
+          repo=$(grep -E -o '(public_)?ol6_addons' /etc/yum.repos.d/public-yum-ol6.repo)
+          yum -y --enablerepo="$repo" install docker-engine
           ;;
         7)
           yum -y --enablerepo=ol7_addons install docker-engine
