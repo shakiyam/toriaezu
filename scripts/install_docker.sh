@@ -3,6 +3,7 @@ set -eu -o pipefail
 
 # shellcheck disable=SC1091
 os_id=$(. /etc/os-release; echo "$ID")
+# shellcheck disable=SC1091
 os_version=$(. /etc/os-release; echo "$VERSION")
 
 # Install Docker Engine
