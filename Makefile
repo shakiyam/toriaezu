@@ -43,11 +43,11 @@ install_peco: ## Install peco (*)
 	@./scripts/install_peco.sh
 	@touch $@
 
-install_q: ## Install Q (*)
+install_q: ## Install Q
 	@./scripts/install_q.sh
 	@touch $@
 
-install_shellcheck: ## Install ShellCheck (*)
+install_shellcheck: ## Install ShellCheck
 	@./scripts/install_shellcheck.sh
 	@touch $@
 
