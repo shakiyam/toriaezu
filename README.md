@@ -14,7 +14,8 @@ sudo ./provision.sh
 ## Target OS ##
 
 * Amazon Linux AMI 2016.09
-* Oracle Linux Server 7.3
+* Oracle Linux Server 7.3 with UEK4
+* Oracle Linux Server 6.8 with UEK4 (experimental)
 * Ubuntu 16.04.1 LTS
 
 ## Author ##

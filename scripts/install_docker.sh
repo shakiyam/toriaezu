@@ -3,6 +3,7 @@ set -eu -o pipefail
 
 # shellcheck disable=SC1091
 os_id=$(. /etc/os-release; echo "$ID")
+os_version=$(. /etc/os-release; echo "$VERSION")
 
 # Install Docker Engine
 if [ "${1:-''}" = '--latest' ]; then
@@ -30,7 +31,14 @@ if [ "${1:-''}" = '--latest' ]; then
 else
   case $os_id in
     ol)
-      yum -y --enablerepo=ol7_addons install docker-engine
+      case ${os_version%%.*} in
+        6)
+          yum -y --enablerepo=public_ol6_addons install docker-engine
+          ;;
+        7)
+          yum -y --enablerepo=ol7_addons install docker-engine
+          ;;
+      esac
       ;;
     amzn)
       yum -y install docker
@@ -46,15 +54,23 @@ fi
 usermod -aG docker "$(logname)"
 case $os_id in
   ol)
-    if [ -n "${HTTP_PROXY:-}" ]; then
-      mkdir -p /etc/systemd/system/docker.service.d
-      cat >/etc/systemd/system/docker.service.d/http-proxy.conf <<EOF
+    case ${os_version%%.*} in
+      6)
+        service docker start
+        chkconfig docker on
+        ;;
+      7)
+        if [ -n "${HTTP_PROXY:-}" ]; then
+          mkdir -p /etc/systemd/system/docker.service.d
+          cat >/etc/systemd/system/docker.service.d/http-proxy.conf <<EOF
 [Service]
 Environment="HTTP_PROXY=${HTTP_PROXY:-}"
 EOF
-    fi
-    systemctl start docker
-    systemctl enable docker
+        fi
+        systemctl start docker
+        systemctl enable docker
+        ;;
+    esac
     ;;
   amzn)
     service docker start
