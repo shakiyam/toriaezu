@@ -23,6 +23,10 @@ install_dockviz: install_docker ## Install dockviz
 	@./scripts/install_dockviz.sh
 	@touch $@
 
+install_dotfiles: ## Install dotfiles (*)
+	@./scripts/install_dotfiles.sh
+	@touch $@
+
 install_git: ## Install Git
 	@./scripts/install_git.sh
 	@touch $@
