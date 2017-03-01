@@ -58,7 +58,7 @@ case $os_id in
   ol)
     case ${os_version%%.*} in
       6)
-        service docker start
+        service docker restart
         chkconfig docker on
         ;;
       7)
@@ -69,17 +69,24 @@ case $os_id in
 Environment="HTTP_PROXY=${HTTP_PROXY:-}"
 EOF
         fi
-        systemctl start docker
+        systemctl restart docker
         systemctl enable docker
         ;;
     esac
     ;;
   amzn)
-    service docker start
+    service docker restart
     chkconfig docker on
     ;;
   ubuntu)
-    systemctl start docker
+    if [ -n "${HTTP_PROXY:-}" ]; then
+      mkdir -p /etc/systemd/system/docker.service.d
+      cat >/etc/systemd/system/docker.service.d/http-proxy.conf <<EOF
+[Service]
+Environment="HTTP_PROXY=${HTTP_PROXY:-}"
+EOF
+    fi
+    systemctl restart docker
     systemctl enable docker
     ;;
 esac

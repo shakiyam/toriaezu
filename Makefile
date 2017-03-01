@@ -11,9 +11,9 @@ NON_PHONY_TARGETS := $(shell ./scripts/non_phony_targets.sh $(MAKEFILE_LIST))
 toriaezu: $(STAR_TARGETS) ## Install star(*) tools
 	@:
 
+.PHONY: install_docker
 install_docker: ## Install Docker Engine (*)
 	@./scripts/install_docker.sh
-	@touch $@
 
 install_docker-compose: install_docker ## Install Docker Compose (*)
 	@./scripts/install_docker-compose.sh
