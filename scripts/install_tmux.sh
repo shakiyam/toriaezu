@@ -10,5 +10,6 @@ case $os_id in
     yum -y install tmux
     ;;
   ubuntu)
+    apt -y install tmux
     ;;
 esac

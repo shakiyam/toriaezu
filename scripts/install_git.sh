@@ -10,5 +10,6 @@ case $os_id in
     yum -y install git
     ;;
   ubuntu)
+    apt -y install git
     ;;
 esac
