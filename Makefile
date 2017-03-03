@@ -51,5 +51,5 @@ install_tmux: ## Install tmux
 list: ## List tools
 	@./scripts/list.sh
 
-help:  ## Print this help
+help: ## Print this help
 	@./scripts/help.sh $(MAKEFILE_LIST)
