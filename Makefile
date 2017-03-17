@@ -4,7 +4,7 @@ SHELL := /bin/bash
 .DEFAULT_GOAL := help
 .SUFFIXES:
 
-ALL_TARGETS := $(shell egrep -o ^[a-zA-Z_-]+: $(MAKEFILE_LIST) | sed 's/://')
+ALL_TARGETS := $(shell egrep -o ^[0-9A-Za-z_-]+: $(MAKEFILE_LIST) | sed 's/://')
 STAR_TARGETS := $(shell ./scripts/star_targets.sh $(MAKEFILE_LIST))
 
 .PHONY: $(ALL_TARGETS)
@@ -41,6 +41,9 @@ install_peco: ## Install peco (*)
 
 install_q: ## Install Q
 	@./scripts/install_q.sh
+
+install_s3fs: ## Install s3fs
+	@./scripts/install_s3fs.sh
 
 install_shellcheck: ## Install ShellCheck
 	@./scripts/install_shellcheck.sh
