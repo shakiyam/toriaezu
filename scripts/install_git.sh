@@ -4,12 +4,13 @@ set -eu -o pipefail
 # shellcheck disable=SC1091
 os_id=$(. /etc/os-release; echo "$ID")
 
-# Install Git
+echo 'Install Git'
 case $os_id in
   ol | amzn)
-    yum -y install git
+    sudo yum -y install git
     ;;
   ubuntu)
-    apt -y install git
+    sudo apt update
+    sudo apt -y install git
     ;;
 esac

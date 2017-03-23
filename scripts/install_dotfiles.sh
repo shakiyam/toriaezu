@@ -4,7 +4,7 @@ shopt -s dotglob
 
 dotfiles_dir=$(cd "$(dirname "$0")/../dotfiles" && pwd)
 
-# Copy dotfiles
+echo 'Copy dotfiles'
 for file in $(cd "$dotfiles_dir" && echo .[!.]*)
 do
   cp -v "$dotfiles_dir/$file" "/home/$(logname)/$file"

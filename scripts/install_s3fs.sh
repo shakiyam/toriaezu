@@ -9,7 +9,7 @@ fi
 # shellcheck disable=SC1091
 os_id=$(. /etc/os-release; echo "$ID")
 
-# Install s3fs
+echo 'Install s3fs'
 case $os_id in
   ol | amzn)
     sudo yum -y install gcc-c++ fuse fuse-devel libcurl-devel libxml2-devel openssl-devel automake
@@ -20,7 +20,7 @@ case $os_id in
     )
     temp_dir=$(mktemp -d)
     pushd "$temp_dir"
-    curl -sSL "https://github.com/s3fs-fuse/s3fs-fuse/archive/${s3fs_latest}.tar.gz" -o "${s3fs_latest}.tar.gz"
+    curl -L# "https://github.com/s3fs-fuse/s3fs-fuse/archive/${s3fs_latest}.tar.gz" -o "${s3fs_latest}.tar.gz"
     tar xvzf "${s3fs_latest}.tar.gz"
     cd "s3fs-fuse-${s3fs_latest//v/}/"
     ./autogen.sh
@@ -32,12 +32,12 @@ case $os_id in
     ;;
   ubuntu)
     sudo apt update
-    sudo apt install -y s3fs
+    sudo apt -y install s3fs
     ;;
 esac
 
-# Mount s3fs
-echo "$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY" | sudo tee /etc/passwd-s3fs
+echo 'Mount s3fs'
+echo "$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY" | sudo tee /etc/passwd-s3fs >/dev/null
 sudo chmod 640 /etc/passwd-s3fs
 sudo mkdir -p "${MOUNT_POINT}"
 sudo s3fs "$BUCKET" "${MOUNT_POINT}" -o rw,allow_other,uid="$(id -u)",gid="$(id -g)",default_acl=public-read
