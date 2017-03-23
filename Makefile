@@ -33,6 +33,9 @@ install_go: ## Install Go Programming Language
 install_hadolint: ## Install hadolint
 	@./scripts/install_hadolint.sh
 
+install_lv: ## Install lv
+	@./scripts/install_lv.sh
+
 install_micro: ## Install Micro
 	@./scripts/install_micro.sh
 
