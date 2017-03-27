@@ -48,6 +48,9 @@ install_node: ## Install Node.js
 install_peco: ## Install peco (*)
 	@./scripts/install_peco.sh
 
+install_pt: ## Install The Platinum Searcher
+	@./scripts/install_pt.sh
+
 install_python: ## Install Python
 	@./scripts/install_python.sh
 
