@@ -33,17 +33,29 @@ install_go: ## Install Go Programming Language
 install_hadolint: ## Install hadolint
 	@./scripts/install_hadolint.sh
 
+install_java: ## Install OpenJDK Development Kit
+	@./scripts/install_java.sh
+
 install_lv: ## Install lv
 	@./scripts/install_lv.sh
 
 install_micro: ## Install Micro
 	@./scripts/install_micro.sh
 
+install_node: ## Install Node.js
+	@./scripts/install_node.sh
+
 install_peco: ## Install peco (*)
 	@./scripts/install_peco.sh
 
+install_python: ## Install Python
+	@./scripts/install_python.sh
+
 install_q: ## Install Q
 	@./scripts/install_q.sh
+
+install_ruby: ## Install Ruby
+	@./scripts/install_ruby.sh
 
 install_s3fs: ## Install s3fs
 	@./scripts/install_s3fs.sh
