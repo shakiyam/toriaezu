@@ -13,6 +13,7 @@ alias docker_rmi_all='docker rmi $(docker images | awk "/^<none>/ { print \$3 }"
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 #alias go='docker run -i -t --rm -v /vagrant/golang/gopath:/go -e http_proxy="$http_proxy" -e https_proxy="$http_proxy" golang go $@'
+alias gitchmod='git update-index --add --chmod=+x'
 alias grep='grep --color=auto'
 #alias hadolint='docker run -i --rm sjourdan/hadolint'
 alias ls='ls -F --color=auto --show-control-char -N'
