@@ -72,6 +72,9 @@ install_shellcheck: ## Install ShellCheck
 install_tmux: ## Install tmux
 	@./scripts/install_tmux.sh
 
+install_wercker: ## Install Wercker CLI
+	@./scripts/install_wercker.sh
+
 list: ## List tools
 	@./scripts/list.sh
 
