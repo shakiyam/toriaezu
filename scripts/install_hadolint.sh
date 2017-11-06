@@ -8,5 +8,7 @@ set -eu -o pipefail
 #     tr -d '\r' |
 #     awk -F'/' '/^Location:/{print $NF}'
 # )
-# curl -L# "https://github.com/lukasmartinelli/hadolint/releases/download/${hadolint_latest}/hadolint_linux_amd64" > /usr/local/bin/hadolint
-# chmod +x /usr/local/bin/hadolint
+hadolint_latest=v1.2.1
+curl -L# "https://github.com/lukasmartinelli/hadolint/releases/download/${hadolint_latest}/hadolint_linux_amd64" |
+  sudo tee /usr/local/bin/hadolint >/dev/null
+sudo chmod +x /usr/local/bin/hadolint
