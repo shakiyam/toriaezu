@@ -49,6 +49,8 @@ case $os_id in
           sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf <<EOF >/dev/null
 [Service]
 Environment="HTTP_PROXY=${HTTP_PROXY:-}"
+Environment="HTTPS_PROXY=${HTTP_PROXY:-}"
+Environment="NO_PROXY=${NO_PROXY:-}"
 EOF
         fi
         sudo systemctl restart docker
@@ -66,6 +68,8 @@ EOF
       sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf <<EOF >/dev/null
 [Service]
 Environment="HTTP_PROXY=${HTTP_PROXY:-}"
+Environment="HTTPS_PROXY=${HTTP_PROXY:-}"
+Environment="NO_PROXY=${NO_PROXY:-}"
 EOF
     fi
     sudo systemctl restart docker
