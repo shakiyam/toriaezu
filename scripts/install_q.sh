@@ -19,3 +19,4 @@ case $os_id in
     rm "$FILE"
     ;;
 esac
+sudo sed -i -e 1s/python$/python2/ $(command -v q)
