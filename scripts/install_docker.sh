@@ -51,6 +51,7 @@ EOF
         sudo chkconfig docker on
         ;;
       7)
+        sudo sed -i 's/.*--selinux-enabled/#&/g' /etc/sysconfig/docker
         if [ -n "${HTTP_PROXY:-}" ]; then
           sudo mkdir -p /etc/systemd/system/docker.service.d
           sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf <<EOF >/dev/null
