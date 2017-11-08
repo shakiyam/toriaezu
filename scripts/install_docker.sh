@@ -40,6 +40,13 @@ case $os_id in
   ol)
     case ${os_version%%.*} in
       6)
+        if [ -n "${HTTP_PROXY:-}" ]; then
+          sudo tee -a /etc/sysconfig/docker <<EOF >/dev/null
+export HTTP_PROXY="${HTTP_PROXY:-}"
+export HTTPS_PROXY="${HTTP_PROXY:-}"
+export NO_PROXY="${NO_PROXY:-}"
+EOF
+        fi
         sudo service docker restart
         sudo chkconfig docker on
         ;;
