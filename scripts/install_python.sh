@@ -11,7 +11,8 @@ case $os_id in
   ol)
     case ${os_version%%.*} in
       6)
-        sudo wget -O /etc/yum.repos.d/public-yum-ol6.repo http://yum.oracle.com/public-yum-ol6.repo
+        curl -ssL http://yum.oracle.com/public-yum-ol6.repo | 
+          sudo tee /etc/yum.repos.d/public-yum-ol6.repo >/dev/null
         sudo yum -y --enablerepo=ol6_software_collections install rh-python35
         ;;
       7)
