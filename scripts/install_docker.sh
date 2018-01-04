@@ -81,6 +81,6 @@ Environment="NO_PROXY=${NO_PROXY:-}"
 EOF
     fi
     sudo systemctl restart docker
-    sudo systemctl enable docker
+    sudo systemctl -f enable docker
     ;;
 esac
