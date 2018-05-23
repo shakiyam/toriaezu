@@ -12,6 +12,9 @@ STAR_TARGETS := $(shell ./scripts/star_targets.sh $(MAKEFILE_LIST))
 toriaezu: $(STAR_TARGETS) ## Install star(*) tools
 	@:
 
+install_bash-completion: ## Install bash-completion (*)
+	@./scripts/install_bash-completion.sh
+
 install_docker: ## Install Docker Engine (*)
 	@./scripts/install_docker.sh
 
