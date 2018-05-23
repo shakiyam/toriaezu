@@ -5,9 +5,13 @@ SHELL := /bin/bash
 .SUFFIXES:
 
 ALL_TARGETS := $(shell egrep -o ^[0-9A-Za-z_-]+: $(MAKEFILE_LIST) | sed 's/://')
+ALL_INSTALL_TARGETS := $(shell egrep -o ^[0-9A-Za-z_-]+: $(MAKEFILE_LIST) | grep install_ | sed 's/://')
 STAR_TARGETS := $(shell ./scripts/star_targets.sh $(MAKEFILE_LIST))
 
 .PHONY: $(ALL_TARGETS)
+
+all: $(ALL_INSTALL_TARGETS)
+	@:
 
 toriaezu: $(STAR_TARGETS) ## Install star(*) tools
 	@:
