@@ -16,7 +16,7 @@ Target OS
 ---------
 
 * Amazon Linux AMI 2017.03
-* Oracle Linux Server 7.4 with UEK4
+* Oracle Linux Server 7.5 with UEK4
 * Oracle Linux Server 6.9 with UEK4 (experimental)
 * Ubuntu 16.04.1 LTS
 
