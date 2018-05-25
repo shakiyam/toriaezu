@@ -49,6 +49,9 @@ install_lv: ## Install lv
 install_micro: ## Install Micro
 	@./scripts/install_micro.sh
 
+install_nfs: ## Install NFS client and mount
+	@./scripts/install_nfs.sh
+
 install_node: ## Install Node.js
 	@./scripts/install_node.sh
 
