@@ -31,7 +31,7 @@ install_dockviz: install_docker ## Install dockviz
 install_dotfiles: ## Install dotfiles (*)
 	@./scripts/install_dotfiles.sh
 
-install_git: ## Install Git
+install_git: ## Install Git (*)
 	@./scripts/install_git.sh
 
 install_go: ## Install Go Programming Language
@@ -43,7 +43,7 @@ install_hadolint: ## Install hadolint
 install_java: ## Install OpenJDK Development Kit
 	@./scripts/install_java.sh
 
-install_lv: ## Install lv
+install_lv: ## Install lv (*)
 	@./scripts/install_lv.sh
 
 install_micro: ## Install Micro
@@ -58,7 +58,7 @@ install_node: ## Install Node.js
 install_peco: ## Install peco (*)
 	@./scripts/install_peco.sh
 
-install_pt: ## Install The Platinum Searcher
+install_pt: ## Install The Platinum Searcher (*)
 	@./scripts/install_pt.sh
 
 install_python: ## Install Python
