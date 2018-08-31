@@ -46,9 +46,6 @@ install_java: ## Install OpenJDK Development Kit
 install_lv: ## Install lv (*)
 	@./scripts/install_lv.sh
 
-install_micro: ## Install Micro
-	@./scripts/install_micro.sh
-
 install_nfs: ## Install NFS client and mount
 	@./scripts/install_nfs.sh
 
