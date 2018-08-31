@@ -3,8 +3,6 @@ set -eu -o pipefail
 
 # shellcheck disable=SC1091
 os_id=$(. /etc/os-release; echo "$ID")
-# shellcheck disable=SC1091
-os_version=$(. /etc/os-release; echo "$VERSION")
 
 echo 'Install OpenJDK Development Kit'
 case $os_id in
