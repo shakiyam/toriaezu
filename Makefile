@@ -43,6 +43,9 @@ install_hadolint: ## Install hadolint
 install_java: ## Install OpenJDK Development Kit
 	@./scripts/install_java.sh
 
+install_jq: ## Install jq
+	@./scripts/install_jq.sh
+
 install_lv: ## Install lv (*)
 	@./scripts/install_lv.sh
 
@@ -78,6 +81,9 @@ install_shellcheck: ## Install ShellCheck
 
 install_tmux: ## Install tmux
 	@./scripts/install_tmux.sh
+
+install_unzip: ## Install UnZip
+	@./scripts/install_unzip.sh
 
 install_wercker: ## Install Wercker CLI
 	@./scripts/install_wercker.sh
