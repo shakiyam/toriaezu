@@ -17,7 +17,7 @@ case $os_id in
     sudo yum -y install bash-completion
     ;;
   amzn)
-    sudo yum -y install bash-completion
+    sudo yum -y --enablerepo=epel install bash-completion
     ;;
   ubuntu)
     sudo apt update
