@@ -11,7 +11,7 @@ case $os_id in
   ol)
     case ${os_version%%.*} in
       6)
-        curl -ssL http://yum.oracle.com/public-yum-ol6.repo | 
+        curl -ssL http://yum.oracle.com/public-yum-ol6.repo |
           sudo tee /etc/yum.repos.d/public-yum-ol6.repo >/dev/null
         sudo yum -y --enablerepo=ol6_software_collections install rh-python35
         ;;
@@ -19,10 +19,6 @@ case $os_id in
         sudo yum -y --enablerepo=ol7_optional_latest,ol7_software_collections install rh-python35
         ;;
     esac
-    ;;
-  amzn)
-    sudo yum -y install python35
-    virtualenv -p python3.5 "/home/$(logname)"
     ;;
   ubuntu)
     sudo apt update

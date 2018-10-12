@@ -7,7 +7,7 @@ os_id=$(. /etc/os-release; echo "$ID")
 echo 'Install Q'
 # Check the latest version from http://harelba.github.io/q/install.html
 case $os_id in
-  ol | amzn)
+  ol)
     sudo yum -y localinstall https://github.com/harelba/packages-for-q/raw/master/rpms/q-text-as-data-1.7.1-1.noarch.rpm
     ;;
   ubuntu)

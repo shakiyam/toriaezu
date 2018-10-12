@@ -19,9 +19,6 @@ case $os_id in
         ;;
     esac
     ;;
-  amzn)
-    sudo yum -y install jq
-    ;;
   ubuntu)
     sudo apt update
     sudo apt -y install jq

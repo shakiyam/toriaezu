@@ -19,9 +19,6 @@ case $os_id in
         ;;
     esac
     ;;
-  amzn)
-    sudo yum -y --enablerepo=epel install bash-completion
-    ;;
   ubuntu)
     sudo apt update
     sudo apt -y install bash-completion

@@ -11,7 +11,7 @@ os_id=$(. /etc/os-release; echo "$ID")
 
 echo 'Install s3fs'
 case $os_id in
-  ol | amzn)
+  ol)
     sudo yum -y install gcc-c++ fuse fuse-devel libcurl-devel libxml2-devel openssl-devel automake
     s3fs_latest=$(
       curl -sSI https://github.com/s3fs-fuse/s3fs-fuse/releases/latest |

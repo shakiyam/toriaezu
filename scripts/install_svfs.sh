@@ -12,7 +12,7 @@ os_id=$(. /etc/os-release; echo "$ID")
 echo 'Install svfs'
 # Check the latest version from https://github.com/ovh/svfs/releases
 case $os_id in
-  ol | amzn)
+  ol)
     # TODO: Oracle Linux 6's ruby is too old
     sudo yum -y install ruby fuse
     sudo yum -y localinstall https://github.com/ovh/svfs/releases/download/v0.9.1/svfs-0.9.1-1.x86_64.rpm

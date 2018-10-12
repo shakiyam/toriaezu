@@ -19,9 +19,6 @@ case $os_id in
         ;;
     esac
     ;;
-  amzn)
-    sudo yum -y install docker
-    ;;
   ubuntu)
     sudo apt update
     sudo apt -y install --no-install-recommends \
@@ -65,10 +62,6 @@ EOF
         sudo systemctl enable docker
         ;;
     esac
-    ;;
-  amzn)
-    sudo service docker restart
-    sudo chkconfig docker on
     ;;
   ubuntu)
     if [ -n "${HTTP_PROXY:-}" ]; then

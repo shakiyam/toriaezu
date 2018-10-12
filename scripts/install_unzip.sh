@@ -9,9 +9,6 @@ case $os_id in
   ol)
     sudo yum -y install unzip
     ;;
-  amzn)
-    sudo yum -y install unzip
-    ;;
   ubuntu)
     sudo apt update
     sudo apt -y install unzip

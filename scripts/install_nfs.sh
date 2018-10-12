@@ -12,7 +12,7 @@ os_id=$(. /etc/os-release; echo "$ID")
 echo 'Install svfs'
 # Check the latest version from https://github.com/ovh/svfs/releases
 case $os_id in
-  ol | amzn)
+  ol)
     sudo yum -y install nfs-utils
     ;;
   ubuntu)

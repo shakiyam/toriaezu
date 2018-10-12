@@ -18,9 +18,6 @@ case $os_id in
         ;;
     esac
     ;;
-  amzn)
-    sudo yum -y localinstall http://ftp.riken.jp/Linux/dag/redhat/el6/en/x86_64/rpmforge/RPMS/lv-4.51-1.el6.rf.x86_64.rpm
-    ;;
   ubuntu)
     sudo apt update
     sudo apt -y install lv

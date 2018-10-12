@@ -6,7 +6,7 @@ os_id=$(. /etc/os-release; echo "$ID")
 
 echo 'Install Git'
 case $os_id in
-  ol | amzn)
+  ol)
     sudo yum -y install git
     ;;
   ubuntu)
