@@ -12,9 +12,12 @@ case $os_id in
     case ${os_version%%.*} in
       6)
         sudo yum -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+        sudo yum -y install bash-completion
+        ;;
+      7)
+        sudo yum -y install bash-completion bash-completion-extras
         ;;
     esac
-    sudo yum -y install bash-completion
     ;;
   amzn)
     sudo yum -y --enablerepo=epel install bash-completion
