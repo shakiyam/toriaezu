@@ -22,6 +22,9 @@ install_bash-completion: ## Install bash-completion (*)
 install_docker: ## Install Docker Engine (*)
 	@./scripts/install_docker.sh
 
+install_docker-bench-security: install_docker ## Install Docker Bench for Security
+	@./scripts/install_docker-bench-security.sh
+
 install_docker-compose: install_docker ## Install Docker Compose (*)
 	@./scripts/install_docker-compose.sh
 
