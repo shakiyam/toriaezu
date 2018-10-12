@@ -14,9 +14,9 @@ case $os_id in
   ol)
     sudo yum -y install gcc-c++ fuse fuse-devel libcurl-devel libxml2-devel openssl-devel automake
     s3fs_latest=$(
-      curl -sSI https://github.com/s3fs-fuse/s3fs-fuse/releases/latest |
-        tr -d '\r' |
-        awk -F'/' '/^Location:/{print $NF}'
+      curl -sSI https://github.com/s3fs-fuse/s3fs-fuse/releases/latest \
+        | tr -d '\r' \
+        | awk -F'/' '/^Location:/{print $NF}'
     )
     temp_dir=$(mktemp -d)
     pushd "$temp_dir"

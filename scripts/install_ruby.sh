@@ -11,8 +11,8 @@ case $os_id in
   ol)
     case ${os_version%%.*} in
       6)
-        curl -ssL http://yum.oracle.com/public-yum-ol6.repo |
-          sudo tee /etc/yum.repos.d/public-yum-ol6.repo >/dev/null
+        curl -ssL http://yum.oracle.com/public-yum-ol6.repo \
+          | sudo tee /etc/yum.repos.d/public-yum-ol6.repo >/dev/null
         sudo yum -y --enablerepo=ol6_software_collections install rh-ruby23
         ;;
       7)
