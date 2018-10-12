@@ -37,7 +37,7 @@ case $os_id in
   ol)
     case ${os_version%%.*} in
       6)
-        if [ -n "${HTTP_PROXY:-}" ]; then
+        if [[ -n "${HTTP_PROXY:-}" ]]; then
           sudo tee -a /etc/sysconfig/docker <<EOF >/dev/null
 export HTTP_PROXY="${HTTP_PROXY:-}"
 export HTTPS_PROXY="${HTTP_PROXY:-}"
@@ -49,7 +49,7 @@ EOF
         ;;
       7)
         sudo sed -i 's/.*--selinux-enabled/#&/g' /etc/sysconfig/docker
-        if [ -n "${HTTP_PROXY:-}" ]; then
+        if [[ -n "${HTTP_PROXY:-}" ]]; then
           sudo mkdir -p /etc/systemd/system/docker.service.d
           sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf <<EOF >/dev/null
 [Service]
@@ -64,7 +64,7 @@ EOF
     esac
     ;;
   ubuntu)
-    if [ -n "${HTTP_PROXY:-}" ]; then
+    if [[ -n "${HTTP_PROXY:-}" ]]; then
       sudo mkdir -p /etc/systemd/system/docker.service.d
       sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf <<EOF >/dev/null
 [Service]
