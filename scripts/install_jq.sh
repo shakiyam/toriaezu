@@ -12,7 +12,7 @@ case $os_id in
     case ${os_version%%.*} in
       6)
         repo=$(grep -E -o '(public_)?ol6_addons' /etc/yum.repos.d/public-yum-ol6.repo)
-        sudo yum -y --enablerepo="$repo" jq
+        sudo yum -y --enablerepo="$repo" install jq
         ;;
       7)
         sudo yum -y --enablerepo=ol7_addons install jq
