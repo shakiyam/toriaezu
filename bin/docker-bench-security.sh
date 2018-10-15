@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eu -o pipefail
 
-docker run -it --net host --pid host --userns host --cap-add audit_control \
+docker run -it --rm --net host --pid host --userns host --cap-add audit_control \
     -e DOCKER_CONTENT_TRUST=1 \
     -v /var/lib:/var/lib \
     -v /var/run/docker.sock:/var/run/docker.sock \
