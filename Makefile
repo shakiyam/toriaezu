@@ -58,6 +58,9 @@ install_nfs: ## Install NFS client and mount
 install_node: ## Install Node.js
 	@./scripts/install_node.sh
 
+install_oci: ## Install OCI CLI
+	@./scripts/install_oci.sh
+
 install_peco: ## Install peco (*)
 	@./scripts/install_peco.sh
 
