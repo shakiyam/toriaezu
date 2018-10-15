@@ -22,13 +22,13 @@ install_bash-completion: ## Install bash-completion (*)
 install_docker: ## Install Docker Engine (*)
 	@./scripts/install_docker.sh
 
-install_docker-bench-security: install_docker ## Install Docker Bench for Security
+install_docker-bench-security: install_docker ## Install Docker Bench for Security (*)
 	@./scripts/install_docker-bench-security.sh
 
 install_docker-compose: install_docker ## Install Docker Compose (*)
 	@./scripts/install_docker-compose.sh
 
-install_dockviz: install_docker ## Install dockviz
+install_dockviz: install_docker ## Install dockviz (*)
 	@./scripts/install_dockviz.sh
 
 install_dotfiles: ## Install dotfiles (*)
@@ -40,7 +40,7 @@ install_git: ## Install Git (*)
 install_go: ## Install Go Programming Language
 	@./scripts/install_go.sh
 
-install_hadolint: ## Install hadolint
+install_hadolint: ## Install hadolint (*)
 	@./scripts/install_hadolint.sh
 
 install_java: ## Install OpenJDK Development Kit
@@ -82,13 +82,13 @@ install_s3fs: ## Install s3fs
 install_svfs: ## Install SVFS
 	@./scripts/install_svfs.sh
 
-install_shellcheck: ## Install ShellCheck
+install_shellcheck: ## Install ShellCheck (*)
 	@./scripts/install_shellcheck.sh
 
-install_tmux: ## Install tmux
+install_tmux: ## Install tmux (*)
 	@./scripts/install_tmux.sh
 
-install_unzip: ## Install UnZip
+install_unzip: ## Install UnZip (*)
 	@./scripts/install_unzip.sh
 
 install_wercker: ## Install Wercker CLI
