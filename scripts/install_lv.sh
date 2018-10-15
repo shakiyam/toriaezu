@@ -14,7 +14,7 @@ case $os_id in
         sudo yum -y localinstall http://ftp.riken.jp/Linux/dag/redhat/el6/en/x86_64/rpmforge/RPMS/lv-4.51-1.el6.rf.x86_64.rpm
         ;;
       7)
-        sudo yum -y install lv
+        sudo yum -y --enablerepo=ol7_developer_EPEL install lv
         ;;
     esac
     ;;
