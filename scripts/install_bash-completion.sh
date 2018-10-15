@@ -15,7 +15,8 @@ case $os_id in
         sudo yum -y install bash-completion
         ;;
       7)
-        sudo yum -y install bash-completion bash-completion-extras
+        sudo yum -y install bash-completion
+        sudo yum -y --enablerepo=ol7_developer_EPEL install bash-completion-extras
         ;;
     esac
     ;;
