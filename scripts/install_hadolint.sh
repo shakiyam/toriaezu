@@ -8,7 +8,7 @@ os_version=$(. /etc/os-release; echo "$VERSION")
 
 echo 'Install hadolint'
 if [[ "$os_id" = 'ol' ]] && [[ "${os_version%%.*}" = '6' ]]; then
-  bash "$(cd "$(dirname "$0")/.." && pwd)/bin/hadolint" -v
+  sudo bash "$(cd "$(dirname "$0")/.." && pwd)/bin/hadolint" -v
   sudo cp "$(cd "$(dirname "$0")/.." && pwd)/bin/hadolint" /usr/local/bin/hadolint
 else
   hadolint_latest=$(
