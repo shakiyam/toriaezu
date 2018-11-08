@@ -5,6 +5,7 @@ IGNOREEOF=1
 PS1='[\u@\h \W]\$ '
 
 shopt -s checkwinsize
+shopt -s direxpand
 shopt -s histappend
 
 alias beautify_tsv='q -H -t -O -b "SELECT * FROM -"'
