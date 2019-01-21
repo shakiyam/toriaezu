@@ -58,6 +58,7 @@ Environment="HTTPS_PROXY=${HTTP_PROXY:-}"
 Environment="NO_PROXY=${NO_PROXY:-}"
 EOF
         fi
+        sudo systemctl daemon-reload
         sudo systemctl restart docker
         sudo systemctl enable docker
         ;;
@@ -73,7 +74,8 @@ Environment="HTTPS_PROXY=${HTTP_PROXY:-}"
 Environment="NO_PROXY=${NO_PROXY:-}"
 EOF
     fi
+    sudo systemctl daemon-reload
     sudo systemctl restart docker
-    sudo systemctl -f enable docker
+    sudo systemctl enable docker
     ;;
 esac
