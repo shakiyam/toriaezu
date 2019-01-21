@@ -67,7 +67,7 @@ install_node: ## Install Node.js
 install_oci: ## Install OCI CLI
 	@./scripts/install_oci.sh
 
-install_peco: ## Install peco (*)
+install_peco: ## Install peco
 	@./scripts/install_peco.sh
 
 install_pt: ## Install The Platinum Searcher (*)
