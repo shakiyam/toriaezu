@@ -9,8 +9,7 @@ fi
 # shellcheck disable=SC1091
 os_id=$(. /etc/os-release; echo "$ID")
 
-echo 'Install svfs'
-# Check the latest version from https://github.com/ovh/svfs/releases
+echo 'Install NFS client'
 case $os_id in
   ol)
     sudo yum -y install nfs-utils
