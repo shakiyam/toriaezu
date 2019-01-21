@@ -22,13 +22,13 @@ install_bash-completion: ## Install bash-completion (*)
 install_docker: ## Install Docker Engine (*)
 	@./scripts/install_docker.sh
 
-install_docker-bench-security: install_docker ## Install Docker Bench for Security (*)
+install_docker-bench-security: install_docker ## Install Docker Bench for Security
 	@./scripts/install_docker-bench-security.sh
 
 install_docker-compose: install_docker ## Install Docker Compose (*)
 	@./scripts/install_docker-compose.sh
 
-install_dockviz: install_docker ## Install dockviz (*)
+install_dockviz: install_docker ## Install dockviz
 	@./scripts/install_dockviz.sh
 
 install_dotfiles: ## Install dotfiles (*)
@@ -49,7 +49,7 @@ install_java: ## Install OpenJDK Development Kit
 install_jq: ## Install jq
 	@./scripts/install_jq.sh
 
-install_lv: ## Install lv (*)
+install_lv: ## Install lv
 	@./scripts/install_lv.sh
 
 install_nfs: ## Install NFS client and mount
