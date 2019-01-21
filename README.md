@@ -15,9 +15,9 @@ cd toriaezu
 Target OS
 ---------
 
-* Oracle Linux Server 7.5 with UEK4
+* Oracle Linux Server 7.6 with UEK5
 * Oracle Linux Server 6.10 with UEK4 (experimental)
-* Ubuntu 16.04 LTS
+* Ubuntu 18.04 LTS
 
 Author
 ------
