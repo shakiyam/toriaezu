@@ -19,3 +19,5 @@ alias ls='ls -F --color=auto --show-control-char -N'
 alias lv='lv -Ia -Ou8'
 alias mv='mv -i'
 alias rm='rm -i'
+
+[ -e /opt/enhancd/init.sh ] && . /opt/enhancd/init.sh
