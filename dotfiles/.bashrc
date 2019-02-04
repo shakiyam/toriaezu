@@ -10,6 +10,7 @@ shopt -s histappend
 
 alias beautify_tsv='q -H -t -O -b "SELECT * FROM -"'
 alias cp='cp -i'
+alias dcls='docker container ls --format "table {{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}"'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias gitchmod='git update-index --add --chmod=+x'
