@@ -8,6 +8,7 @@ os_id=$(. /etc/os-release; echo "$ID")
 case $os_id in
   ol)
     sudo yum -y install make
+    [[ -e /usr/bin/ol_yum_configure.sh ]] && sudo /usr/bin/ol_yum_configure.sh
     ;;
   ubuntu)
     sudo apt update
