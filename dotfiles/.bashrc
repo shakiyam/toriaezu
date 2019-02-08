@@ -17,7 +17,6 @@ alias gitchmod='git update-index --add --chmod=+x'
 alias grep='grep --color=auto'
 alias loadenv='export $(grep -v "^#" .env | xargs -d "\n")'
 alias ls='ls -F --color=auto --show-control-char -N'
-alias lv='lv -Ia -Ou8'
 alias mv='mv -i'
 alias rm='rm -i'
 
