@@ -2,14 +2,14 @@
 set -eu -o pipefail
 
 # shellcheck disable=SC1091
-os_id=$(. /etc/os-release; echo "$ID")
+readonly OS_ID=$(. /etc/os-release; echo "$ID")
 # shellcheck disable=SC1091
-os_version=$(. /etc/os-release; echo "$VERSION")
+readonly OS_VERSION=$(. /etc/os-release; echo "$VERSION")
 
 echo 'Install bash-completion'
-case $os_id in
+case $OS_ID in
   ol)
-    case ${os_version%%.*} in
+    case ${OS_VERSION%%.*} in
       6)
         sudo yum -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
         sudo yum -y install bash-completion

@@ -2,9 +2,9 @@
 set -eu -o pipefail
 
 # shellcheck disable=SC1091
-os_id=$(. /etc/os-release; echo "$ID")
+readonly OS_ID=$(. /etc/os-release; echo "$ID")
 # shellcheck disable=SC1091
-os_version=$(. /etc/os-release; echo "$VERSION")
+readonly OS_VERSION=$(. /etc/os-release; echo "$VERSION")
 
 echo 'Install Docker Compose'
 docker_compose_latest=$(
@@ -12,7 +12,7 @@ docker_compose_latest=$(
     | tr -d '\r' \
     | awk -F'/' '/^Location:/{print $NF}'
 )
-if [[ "$os_id" = 'ol' ]] && [[ "${os_version%%.*}" = '6' ]]; then
+if [[ "$OS_ID" = 'ol' ]] && [[ "${OS_VERSION%%.*}" = '6' ]]; then
   docker_compose_latest=1.9.0
 fi
 curl -L# "https://github.com/docker/compose/releases/download/${docker_compose_latest}/docker-compose-$(uname -s)-$(uname -m)" \

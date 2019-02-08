@@ -2,10 +2,10 @@
 set -eu -o pipefail
 
 # shellcheck disable=SC1091
-os_id=$(. /etc/os-release; echo "$ID")
+readonly OS_ID=$(. /etc/os-release; echo "$ID")
 
 echo 'Install fzy'
-case $os_id in
+case $OS_ID in
   ol)
     sudo yum -y install gcc git make
     temp_dir=$(mktemp -d)

@@ -2,12 +2,12 @@
 set -eu -o pipefail
 
 # shellcheck disable=SC1091
-os_id=$(. /etc/os-release; echo "$ID")
+readonly OS_ID=$(. /etc/os-release; echo "$ID")
 # shellcheck disable=SC1091
-os_version=$(. /etc/os-release; echo "$VERSION")
+readonly OS_VERSION=$(. /etc/os-release; echo "$VERSION")
 
 echo 'Install hadolint'
-if [[ "$os_id" = 'ol' ]] && [[ "${os_version%%.*}" = '6' ]]; then
+if [[ "$OS_ID" = 'ol' ]] && [[ "${OS_VERSION%%.*}" = '6' ]]; then
   sudo bash "$(cd "$(dirname "$0")/.." && pwd)/bin/hadolint" -v
   sudo cp "$(cd "$(dirname "$0")/.." && pwd)/bin/hadolint" /usr/local/bin/hadolint
 else

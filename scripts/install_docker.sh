@@ -2,14 +2,14 @@
 set -eu -o pipefail
 
 # shellcheck disable=SC1091
-os_id=$(. /etc/os-release; echo "$ID")
+readonly OS_ID=$(. /etc/os-release; echo "$ID")
 # shellcheck disable=SC1091
-os_version=$(. /etc/os-release; echo "$VERSION")
+readonly OS_VERSION=$(. /etc/os-release; echo "$VERSION")
 
 echo 'Install Docker Engine'
-case $os_id in
+case $OS_ID in
   ol)
-    case ${os_version%%.*} in
+    case ${OS_VERSION%%.*} in
       6)
         repo=$(grep -E -o '(public_)?ol6_addons' /etc/yum.repos.d/public-yum-ol6.repo)
         sudo yum -y --enablerepo="$repo" install docker-engine
@@ -33,9 +33,9 @@ esac
 
 echo 'Setup Docker Engine'
 sudo usermod -aG docker "$(logname)"
-case $os_id in
+case $OS_ID in
   ol)
-    case ${os_version%%.*} in
+    case ${OS_VERSION%%.*} in
       6)
         if [[ -n "${HTTP_PROXY:-}" ]]; then
           sudo tee -a /etc/sysconfig/docker <<EOF >/dev/null

@@ -7,10 +7,10 @@ if [[ -e .env ]]; then
 fi
 
 # shellcheck disable=SC1091
-os_id=$(. /etc/os-release; echo "$ID")
+readonly OS_ID=$(. /etc/os-release; echo "$ID")
 
 echo 'Install s3fs'
-case $os_id in
+case $OS_ID in
   ol)
     sudo yum -y install gcc-c++ fuse fuse-devel libcurl-devel libxml2-devel openssl-devel automake
     s3fs_latest=$(

@@ -2,11 +2,11 @@
 set -eu -o pipefail
 
 # shellcheck disable=SC1091
-os_id=$(. /etc/os-release; echo "$ID")
+readonly OS_ID=$(. /etc/os-release; echo "$ID")
 
 echo 'Install Q'
 # Check the latest version from http://harelba.github.io/q/install.html
-case $os_id in
+case $OS_ID in
   ol)
     sudo yum -y localinstall https://github.com/harelba/packages-for-q/raw/master/rpms/q-text-as-data-1.7.1-1.noarch.rpm
     ;;

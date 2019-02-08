@@ -2,10 +2,10 @@
 set -eu -o pipefail
 
 # shellcheck disable=SC1091
-os_id=$(. /etc/os-release; echo "$ID")
+readonly OS_ID=$(. /etc/os-release; echo "$ID")
 
 echo 'Install ShellCheck'
-case $os_id in
+case $OS_ID in
   ol)
     sudo bash "$(cd "$(dirname "$0")/.." && pwd)/bin/shellcheck" -V
     sudo cp "$(cd "$(dirname "$0")/.." && pwd)/bin/shellcheck" /usr/local/bin/shellcheck

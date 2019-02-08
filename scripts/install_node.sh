@@ -2,11 +2,11 @@
 set -eu -o pipefail
 
 # shellcheck disable=SC1091
-os_id=$(. /etc/os-release; echo "$ID")
+readonly OS_ID=$(. /etc/os-release; echo "$ID")
 
 echo 'Install Node.js'
 # Check the latest version from https://nodejs.org/en/ and https://github.com/nodesource/distributions
-case $os_id in
+case $OS_ID in
   ol)
     curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
     sudo yum -y install nodejs gcc-c++ make
