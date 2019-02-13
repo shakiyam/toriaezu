@@ -10,7 +10,8 @@ shopt | grep -q direxpand && shopt -s direxpand
 
 alias beautify_tsv='q -H -t -O -b "SELECT * FROM -"'
 alias cp='cp -i'
-alias dcls='docker container ls --format "table {{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}"'
+alias dclogs='while true; do docker-compose logs -f; echo "######################"; sleep 3; done'
+alias dcls='docker container ls --format "table {{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}" -a'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias gitchmod='git update-index --add --chmod=+x'
@@ -20,5 +21,6 @@ alias loadenv='export $(grep -v "^#" .env | xargs -d "\n")'
 alias ls='ls -F --color=auto --show-control-char -N'
 alias mv='mv -i'
 alias rm='rm -i'
+alias watch_dcls='watch "docker container ls --format \"table {{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\" -a"'
 
 [ -e /opt/enhancd/init.sh ] && . /opt/enhancd/init.sh
