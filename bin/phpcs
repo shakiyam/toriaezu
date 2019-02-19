@@ -1,0 +1,4 @@
+#!/bin/bash
+set -eu -o pipefail
+
+docker run --rm -v "${PWD}":/app phpqa/phpcs phpcs --standard=PSR12 "$@"
