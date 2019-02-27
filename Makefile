@@ -82,6 +82,9 @@ install_python: ## Install Python
 install_q: ## Install Q
 	@./scripts/install_q.sh
 
+install_rubocop: ## Install RuboCop
+	@./scripts/install_rubocop.sh
+
 install_ruby: ## Install Ruby
 	@./scripts/install_ruby.sh
 
