@@ -1,4 +1,4 @@
 #!/bin/bash
 set -eu -o pipefail
 
-docker run --privileged -i -t --rm -v "$(pwd)":/mnt koalaman/shellcheck "$@"
+docker run --name shellcheck --rm -v "$(pwd)":/mnt koalaman/shellcheck:stable "$@"
