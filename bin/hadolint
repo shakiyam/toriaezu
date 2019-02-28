@@ -1,4 +1,4 @@
 #!/bin/bash
 set -eu -o pipefail
 
-docker run --privileged --rm -i -v "$(pwd)":/mnt -w /mnt lukasmartinelli/hadolint hadolint "$@"
+docker run --name hadolint --rm -v "$(pwd)":/work -w /work hadolint/hadolint hadolint "$@"
