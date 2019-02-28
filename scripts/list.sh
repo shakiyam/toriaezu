@@ -8,6 +8,7 @@ show_version() {
 
 echo 'Installed Software:'
 
+show_version 'Checkstyle'                1 'checkstyle -V'
 show_version 'Docker'                    1 'docker -v'
 show_version 'Docker Bench for Security' 2 'docker-bench-security.sh -c check_c_1'
 show_version 'Docker Compose'            1 'docker-compose version'

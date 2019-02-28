@@ -19,6 +19,9 @@ toriaezu: $(STAR_TARGETS) ## Install star(*) tools
 install_bash-completion: ## Install bash-completion (*)
 	@./scripts/install_bash-completion.sh
 
+install_checkstyle: ## Install Checkstyle
+	@./scripts/install_checkstyle.sh
+
 install_docker: ## Install Docker Engine (*)
 	@./scripts/install_docker.sh
 
