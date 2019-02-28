@@ -11,7 +11,7 @@ case $OS_ID in
   ol)
     case ${OS_VERSION%%.*} in
       6)
-        repo=$(grep -E -o '(public_)?ol6_addons' /etc/yum.repos.d/public-yum-ol6.repo)
+        repo=$(yum repolist | grep -E -o '(public_)?ol6_addons')
         sudo yum -y --enablerepo="$repo" install docker-engine
         ;;
       7)
