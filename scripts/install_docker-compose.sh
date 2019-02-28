@@ -12,7 +12,7 @@ docker_compose_latest=$(
     | tr -d '\r' \
     | awk -F'/' '/^Location:/{print $NF}'
 )
-if [[ "$OS_ID" = 'ol' ]] && [[ "${OS_VERSION%%.*}" = '6' ]]; then
+if [[ "$OS_ID" = 'ol' && "${OS_VERSION%%.*}" = '6' ]]; then
   docker_compose_latest=1.9.0
 fi
 curl -L# "https://github.com/docker/compose/releases/download/${docker_compose_latest}/docker-compose-$(uname -s)-$(uname -m)" \
