@@ -4,7 +4,7 @@ set -eu -o pipefail
 # shellcheck disable=SC1091
 readonly OS_ID=$(. /etc/os-release; echo "$ID")
 # shellcheck disable=SC1091
-readonly readonly OS_VERSION=$(. /etc/os-release; echo "$VERSION")
+readonly OS_VERSION=$(. /etc/os-release; echo "$VERSION")
 
 echo 'Install Jobber'
 readonly LATEST=$(
