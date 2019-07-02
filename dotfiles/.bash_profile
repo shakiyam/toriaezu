@@ -14,6 +14,11 @@ if command -v scl >/dev/null; then
   done
 fi
 
+if [[ -f ~/py36env/bin/activate ]]; then
+  # shellcheck disable=SC1090
+  . ~/py36env/bin/activate
+fi
+
 http_proxy_host=$(echo "${http_proxy:-}" | sed -E 's~[^/]*//([^@]*@)?([^:/]*)(:[0-9]*)?.*~\2~')
 http_proxy_port=$(echo "${http_proxy:-}" | sed -E 's~[^/]*//([^@]*@)?([^:/]*)(:[0-9]*)?.*~\3~' | sed -e 's/://')
 https_proxy_host=$(echo "${https_proxy:-}" | sed -E 's~[^/]*//([^@]*@)?([^:/]*)(:[0-9]*)?.*~\2~')

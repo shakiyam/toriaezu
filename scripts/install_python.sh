@@ -16,7 +16,8 @@ case $OS_ID in
         sudo yum -y --enablerepo=ol6_software_collections install rh-python35
         ;;
       7)
-        sudo yum -y --enablerepo=ol7_optional_latest,ol7_software_collections install rh-python35
+        sudo yum -y --enablerepo=ol7_developer_EPEL install python36
+        python3.6 -m venv ~/py36env
         ;;
     esac
     ;;
