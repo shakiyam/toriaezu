@@ -10,7 +10,6 @@ shopt | grep -q direxpand && shopt -s direxpand
 
 alias beautify_tsv='q -H -t -O -b "SELECT * FROM -"'
 alias cp='cp -i'
-alias dclogs='while true; do docker-compose logs -f; echo "######################"; sleep 3; done'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias gitchmod='git update-index --add --chmod=+x'
