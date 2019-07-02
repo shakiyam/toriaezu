@@ -79,3 +79,9 @@ EOF
     sudo systemctl enable docker
     ;;
 esac
+
+echo 'Install dcls'
+readonly LOGNAME=$(logname 2> /dev/null || id -nu)
+mkdir -p "/home/$LOGNAME/bin"
+cp "$(cd "$(dirname "$0")/../bin" && pwd)/dcls" "/home/$LOGNAME/bin/dcls"
+chown "$LOGNAME":"$(id -g "$LOGNAME")" "/home/$LOGNAME/bin/dcls"

@@ -1,0 +1,21 @@
+#!/bin/bash
+set -eu -o pipefail
+
+check_command() {
+  command -v "$1" > /dev/null 2>&1 || echo -e "\033[36m$1 not found\033[0m"
+}
+
+check_command docker
+check_command jq
+check_command q
+
+readonly T1=$(mktemp)
+readonly T2=$(mktemp)
+
+docker container ls --format "{{.ID}},{{.Names}},{{.Image}},{{.RunningFor}},{{.Status}}" -a > "$T1"
+# shellcheck disable=SC2046
+docker container inspect $(docker ps -aq) | jq -r '.[] | [.Id[0:12], .Image[7:19]] | @csv' > "$T2"
+
+q -d, -O -D, -b "SELECT t1.c1 AS CONTAINER_ID, t1.c2 AS NAMES, t2.c2 AS IMAGE_ID, t1.c3 AS IMAGE, t1.c4 AS CREATED, t1.c5 AS STATUS FROM $T1 AS t1 JOIN $T2 AS t2 ON (t1.c1 = t2.c1)" | sed 's/,/  /g'
+
+rm "$T1" "$T2"
