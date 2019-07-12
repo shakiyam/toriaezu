@@ -19,7 +19,9 @@ case $OS_ID in
     ;;
 esac
 
-echo 'Mount by nfs'
-sudo mkdir -p "${NFS_MOUNT_POINT}"
-sudo chown "$(id -u)":"$(id -g)" "${NFS_MOUNT_POINT}"
-sudo mount "$NFS_REMOTETARGET" "${NFS_MOUNT_POINT}"
+if [[ -n "${NFS_MOUNT_POINT:-}" && -n "${NFS_REMOTETARGET:-}" ]]; then
+  echo 'Mount by nfs'
+  sudo mkdir -p "${NFS_MOUNT_POINT}"
+  sudo chown "$(id -u)":"$(id -g)" "${NFS_MOUNT_POINT}"
+  sudo mount "$NFS_REMOTETARGET" "${NFS_MOUNT_POINT}"
+fi

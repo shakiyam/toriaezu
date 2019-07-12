@@ -27,12 +27,14 @@ case $OS_ID in
     ;;
 esac
 
-echo 'Mount by svfs'
-cat <<EOT | sudo tee /etc/svfs.yaml >/dev/null
-os_auth_url: ${SVFS_AUTH_URL}
-os_username: ${SVFS_USERNAME}
-os_password: ${SVFS_PASSWORD}
+if [[ -n "${SVFS_AUTH_URL:-}" && -n "${SVFS_MOUNT_POINT:-}" && -n "${SVFS_USERNAME:-}" && -n "${SVFS_PASSWORD:-}" ]]; then
+  echo 'Mount by svfs'
+  cat <<EOT | sudo tee /etc/svfs.yaml >/dev/null
+  os_auth_url: ${SVFS_AUTH_URL}
+  os_username: ${SVFS_USERNAME}
+  os_password: ${SVFS_PASSWORD}
 EOT
-sudo chmod 640 /etc/svfs.yaml
-sudo mkdir -p "${SVFS_MOUNT_POINT}"
-sudo mount -t svfs -o rw,allow_other,uid="$(id -u)",gid="$(id -g)" svfs "${SVFS_MOUNT_POINT}"
+  sudo chmod 640 /etc/svfs.yaml
+  sudo mkdir -p "${SVFS_MOUNT_POINT}"
+  sudo mount -t svfs -o rw,allow_other,uid="$(id -u)",gid="$(id -g)" svfs "${SVFS_MOUNT_POINT}"
+fi
