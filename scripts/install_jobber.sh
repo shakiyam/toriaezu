@@ -17,7 +17,7 @@ case $OS_ID in
     case ${OS_VERSION%%.*} in
       6)
         sudo yum -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm \
-          "https://github.com/dshearer/jobber/releases/download/${LATEST}/jobber-${LATEST#v}-1.el6.x86_64.rpm"
+          "https://github.com/dshearer/jobber/releases/download/v1.3.4/jobber-1.3.4-1.el6.x86_64.rpm"
         sudo service jobber restart
         sudo chkconfig jobber on
         ;;
