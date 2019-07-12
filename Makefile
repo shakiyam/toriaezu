@@ -79,8 +79,8 @@ install_phpcs: ## Install PHP_CodeSniffer
 install_pt: ## Install The Platinum Searcher (*)
 	@./scripts/install_pt.sh
 
-install_python: ## Install Python
-	@./scripts/install_python.sh
+install_python3: ## Install Python3
+	@./scripts/install_python3.sh
 
 install_q: ## Install Q
 	@./scripts/install_q.sh

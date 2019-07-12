@@ -14,9 +14,9 @@ if command -v scl >/dev/null; then
   done
 fi
 
-if [[ -f ~/py36env/bin/activate ]]; then
+if [[ -f "$HOME/python3/bin/activate" ]]; then
   # shellcheck disable=SC1090
-  . ~/py36env/bin/activate
+  . "$HOME/python3/bin/activate"
 fi
 
 http_proxy_host=$(echo "${http_proxy:-}" | sed -E 's~[^/]*//([^@]*@)?([^:/]*)(:[0-9]*)?.*~\2~')
