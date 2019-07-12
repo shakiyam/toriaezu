@@ -21,4 +21,4 @@ alias mv='mv -i'
 alias rm='rm -i'
 
   # shellcheck disable=SC1091
-[ -e /opt/enhancd/init.sh ] && . /opt/enhancd/init.sh
+[[ -e /opt/enhancd/init.sh ]] && . /opt/enhancd/init.sh
