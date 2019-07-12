@@ -14,10 +14,9 @@ case $OS_ID in
         curl -ssL http://yum.oracle.com/public-yum-ol6.repo \
           | sudo tee /etc/yum.repos.d/public-yum-ol6.repo >/dev/null
         sudo yum -y --enablerepo=ol6_software_collections install rh-python36
-        # shellcheck disable=SC1091
         set +u
+        # shellcheck disable=SC1091
         . scl_source enable rh-python36
-        set -eu -o pipefail
         ;;
       7)
         sudo yum -y --enablerepo=ol7_developer_EPEL install python36
