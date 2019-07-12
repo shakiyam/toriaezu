@@ -13,10 +13,10 @@ case $OS_ID in
       6)
         curl -ssL http://yum.oracle.com/public-yum-ol6.repo \
           | sudo tee /etc/yum.repos.d/public-yum-ol6.repo >/dev/null
-        sudo yum -y --enablerepo=ol6_software_collections install rh-ruby23
+        sudo yum -y --enablerepo=ol6_software_collections install rh-ruby24
         ;;
       7)
-        sudo yum -y --enablerepo=ol7_software_collections install rh-ruby23
+        sudo yum -y --enablerepo=ol7_software_collections install rh-ruby24
         ;;
     esac
     ;;
