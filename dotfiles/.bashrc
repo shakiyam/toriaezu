@@ -20,4 +20,5 @@ alias ls='ls -F --color=auto --show-control-char -N'
 alias mv='mv -i'
 alias rm='rm -i'
 
+  # shellcheck disable=SC1091
 [ -e /opt/enhancd/init.sh ] && . /opt/enhancd/init.sh
