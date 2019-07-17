@@ -37,6 +37,9 @@ install_dockviz: install_docker ## Install dockviz
 install_dotfiles: ## Install dotfiles (*)
 	@./scripts/install_dotfiles.sh
 
+install_dtools: ## Install some docker tools (*)
+	@./scripts/install_dtools.sh
+
 install_enhancd: install_fzy ## Install enhancd (*)
 	@./scripts/install_enhancd.sh
 
