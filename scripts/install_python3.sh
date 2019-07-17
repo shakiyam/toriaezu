@@ -14,6 +14,7 @@ case $OS_ID in
         curl -ssL http://yum.oracle.com/public-yum-ol6.repo \
           | sudo tee /etc/yum.repos.d/public-yum-ol6.repo >/dev/null
         sudo yum -y --enablerepo=ol6_software_collections install rh-python36
+        # shellcheck disable=SC2016
         scl enable rh-python36 'python3 -m venv "$HOME/python3"'
         ;;
       7)
