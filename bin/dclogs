@@ -9,4 +9,5 @@ check_command dcls
 check_command fzy
 
 readonly CONTAINER_ID="$(dcls | fzy | awk '{print $1}')"
+[[ -n "$CONTAINER_ID" ]] || { echo -e "\033[36mNo container specified\033[0m"; exit 1; }
 docker container logs "$CONTAINER_ID" |& less
