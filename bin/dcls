@@ -18,20 +18,19 @@ if [[ $(wc -l < "$T1") -gt 0 ]]; then
   docker container inspect $(docker ps -aq) \
     | csvq -i JSON -f CSV -N "SELECT substr(Id, 0, 12), substr(Image, 7, 12) FROM STDIN" \
     >"$T2"
+    csvq -i CSV -n -f FIXED "
+      SELECT
+        t1.c1 AS CONTAINER_ID,
+        t1.c2 AS NAMES,
+        t2.c2 AS IMAGE_ID,
+        t1.c3 AS IMAGE,
+        t1.c4 AS CREATED,
+        t1.c5 AS STATUS
+      FROM
+        \`$T1\` AS t1,
+        \`$T2\` AS t2
+      WHERE t1.c1 = t2.c1
+    "
 fi
-
-csvq -i CSV -n -f FIXED "
-  SELECT
-    t1.c1 AS CONTAINER_ID,
-    t1.c2 AS NAMES,
-    t2.c2 AS IMAGE_ID,
-    t1.c3 AS IMAGE,
-    t1.c4 AS CREATED,
-    t1.c5 AS STATUS
-  FROM
-    \`$T1\` AS t1,
-    \`$T2\` AS t2
-  WHERE t1.c1 = t2.c1
-"
 
 rm "$T1" "$T2"
