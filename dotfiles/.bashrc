@@ -19,6 +19,7 @@ alias loadenv='export $(grep -v "^#" .env | xargs -d "\n")'
 alias ls='ls -F --color=auto --show-control-char -N'
 alias mv='mv -i'
 alias rm='rm -i'
+alias watch='watch --color'
 
   # shellcheck disable=SC1091
 [[ -e /opt/enhancd/init.sh ]] && . /opt/enhancd/init.sh
