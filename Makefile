@@ -22,6 +22,9 @@ install_bash-completion: ## Install bash-completion (*)
 install_checkstyle: ## Install Checkstyle
 	@./scripts/install_checkstyle.sh
 
+install_csvq: ## Install csvq
+	@./scripts/install_csvq.sh
+
 install_docker: ## Install Docker Engine (*)
 	@./scripts/install_docker.sh
 
