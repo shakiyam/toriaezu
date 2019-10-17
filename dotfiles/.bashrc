@@ -21,5 +21,5 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias watch='watch --color'
 
-  # shellcheck disable=SC1091
-[[ -e /opt/enhancd/init.sh ]] && . /opt/enhancd/init.sh
+  # shellcheck disable=SC1090
+[[ -e "$HOME"/enhancd/init.sh ]] && . "$HOME"/enhancd/init.sh
