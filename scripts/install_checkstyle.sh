@@ -1,11 +1,6 @@
 #!/bin/bash
 set -eu -o pipefail
 
-# shellcheck disable=SC1091
-readonly OS_ID=$(. /etc/os-release; echo "$ID")
-# shellcheck disable=SC1091
-readonly OS_VERSION=$(. /etc/os-release; echo "$VERSION")
-
 echo 'Install Checkstyle'
 latest=$(
   curl -sSI https://github.com/checkstyle/checkstyle/releases/latest \
