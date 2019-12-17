@@ -5,5 +5,6 @@ command -v fzy >/dev/null 2>&1 || { echo "ERROR: fzy is required for installatio
 
 echo 'Install enhancd'
 cd "$HOME"
-git clone --depth 1 https://github.com/b4b4r07/enhancd
-rm -rf enhancd/.git
+mkdir -p enhancd
+curl -L# https://github.com/b4b4r07/enhancd/archive/master.tar.gz \
+  | tar xzf - -C ./enhancd enhancd-master --strip=1
