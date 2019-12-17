@@ -8,6 +8,6 @@ readonly LATEST=$(
     | awk -F'/' '/^Location:/{print $NF}'
 )
 curl -L# "https://github.com/mithrandie/csvq/releases/download/${LATEST}/csvq-${LATEST}-linux-amd64.tar.gz" \
-  | sudo tar xzf - -C /usr/local/bin/ --strip=1 csvq-${LATEST}-linux-amd64/csvq
+  | sudo tar xzf - -C /usr/local/bin/ --strip=1 "csvq-${LATEST}-linux-amd64/csvq"
 sudo chown root:root /usr/local/bin/csvq
 sudo chmod 755 /usr/local/bin/csvq
