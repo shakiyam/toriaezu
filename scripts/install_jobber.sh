@@ -3,8 +3,6 @@ set -eu -o pipefail
 
 # shellcheck disable=SC1091
 readonly OS_ID=$(. /etc/os-release; echo "$ID")
-# shellcheck disable=SC1091
-readonly OS_VERSION=$(. /etc/os-release; echo "$VERSION")
 
 echo 'Install Jobber'
 readonly LATEST=$(
@@ -14,19 +12,9 @@ readonly LATEST=$(
 )
 case $OS_ID in
   ol)
-    case ${OS_VERSION%%.*} in
-      6)
-        sudo yum -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm \
-          "https://github.com/dshearer/jobber/releases/download/v1.3.4/jobber-1.3.4-1.el6.x86_64.rpm"
-        sudo service jobber restart
-        sudo chkconfig jobber on
-        ;;
-      7)
-        sudo yum -y localinstall "https://github.com/dshearer/jobber/releases/download/${LATEST}/jobber-${LATEST#v}-1.el7.x86_64.rpm"
-        sudo systemctl restart jobber
-        sudo systemctl enable jobber
-        ;;
-    esac
+    sudo yum -y localinstall "https://github.com/dshearer/jobber/releases/download/${LATEST}/jobber-${LATEST#v}-1.el7.x86_64.rpm"
+    sudo systemctl restart jobber
+    sudo systemctl enable jobber
     ;;
   ubuntu)
     readonly DEB_FILE=$(mktemp)
