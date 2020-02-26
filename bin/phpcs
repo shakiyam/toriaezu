@@ -1,4 +1,5 @@
 #!/bin/bash
 set -eu -o pipefail
 
-docker run --rm -v "${PWD}":/app phpqa/phpcs phpcs --standard=PSR12 "$@"
+readonly DOCKER=$(command -v podman || command -v docker)
+$DOCKER run --name phpcs$$ --rm --security-opt label=disable -v "$PWD":/app phpqa/phpcs phpcs --standard=PSR12 "$@"

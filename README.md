@@ -15,6 +15,7 @@ cd toriaezu
 Target OS
 ---------
 
+* Oracle Linux Server 8.0 (experimental)
 * Oracle Linux Server 7.7 with UEK5
 * Ubuntu 18.04 LTS
 

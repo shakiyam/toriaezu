@@ -1,4 +1,5 @@
 #!/bin/bash
 set -eu -o pipefail
 
-docker run -it --name rubocop --rm -v "$(pwd)":/work shakiyam/rubocop "$@"
+readonly DOCKER=$(command -v podman || command -v docker)
+$DOCKER run -it --name rubocop$$ --rm --security-opt label=disable -v "$PWD":/work shakiyam/rubocop "$@"

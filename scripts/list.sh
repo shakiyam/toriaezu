@@ -10,7 +10,7 @@ echo 'Installed Software:'
 
 show_version 'Checkstyle'                1 'checkstyle -V'
 show_version 'csvq'                      1 'csvq -v'
-show_version 'Docker'                    1 'docker -v'
+show_version 'Docker'                    1 "$(command -v podman || command -v docker) -v"
 show_version 'Docker Compose'            1 'docker-compose version'
 show_version 'dockviz'                   1 'dockviz -v'
 show_version 'fzy'                       1 'fzy -v'

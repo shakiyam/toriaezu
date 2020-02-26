@@ -3,11 +3,20 @@ set -eu -o pipefail
 
 # shellcheck disable=SC1091
 readonly OS_ID=$(. /etc/os-release; echo "$ID")
+# shellcheck disable=SC1091
+readonly OS_VERSION=$(. /etc/os-release; echo "$VERSION")
 
 echo 'Install Docker Engine'
 case $OS_ID in
   ol)
-    sudo yum -y --enablerepo=ol7_addons install docker-engine
+    case ${OS_VERSION%%.*} in
+      7)
+        sudo yum -y --enablerepo=ol7_addons install docker-engine
+        ;;
+      8)
+        sudo dnf -y install podman
+        ;;
+    esac
     ;;
   ubuntu)
     sudo apt update
@@ -22,29 +31,36 @@ case $OS_ID in
 esac
 
 echo 'Setup Docker Engine'
-sudo usermod -aG docker "$(logname)"
 case $OS_ID in
   ol)
-    sudo mkdir -p /etc/docker
-    sudo tee /etc/docker/daemon.json <<EOF >/dev/null
+    case ${OS_VERSION%%.*} in
+      7)
+        sudo usermod -aG docker "$(logname)"
+        sudo mkdir -p /etc/docker
+        sudo tee /etc/docker/daemon.json <<EOF >/dev/null
 {
   "selinux-enabled": false
 }
 EOF
-    if [[ -n "${HTTP_PROXY:-}" ]]; then
-      sudo mkdir -p /etc/systemd/system/docker.service.d
-      sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf <<EOF >/dev/null
+        if [[ -n "${HTTP_PROXY:-}" ]]; then
+          sudo mkdir -p /etc/systemd/system/docker.service.d
+          sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf <<EOF >/dev/null
 [Service]
 Environment="HTTP_PROXY=${HTTP_PROXY:-}"
 Environment="HTTPS_PROXY=${HTTP_PROXY:-}"
 Environment="NO_PROXY=${NO_PROXY:-}"
 EOF
-    fi
-    sudo systemctl daemon-reload
-    sudo systemctl restart docker
-    sudo systemctl enable docker
+        fi
+        sudo systemctl daemon-reload
+        sudo systemctl restart docker
+        sudo systemctl enable docker
+        ;;
+      8)
+        ;;
+    esac
     ;;
   ubuntu)
+    sudo usermod -aG docker "$(logname)"
     if [[ -n "${HTTP_PROXY:-}" ]]; then
       sudo mkdir -p /etc/systemd/system/docker.service.d
       sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf <<EOF >/dev/null

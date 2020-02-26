@@ -5,17 +5,19 @@ check_command() {
   command -v "$1" > /dev/null 2>&1 || { echo -e "\033[36m$1 not found\033[0m"; exit 1; }
 }
 
-check_command docker
+readonly DOCKER=$(command -v podman || command -v docker)
+
+check_command "$DOCKER"
 check_command csvq
 
 readonly T1=$(mktemp)
 readonly T2=$(mktemp)
 
-docker container ls --format "{{.ID}},{{.Names}},{{.Image}},{{.CreatedAt}},{{.Status}}" -a >"$T1"
+$DOCKER container ls --format "{{.ID}},{{.Names}},{{.Image}},{{.CreatedAt}},{{.Status}}" -a >"$T1"
 
 if [[ $(wc -l < "$T1") -gt 0 ]]; then
   # shellcheck disable=SC2046
-  docker container inspect $(docker ps -aq) \
+  $DOCKER container inspect $(docker ps -aq) \
     | csvq -i JSON -f CSV -N "SELECT substr(Id, 0, 12), substr(Image, 7, 12) FROM STDIN" \
     >"$T2"
     csvq -i CSV -n -f FIXED "
