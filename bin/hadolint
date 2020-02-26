@@ -1,4 +1,0 @@
-#!/bin/bash
-set -eu -o pipefail
-
-docker run --name hadolint --rm -v "$(pwd)":/work -w /work hadolint/hadolint hadolint "$@"
