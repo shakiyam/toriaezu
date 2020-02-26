@@ -12,23 +12,7 @@ readonly OS_ID=$(. /etc/os-release; echo "$ID")
 echo 'Install s3fs'
 case $OS_ID in
   ol)
-    sudo yum -y install gcc-c++ fuse fuse-devel libcurl-devel libxml2-devel openssl-devel automake
-    readonly LATEST=$(
-      curl -sSI https://github.com/s3fs-fuse/s3fs-fuse/releases/latest \
-        | tr -d '\r' \
-        | awk -F'/' '/^Location:/{print $NF}'
-    )
-    temp_dir=$(mktemp -d)
-    pushd "$temp_dir"
-    curl -L# "https://github.com/s3fs-fuse/s3fs-fuse/archive/${LATEST}.tar.gz" -o "${LATEST}.tar.gz"
-    tar xvzf "${LATEST}.tar.gz"
-    cd "s3fs-fuse-${LATEST//v/}/"
-    ./autogen.sh
-    ./configure --prefix=/usr
-    make
-    sudo make install
-    popd
-    rm -rf "$temp_dir"
+    sudo yum -y --enablerepo=ol7_developer_EPEL install s3fs-fuse
     ;;
   ubuntu)
     sudo apt update
