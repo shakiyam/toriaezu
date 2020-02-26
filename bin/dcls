@@ -11,7 +11,7 @@ check_command csvq
 readonly T1=$(mktemp)
 readonly T2=$(mktemp)
 
-docker container ls --format "{{.ID}},{{.Names}},{{.Image}},{{.RunningFor}},{{.Status}}" -a >"$T1"
+docker container ls --format "{{.ID}},{{.Names}},{{.Image}},{{.CreatedAt}},{{.Status}}" -a >"$T1"
 
 if [[ $(wc -l < "$T1") -gt 0 ]]; then
   # shellcheck disable=SC2046
