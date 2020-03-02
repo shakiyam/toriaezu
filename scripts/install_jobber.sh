@@ -8,7 +8,7 @@ echo 'Install Jobber'
 readonly LATEST=$(
   curl -sSI https://github.com/dshearer/jobber/releases/latest \
     | tr -d '\r' \
-    | awk -F'/' '/^Location:/{print $NF}'
+    | awk -F'/' '/^location:/{print $NF}'
 )
 case $OS_ID in
   ol)
