@@ -12,7 +12,7 @@ readonly LATEST=$(
 )
 case $OS_ID in
   ol)
-    sudo yum -y localinstall "https://github.com/dshearer/jobber/releases/download/${LATEST}/jobber-${LATEST#v}-1.el7.x86_64.rpm"
+    sudo yum -y localinstall "https://github.com/dshearer/jobber/releases/download/${LATEST}/jobber-${LATEST#v}-1.el8.x86_64.rpm"
     sudo systemctl restart jobber
     sudo systemctl enable jobber
     ;;
