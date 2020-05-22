@@ -3,16 +3,24 @@ set -eu -o pipefail
 
 # shellcheck disable=SC1091
 readonly OS_ID=$(. /etc/os-release; echo "$ID")
+# shellcheck disable=SC1091
+readonly OS_VERSION=$(. /etc/os-release; echo "$VERSION")
 
 echo 'Install Python3'
 case $OS_ID in
   ol)
-    sudo yum -y --enablerepo=ol7_developer_EPEL install python36
-    python3 -m venv "$HOME/python3"
+    case ${OS_VERSION%%.*} in
+      7)
+        sudo yum -y --enablerepo=ol7_developer_EPEL install python36
+        ;;
+      8)
+        sudo dnf -y install python36
+        ;;
+    esac
     ;;
   ubuntu)
     sudo apt update
     sudo apt -y install python3-venv
-    python3 -m venv "$HOME/python3"
     ;;
 esac
+python3 -m venv "$HOME/python3"
