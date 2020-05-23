@@ -54,7 +54,7 @@ Target OS
 
 * Oracle Linux Server 8.0 (experimental)
 * Oracle Linux Server 7.8 with UEK5
-* Ubuntu 18.04 LTS
+* Ubuntu 20.04 LTS
 
 Author
 ------
