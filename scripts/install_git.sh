@@ -14,3 +14,16 @@ case $OS_ID in
     sudo apt -y install git
     ;;
 esac
+
+if [[ ! -f "$HOME/.gitconfig" ]]; then
+  echo 'Can not find .gitconfig file'
+  read -r -p 'continue? ' ans
+  case "$ans" in
+    [yY]*)
+      ;;
+    *)
+      echo 'abort'
+      exit 1
+      ;;
+  esac
+fi
