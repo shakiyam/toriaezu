@@ -28,15 +28,20 @@ case $OS_ID in
     ;;
 esac
 
-if [[ ! -f "$HOME/.gitconfig" ]]; then
-  echo 'Can not find .gitconfig file'
-  read -r -p 'continue? ' ans
-  case "$ans" in
-    [yY]*)
-      ;;
-    *)
-      echo 'abort'
-      exit 1
-      ;;
-  esac
+readonly GIT_VERSION=$(git --version | grep -E -o "[0-9]+.[0-9]+")
+if [[ ${GIT_VERSION%%.*} -gt 2 ]] || [[ ${GIT_VERSION%%.*} -eq 2 && ${GIT_VERSION##*.} -gt 8 ]]; then
+  git config --global user.useConfigOnly true
+else
+  if [[ ! -f "$HOME/.gitconfig" ]]; then
+    echo 'Can not find .gitconfig file'
+    read -r -p 'continue? ' ans
+    case "$ans" in
+      [yY]*)
+        ;;
+      *)
+        echo 'abort'
+        exit 1
+        ;;
+    esac
+  fi
 fi
