@@ -12,8 +12,9 @@ case $OS_ID in
     case ${OS_VERSION%%.*} in
       7)
         sudo yum -y remove git
-        sudo yum -y localinstall https://repo.ius.io/ius-release-el7.rpm
-        sudo yum-config-manager --disable ius
+        sudo yum -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
+          https://repo.ius.io/ius-release-el7.rpm
+        sudo yum-config-manager --disable epel ius
         sudo yum -y --enablerepo=ius install git222 
         ;;
       8)
