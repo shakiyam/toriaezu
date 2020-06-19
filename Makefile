@@ -112,6 +112,9 @@ install_unzip: ## Install UnZip (*)
 install_wercker: ## Install Wercker CLI
 	@./scripts/install_wercker.sh
 
+install_zip: ## Install Zip (*)
+	@./scripts/install_zip.sh
+
 list: ## List tools
 	@./scripts/list.sh
 
