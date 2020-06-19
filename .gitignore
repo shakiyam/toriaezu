@@ -2,4 +2,4 @@
 *.gz
 *.zip
 .env
-/.vscode
+.netrc
