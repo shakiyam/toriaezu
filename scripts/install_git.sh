@@ -12,10 +12,8 @@ case $OS_ID in
     case ${OS_VERSION%%.*} in
       7)
         sudo yum -y remove git
-        sudo yum -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
-          https://repo.ius.io/ius-release-el7.rpm
-        sudo yum-config-manager --disable epel ius
-        sudo yum -y --enablerepo=ius install git222 
+        sudo yum -y install oracle-softwarecollection-release-el7
+        sudo yum -y --enablerepo=ol7_software_collections install rh-git218
         ;;
       8)
         sudo dnf -y install git
