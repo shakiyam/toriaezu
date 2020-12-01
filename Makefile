@@ -97,9 +97,6 @@ install_ruby: ## Install Ruby
 install_s3fs: ## Install s3fs
 	@./scripts/install_s3fs.sh
 
-install_svfs: ## Install SVFS
-	@./scripts/install_svfs.sh
-
 install_shellcheck: ## Install ShellCheck (*)
 	@./scripts/install_shellcheck.sh
 

@@ -43,7 +43,6 @@ For other software installation instructions, run `make help` and read the resul
 * [RuboCop](https://github.com/rubocop-hq/rubocop)
 * Ruby
 * [s3fs](https://github.com/s3fs-fuse/s3fs-fuse)
-* [SVFS](https://github.com/ovh/svfs/)
 * [ShellCheck](https://github.com/koalaman/shellcheck) (*)
 * tmux (*)
 * UnZip (*)
