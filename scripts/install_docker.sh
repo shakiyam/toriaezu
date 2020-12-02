@@ -37,11 +37,6 @@ case $OS_ID in
       7)
         sudo usermod -aG docker "$(logname)"
         sudo mkdir -p /etc/docker
-        sudo tee /etc/docker/daemon.json <<EOF >/dev/null
-{
-  "selinux-enabled": false
-}
-EOF
         if [[ -n "${HTTP_PROXY:-}" ]]; then
           sudo mkdir -p /etc/systemd/system/docker.service.d
           sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf <<EOF >/dev/null
