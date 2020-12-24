@@ -10,8 +10,14 @@ case $OS_ID in
     sudo yum -y install gcc
     temp_dir=$(mktemp -d)
     pushd "$temp_dir"
-    git clone https://github.com/jhawthorn/fzy
-    cd fzy
+    readonly LATEST=$(
+      curl -sSI https://github.com/jhawthorn/fzy/releases/latest \
+        | tr -d '\r' \
+        | awk -F'/' '/^location:/{print $NF}'
+    )
+    curl -L# "https://github.com/jhawthorn/fzy/releases/download/1.0/fzy-${LATEST}.tar.gz" \
+      | tar xzf -
+    cd "fzy-${LATEST}"
     make
     sudo make install
     popd
