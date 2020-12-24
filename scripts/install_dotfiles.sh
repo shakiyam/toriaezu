@@ -8,6 +8,6 @@ logname=$(logname 2> /dev/null || id -nu)
 echo 'Copy dotfiles'
 for file in $(cd "$dotfiles_dir" && echo .[!.]*)
 do
-  cp -v "$dotfiles_dir/$file" "/home/$logname/$file"
+  cp -r -v "$dotfiles_dir/$file" "/home/$logname/$file"
   chown "$logname":"$(id -g "$logname")" "/home/$logname/$file"
 done
