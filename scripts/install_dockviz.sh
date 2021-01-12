@@ -5,7 +5,7 @@ echo 'Install dockviz'
 readonly LATEST=$(
   curl -sSI https://github.com/justone/dockviz/releases/latest \
     | tr -d '\r' \
-    | awk -F'/' '/^location:/{print $NF}'
+    | awk -F'/' '/^[Ll]ocation:/{print $NF}'
 )
 curl -L# "https://github.com/justone/dockviz/releases/download/${LATEST}/dockviz_linux_amd64" \
   | sudo tee /usr/local/bin/dockviz >/dev/null

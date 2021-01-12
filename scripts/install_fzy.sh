@@ -13,7 +13,7 @@ case $OS_ID in
     readonly LATEST=$(
       curl -sSI https://github.com/jhawthorn/fzy/releases/latest \
         | tr -d '\r' \
-        | awk -F'/' '/^location:/{print $NF}'
+        | awk -F'/' '/^[Ll]ocation:/{print $NF}'
     )
     curl -L# "https://github.com/jhawthorn/fzy/releases/download/1.0/fzy-${LATEST}.tar.gz" \
       | tar xzf -

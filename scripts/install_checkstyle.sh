@@ -5,7 +5,7 @@ echo 'Install Checkstyle'
 readonly LATEST=$(
   curl -sSI https://github.com/checkstyle/checkstyle/releases/latest \
     | tr -d '\r' \
-    | awk -F'/' '/^location:/{print $NF}'
+    | awk -F'/' '/^[Ll]ocation:/{print $NF}'
 )
 sudo mkdir -p /usr/local/lib/checkstyle
 curl -L# "https://github.com/checkstyle/checkstyle/releases/download/${LATEST}/${LATEST}-all.jar" \

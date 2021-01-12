@@ -5,7 +5,7 @@ echo 'Install Q'
 readonly LATEST=$(
   curl -sSI https://github.com/harelba/q/releases/latest \
     | tr -d '\r' \
-    | awk -F'/' '/^location:/{print $NF}'
+    | awk -F'/' '/^[Ll]ocation:/{print $NF}'
 )
 curl -L# "https://github.com/harelba/q/releases/download/${LATEST}/q-x86_64-Linux" \
   | sudo tee /usr/local/bin/q >/dev/null
