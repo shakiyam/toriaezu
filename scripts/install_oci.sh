@@ -1,15 +1,15 @@
 #!/bin/bash
 set -eu -o pipefail
 
-# shellcheck disable=SC1091
-readonly OS_ID=$(. /etc/os-release; echo "$ID")
-
 echo 'Install OCI CLI'
-case $OS_ID in
-  ol)
-    ;;
-  ubuntu)
-    sudo apt -y install python3-distutils
-    ;;
-esac
-bash -c "$(curl -L# https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh)"
+readonly IMAGE_NAME='shakiyam/oci-cli'
+if [[ $(command -v docker) ]]; then
+  sudo docker pull $IMAGE_NAME
+elif [[ $(command -v podman) ]]; then
+  podman pull $IMAGE_NAME
+else
+  echo -e "\033[36mdocker or podman not found\033[0m"; exit 1;
+fi
+curl -L# https://raw.githubusercontent.com/shakiyam/oci-cli-docker/master/oci \
+  | sudo tee /usr/local/bin/oci >/dev/null
+sudo chmod +x /usr/local/bin/oci
