@@ -45,6 +45,21 @@ Environment="HTTP_PROXY=${HTTP_PROXY:-}"
 Environment="HTTPS_PROXY=${HTTP_PROXY:-}"
 Environment="NO_PROXY=${NO_PROXY:-}"
 EOF
+          readonly LOGNAME=$(logname 2> /dev/null || id -nu)
+          mkdir -p "/home/$LOGNAME/.docker"
+          cat <<EOF >"/home/$LOGNAME/.docker/config.json"
+{
+  "proxies":
+  {
+    "default":
+    {
+      "httpProxy": "${HTTP_PROXY:-}",
+      "httpsProxy": "${HTTPS_PROXY:-}",
+      "noProxy": "${NO_PROXY:-}"
+    }
+  }
+ }
+EOF
         fi
         sudo systemctl daemon-reload
         sudo systemctl restart docker
@@ -63,6 +78,21 @@ EOF
 Environment="HTTP_PROXY=${HTTP_PROXY:-}"
 Environment="HTTPS_PROXY=${HTTP_PROXY:-}"
 Environment="NO_PROXY=${NO_PROXY:-}"
+EOF
+      readonly LOGNAME=$(logname 2> /dev/null || id -nu)
+      mkdir -p "/home/$LOGNAME/.docker"
+      cat <<EOF >"/home/$LOGNAME/.docker/config.json"
+{
+  "proxies":
+  {
+    "default":
+    {
+      "httpProxy": "${HTTP_PROXY:-}",
+      "httpsProxy": "${HTTPS_PROXY:-}",
+      "noProxy": "${NO_PROXY:-}"
+    }
+  }
+ }
 EOF
     fi
     sudo systemctl daemon-reload
