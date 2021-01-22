@@ -24,4 +24,4 @@ alias rm='rm -i'
 alias watch='watch --color'
 
 # shellcheck disable=SC1090
-[[ -e "$HOME"/enhancd/init.sh ]] && . "$HOME"/enhancd/init.sh
+[[ -e "$HOME/.enhancd/init.sh" ]] && . "$HOME/.enhancd/init.sh"
