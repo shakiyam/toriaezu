@@ -1,3 +1,5 @@
+# shellcheck disable=SC2148
+
 HISTCONTROL=erasedups
 HISTFILESIZE=1000
 HISTSIZE=1000
@@ -21,5 +23,5 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias watch='watch --color'
 
-  # shellcheck disable=SC1090
+# shellcheck disable=SC1090
 [[ -e "$HOME"/enhancd/init.sh ]] && . "$HOME"/enhancd/init.sh

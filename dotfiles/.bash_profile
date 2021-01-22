@@ -1,3 +1,5 @@
+# shellcheck disable=SC2148
+
 if [[ -f ~/.bashrc ]]; then
   # shellcheck source=.bashrc
   # shellcheck disable=SC1091
