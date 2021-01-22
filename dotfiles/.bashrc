@@ -1,5 +1,8 @@
 # shellcheck disable=SC2148
 
+# shellcheck disable=SC1090
+[[ $- == *i* && -e "$HOME/.blesh/ble.sh" ]] && . "$HOME/.blesh/ble.sh" --noattach
+
 HISTCONTROL=erasedups
 HISTFILESIZE=1000
 HISTSIZE=1000
@@ -25,3 +28,4 @@ alias watch='watch --color'
 
 # shellcheck disable=SC1090
 [[ -e "$HOME/.enhancd/init.sh" ]] && . "$HOME/.enhancd/init.sh"
+[[ ${BLE_VERSION-} ]] && ble-attach
