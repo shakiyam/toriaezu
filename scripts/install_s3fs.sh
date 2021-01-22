@@ -8,11 +8,20 @@ fi
 
 # shellcheck disable=SC1091
 readonly OS_ID=$(. /etc/os-release; echo "$ID")
+# shellcheck disable=SC1091
+readonly OS_VERSION=$(. /etc/os-release; echo "$VERSION")
 
 echo 'Install s3fs'
 case $OS_ID in
   ol)
-    sudo yum -y --enablerepo=ol7_developer_EPEL install s3fs-fuse
+    case ${OS_VERSION%%.*} in
+      7)
+        sudo yum -y --enablerepo=ol7_developer_EPEL install s3fs-fuse
+        ;;
+      8)
+        sudo yum -y --enablerepo=ol8_developer_EPEL install s3fs-fuse
+        ;;
+    esac
     ;;
   ubuntu)
     sudo apt update
