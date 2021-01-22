@@ -10,12 +10,14 @@ readonly OS_VERSION=$(. /etc/os-release; echo "$VERSION")
 case $OS_ID in
   ol)
     sudo yum -y install make
-    if [[ -e /usr/bin/ol_yum_configure.sh ]]; then
-      sudo /usr/bin/ol_yum_configure.sh
-      if [[ "${OS_VERSION%%.*}" -eq 7 ]]; then
-        sudo yum -y install oracle-epel-release-el7.x86_64
-      fi
-    fi
+    case ${OS_VERSION%%.*} in
+      7)
+        sudo yum -y install oracle-epel-release-el7
+        ;;
+      8)
+        sudo dnf -y install oracle-epel-release-el8
+        ;;
+    esac
     ;;
   ubuntu)
     sudo apt update
