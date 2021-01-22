@@ -17,7 +17,7 @@ $DOCKER container ls --format "{{.ID}},{{.Names}},{{.Image}},{{.CreatedAt}},{{.S
 
 if [[ $(wc -l < "$T1") -gt 0 ]]; then
   # shellcheck disable=SC2046
-  $DOCKER container inspect $(docker ps -aq) \
+  $DOCKER container inspect $($DOCKER container ls -aq) \
     | csvq -i JSON -f CSV -N "SELECT substr(Id, 0, 12), substr(Image, 7, 12) FROM STDIN" \
     >"$T2"
     csvq -i CSV -n -f FIXED "
