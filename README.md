@@ -21,7 +21,7 @@ For other software installation instructions, run `make help` and read the resul
 * bash-completion (*)
 * [Bash Line Editor](https://github.com/akinomyoga/ble.sh) (*)
 * [Checkstyle](https://github.com/checkstyle/checkstyle)
-* [csvq](https://github.com/mithrandie/csvq)
+* [csvq](https://github.com/mithrandie/csvq) (*)
 * Docker Engine (*)
 * Docker Compose (*)
 * [dockviz](https://github.com/justone/dockviz)
