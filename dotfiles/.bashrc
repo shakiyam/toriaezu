@@ -13,7 +13,7 @@ shopt -s checkwinsize
 shopt -s histappend
 shopt | grep -q direxpand && shopt -s direxpand
 
-alias beautify_tsv='q -H -t -O -b "SELECT * FROM -"'
+alias beautify_tsv='csvq -i TSV -f FIXED "SELECT * FROM STDIN"'
 alias cp='cp -i'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'

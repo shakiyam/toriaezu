@@ -25,7 +25,7 @@ install_ble: ## Install Bash Line Editor (*)
 install_checkstyle: install_java ## Install Checkstyle
 	@./scripts/install_checkstyle.sh
 
-install_csvq: ## Install csvq
+install_csvq: ## Install csvq (*)
 	@./scripts/install_csvq.sh
 
 install_docker: ## Install Docker Engine (*)
