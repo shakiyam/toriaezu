@@ -28,4 +28,4 @@ alias watch='watch --color'
 
 # shellcheck disable=SC1090
 [[ -e "$HOME/.enhancd/init.sh" ]] && . "$HOME/.enhancd/init.sh"
-[[ ${BLE_VERSION-} ]] && ble-attach
+[[ ${BLE_VERSION-} ]] && ble-attach && ble-bind -m auto_complete -f 'C-f' 'auto_complete/insert'
