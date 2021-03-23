@@ -82,7 +82,7 @@ install_peco: ## Install peco
 install_phpcs: ## Install PHP_CodeSniffer
 	@./scripts/install_phpcs.sh
 
-install_pt: ## Install The Platinum Searcher (*)
+install_pt: ## Install The Platinum Searcher
 	@./scripts/install_pt.sh
 
 install_python3: ## Install Python3
@@ -90,6 +90,9 @@ install_python3: ## Install Python3
 
 install_q: ## Install Q
 	@./scripts/install_q.sh
+
+install_rg: ## Install rigrep (*)
+	@./scripts/install_rg.sh
 
 install_rubocop: ## Install RuboCop
 	@./scripts/install_rubocop.sh
