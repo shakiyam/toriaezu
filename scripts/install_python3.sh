@@ -26,4 +26,4 @@ esac
 python3 -m venv "$HOME/python3"
 # shellcheck disable=SC1090
 . "$HOME/python3/bin/activate"
-pip install --upgrade flake8 flake8-import-order pip-tools
+pip install --upgrade flake8 flake8-builtins flake8-import-order pip-tools
