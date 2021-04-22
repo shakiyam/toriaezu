@@ -5,13 +5,13 @@ check_command() {
   command -v "$1" > /dev/null 2>&1 || { echo -e "\033[36m$1 not found\033[0m"; exit 1; }
 }
 
-readonly DOCKER=$(command -v podman || command -v docker)
+DOCKER=$(command -v podman || command -v docker); readonly DOCKER
 
 check_command "$DOCKER"
 check_command csvq
 
-readonly T1=$(mktemp)
-readonly T2=$(mktemp)
+T1=$(mktemp); readonly T1
+T2=$(mktemp); readonly T2
 
 $DOCKER container ls --format "{{.ID}},{{.Names}},{{.Image}},{{.CreatedAt}},{{.Status}}" -a >"$T1"
 

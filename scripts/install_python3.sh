@@ -2,9 +2,9 @@
 set -eu -o pipefail
 
 # shellcheck disable=SC1091
-readonly OS_ID=$(. /etc/os-release; echo "$ID")
+OS_ID=$(. /etc/os-release; echo "$ID"); readonly OS_ID
 # shellcheck disable=SC1091
-readonly OS_VERSION=$(. /etc/os-release; echo "$VERSION")
+OS_VERSION=$(. /etc/os-release; echo "$VERSION"); readonly OS_VERSION
 
 echo 'Install Python3'
 case $OS_ID in
@@ -24,6 +24,6 @@ case $OS_ID in
     ;;
 esac
 python3 -m venv "$HOME/python3"
-# shellcheck disable=SC1090
+# shellcheck disable=SC1091
 . "$HOME/python3/bin/activate"
 pip install --upgrade flake8 flake8-builtins flake8-import-order pip-tools

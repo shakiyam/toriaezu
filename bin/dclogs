@@ -5,11 +5,11 @@ check_command() {
   command -v "$1" > /dev/null 2>&1 || { echo -e "\033[36m$1 not found\033[0m"; exit 1; }
 }
 
-readonly DOCKER=$(command -v podman || command -v docker)
+DOCKER=$(command -v podman || command -v docker); readonly DOCKER
 
 check_command dcls
 check_command fzy
 
-readonly CONTAINER_ID="$(dcls | fzy | awk '{print $1}')"
+CONTAINER_ID="$(dcls | fzy | awk '{print $1}')"; readonly CONTAINER_ID
 [[ -n "$CONTAINER_ID" ]] || { echo -e "\033[36mNo container specified\033[0m"; exit 1; }
 $DOCKER container logs "$CONTAINER_ID" |& less

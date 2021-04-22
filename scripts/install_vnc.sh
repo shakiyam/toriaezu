@@ -2,7 +2,7 @@
 set -eu -o pipefail
 
 # shellcheck disable=SC1091
-readonly OS_ID=$(. /etc/os-release; echo "$ID")
+OS_ID=$(. /etc/os-release; echo "$ID"); readonly OS_ID
 
 echo 'Install VNC Server'
 case $OS_ID in

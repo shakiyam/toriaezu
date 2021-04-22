@@ -2,11 +2,12 @@
 set -eu -o pipefail
 
 echo 'Install Checkstyle'
-readonly LATEST=$(
+LATEST=$(
   curl -sSI https://github.com/checkstyle/checkstyle/releases/latest \
     | tr -d '\r' \
     | awk -F'/' '/^[Ll]ocation:/{print $NF}'
 )
+readonly LATEST
 sudo mkdir -p /usr/local/lib/checkstyle
 curl -L# "https://github.com/checkstyle/checkstyle/releases/download/${LATEST}/${LATEST}-all.jar" \
   | sudo tee /usr/local/lib/checkstyle/checkstyle.jar >/dev/null

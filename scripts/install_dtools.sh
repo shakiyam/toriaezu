@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eu -o pipefail
 
-readonly BIN_DIR=$(cd "$(dirname "$0")/../bin" && pwd)
+BIN_DIR=$(cd "$(dirname "$0")/../bin" && pwd); readonly BIN_DIR
 
 echo 'Install dtools'
 mkdir -p "$HOME/bin"

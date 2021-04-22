@@ -2,9 +2,9 @@
 set -eu -o pipefail
 
 # shellcheck disable=SC1091
-readonly OS_ID=$(. /etc/os-release; echo "$ID")
+OS_ID=$(. /etc/os-release; echo "$ID"); readonly OS_ID
 # shellcheck disable=SC1091
-readonly OS_VERSION=$(. /etc/os-release; echo "$VERSION")
+OS_VERSION=$(. /etc/os-release; echo "$VERSION"); readonly OS_VERSION
 
 echo 'Install Git'
 case $OS_ID in
@@ -15,7 +15,7 @@ case $OS_ID in
         sudo yum -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
           https://repo.ius.io/ius-release-el7.rpm
         sudo yum-config-manager --disable epel ius
-        sudo yum -y --enablerepo=ius install git222 
+        sudo yum -y --enablerepo=ius install git222
         ;;
       8)
         sudo dnf -y install git
@@ -28,7 +28,7 @@ case $OS_ID in
     ;;
 esac
 
-readonly GIT_VERSION=$(git --version | grep -E -o "[0-9]+.[0-9]+")
+GIT_VERSION=$(git --version | grep -E -o "[0-9]+.[0-9]+"); readonly GIT_VERSION
 if [[ ${GIT_VERSION%%.*} -gt 2 ]] || [[ ${GIT_VERSION%%.*} -eq 2 && ${GIT_VERSION##*.} -gt 8 ]]; then
   git config --global user.useConfigOnly true
 else

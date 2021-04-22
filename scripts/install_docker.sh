@@ -2,9 +2,9 @@
 set -eu -o pipefail
 
 # shellcheck disable=SC1091
-readonly OS_ID=$(. /etc/os-release; echo "$ID")
+OS_ID=$(. /etc/os-release; echo "$ID"); readonly OS_ID
 # shellcheck disable=SC1091
-readonly OS_VERSION=$(. /etc/os-release; echo "$VERSION")
+OS_VERSION=$(. /etc/os-release; echo "$VERSION"); readonly OS_VERSION
 
 echo 'Install Docker Engine'
 case $OS_ID in
@@ -45,7 +45,7 @@ Environment="HTTP_PROXY=${HTTP_PROXY:-}"
 Environment="HTTPS_PROXY=${HTTP_PROXY:-}"
 Environment="NO_PROXY=${NO_PROXY:-}"
 EOF
-          readonly LOGNAME=$(logname 2> /dev/null || id -nu)
+          LOGNAME=$(logname 2> /dev/null || id -nu); readonly LOGNAME
           mkdir -p "/home/$LOGNAME/.docker"
           cat <<EOF >"/home/$LOGNAME/.docker/config.json"
 {
@@ -79,7 +79,7 @@ Environment="HTTP_PROXY=${HTTP_PROXY:-}"
 Environment="HTTPS_PROXY=${HTTP_PROXY:-}"
 Environment="NO_PROXY=${NO_PROXY:-}"
 EOF
-      readonly LOGNAME=$(logname 2> /dev/null || id -nu)
+      LOGNAME=$(logname 2> /dev/null || id -nu); readonly LOGNAME
       mkdir -p "/home/$LOGNAME/.docker"
       cat <<EOF >"/home/$LOGNAME/.docker/config.json"
 {
