@@ -8,8 +8,7 @@ echo 'Install ShellCheck'
 case $OS_ID in
   ol)
     curl -L# "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.$(uname -m).tar.xz" \
-      | xz -d -c \
-      | sudo tar xf - -C /usr/local/bin/ --strip=1 shellcheck-stable/shellcheck
+      | sudo tar xJf - -C /usr/local/bin/ --strip=1 shellcheck-stable/shellcheck
     sudo chown root:root /usr/local/bin/shellcheck
     sudo chmod +x /usr/local/bin/shellcheck
     ;;
