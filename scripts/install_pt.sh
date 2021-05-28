@@ -8,5 +8,14 @@ LATEST=$(
     | awk -F'/' '/^[Ll]ocation:/{print $NF}'
 )
 readonly LATEST
-curl -L# "https://github.com/monochromegane/the_platinum_searcher/releases/download/${LATEST}/pt_linux_amd64.tar.gz" \
-  | sudo tar xzf - -C /usr/local/bin/ --strip=1 pt_linux_amd64/pt
+case $(uname -m) in
+  x86_64)
+    ARCHITECTURE=amd64
+    ;;
+  aarch64)
+    ARCHITECTURE=arm
+    ;;
+esac
+readonly ARCHITECTURE
+curl -L# "https://github.com/monochromegane/the_platinum_searcher/releases/download/${LATEST}/pt_linux_${ARCHITECTURE}.tar.gz" \
+  | sudo tar xzf - -C /usr/local/bin/ --strip=1 pt_linux_${ARCHITECTURE}/pt
