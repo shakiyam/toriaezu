@@ -7,7 +7,7 @@ OS_ID=$(. /etc/os-release; echo "$ID"); readonly OS_ID
 echo 'Install ShellCheck'
 case $OS_ID in
   ol)
-    curl -L# https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.x86_64.tar.xz \
+    curl -L# "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.$(uname -m).tar.xz" \
       | xz -d -c \
       | sudo tar xf - -C /usr/local/bin/ --strip=1 shellcheck-stable/shellcheck
     sudo chown root:root /usr/local/bin/shellcheck
