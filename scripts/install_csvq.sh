@@ -8,7 +8,16 @@ LATEST=$(
     | awk -F'/' '/^[Ll]ocation:/{print $NF}'
 )
 readonly LATEST
-curl -L# "https://github.com/mithrandie/csvq/releases/download/${LATEST}/csvq-${LATEST}-linux-amd64.tar.gz" \
-  | sudo tar xzf - -C /usr/local/bin/ --strip=1 "csvq-${LATEST}-linux-amd64/csvq"
+case $(uname -m) in
+  x86_64)
+    ARCHITECTURE=amd64
+    ;;
+  aarch64)
+    ARCHITECTURE=arm
+    ;;
+esac
+readonly ARCHITECTURE
+curl -L# "https://github.com/mithrandie/csvq/releases/download/${LATEST}/csvq-${LATEST}-linux-${ARCHITECTURE}.tar.gz" \
+  | sudo tar xzf - -C /usr/local/bin/ --strip=1 "csvq-${LATEST}-linux-${ARCHITECTURE}/csvq"
 sudo chown root:root /usr/local/bin/csvq
 sudo chmod 755 /usr/local/bin/csvq
