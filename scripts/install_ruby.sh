@@ -12,10 +12,10 @@ case $OS_ID in
     case ${OS_VERSION%%.*} in
       7)
         sudo yum -y install oracle-softwarecollection-release-el7
-        sudo yum -y --enablerepo=ol7_software_collections install rh-ruby26
+        sudo yum -y --enablerepo=ol7_software_collections install rh-ruby27
         ;;
       8)
-        sudo dnf -y install @ruby:2.6
+        sudo dnf -y install @ruby:2.7
         ;;
     esac
     ;;
