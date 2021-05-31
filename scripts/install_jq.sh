@@ -11,7 +11,7 @@ case $OS_ID in
   ol)
     case ${OS_VERSION%%.*} in
       7)
-        sudo yum -y --enablerepo=ol7_addons install jq
+        sudo yum -y install jq
         ;;
       8)
         sudo dnf -y install jq
