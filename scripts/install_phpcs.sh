@@ -11,5 +11,5 @@ else
   echo -e "\033[36mdocker or podman not found\033[0m"; exit 1;
 fi
 curl -L# https://raw.githubusercontent.com/shakiyam/phpcs-docker/main/phpcs \
-  | sudo tee /usr/local/bin/rubocop >/dev/null
+  | sudo tee /usr/local/bin/phpcs >/dev/null
 sudo chmod +x /usr/local/bin/phpcs
