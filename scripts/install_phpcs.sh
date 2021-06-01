@@ -2,7 +2,7 @@
 set -eu -o pipefail
 
 echo 'Install PHP_CodeSniffer'
-readonly IMAGE_NAME='phpqa/phpcs'
+readonly IMAGE_NAME='shakiyam/phpcs'
 if [[ $(command -v docker) ]]; then
   sudo docker pull $IMAGE_NAME
 elif [[ $(command -v podman) ]]; then
@@ -10,5 +10,6 @@ elif [[ $(command -v podman) ]]; then
 else
   echo -e "\033[36mdocker or podman not found\033[0m"; exit 1;
 fi
-sudo cp "$(dirname "$0")/../bin/phpcs" /usr/local/bin/phpcs
+curl -L# https://raw.githubusercontent.com/shakiyam/phpcs-docker/main/phpcs \
+  | sudo tee /usr/local/bin/rubocop >/dev/null
 sudo chmod +x /usr/local/bin/phpcs
