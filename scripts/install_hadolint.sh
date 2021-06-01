@@ -7,6 +7,10 @@ OS_ID=$(. /etc/os-release; echo "$ID"); readonly OS_ID
 OS_VERSION=$(. /etc/os-release; echo "$VERSION"); readonly OS_VERSION
 
 echo 'Install hadolint'
+if [[ $(uname -m) == 'aarch64' ]]; then
+  echo 'hadolint is not yet supported on ARM.'
+  exit 0
+fi
 if [[ ${OS_ID:-} == 'ol' && ${OS_VERSION%%.*} -eq 7 ]]; then
   sudo docker pull hadolint/hadolint
   sudo cp "$(dirname "$0")/../bin/hadolint" /usr/local/bin/hadolint

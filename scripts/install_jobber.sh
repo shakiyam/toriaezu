@@ -5,6 +5,10 @@ set -eu -o pipefail
 OS_ID=$(. /etc/os-release; echo "$ID"); readonly OS_ID
 
 echo 'Install Jobber'
+if [[ $(uname -m) == 'aarch64' ]]; then
+  echo 'Jobber is not yet available as an ARM binary.'
+  exit 0
+fi
 LATEST=$(
   curl -sSI https://github.com/dshearer/jobber/releases/latest \
     | tr -d '\r' \
