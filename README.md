@@ -40,7 +40,6 @@ For other software installation instructions, run `make help` and read the resul
 * [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)
 * [The Platinum Searcher](https://github.com/monochromegane/the_platinum_searcher) (*)
 * Python3
-* [Q](https://github.com/harelba/q)
 * [rigrep](https://github.com/BurntSushi/ripgrep) (*)
 * [RuboCop](https://github.com/rubocop-hq/rubocop)
 * Ruby

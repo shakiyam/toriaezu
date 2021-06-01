@@ -88,9 +88,6 @@ install_pt: ## Install The Platinum Searcher
 install_python3: ## Install Python3
 	@./scripts/install_python3.sh
 
-install_q: ## Install Q
-	@./scripts/install_q.sh
-
 install_rg: ## Install rigrep (*)
 	@./scripts/install_rg.sh
 
