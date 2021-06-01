@@ -47,7 +47,7 @@ For other software installation instructions, run `make help` and read the resul
 * [ShellCheck](https://github.com/koalaman/shellcheck) (*)
 * tmux (*)
 * UnZip (*)
-* Wercker CLI
+* Zip (*)
 
 Target OS
 ---------
