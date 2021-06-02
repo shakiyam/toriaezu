@@ -109,9 +109,6 @@ install_tmux: ## Install tmux (*)
 install_unzip: ## Install UnZip (*)
 	@./scripts/install_unzip.sh
 
-install_wercker: ## Install Wercker CLI
-	@./scripts/install_wercker.sh
-
 install_zip: ## Install Zip (*)
 	@./scripts/install_zip.sh
 
