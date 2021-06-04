@@ -8,7 +8,8 @@ if [[ $(command -v docker) ]]; then
 elif [[ $(command -v podman) ]]; then
   podman pull $IMAGE_NAME
 else
-  echo -e "\033[36mdocker or podman not found\033[0m"; exit 1;
+  echo -e "\033[36mdocker or podman not found\033[0m"
+  exit 1
 fi
 curl -L# https://raw.githubusercontent.com/shakiyam/rubocop-docker/master/rubocop \
   | sudo tee /usr/local/bin/rubocop >/dev/null

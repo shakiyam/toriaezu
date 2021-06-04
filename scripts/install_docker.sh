@@ -2,9 +2,17 @@
 set -eu -o pipefail
 
 # shellcheck disable=SC1091
-OS_ID=$(. /etc/os-release; echo "$ID"); readonly OS_ID
+OS_ID=$(
+  . /etc/os-release
+  echo "$ID"
+)
+readonly OS_ID
 # shellcheck disable=SC1091
-OS_VERSION=$(. /etc/os-release; echo "$VERSION"); readonly OS_VERSION
+OS_VERSION=$(
+  . /etc/os-release
+  echo "$VERSION"
+)
+readonly OS_VERSION
 
 echo 'Install Docker Engine'
 case $OS_ID in
@@ -44,7 +52,9 @@ case $OS_ID in
   ol)
     case ${OS_VERSION%%.*} in
       7)
-        sudo usermod -aG docker "$(logname)"
+        LOGNAME=$(logname 2>/dev/null || id -nu)
+        readonly LOGNAME
+        sudo usermod -aG docker "$LOGNAME"
         sudo mkdir -p /etc/docker
         if [[ -n "${HTTP_PROXY:-}" ]]; then
           sudo mkdir -p /etc/systemd/system/docker.service.d
@@ -54,7 +64,6 @@ Environment="HTTP_PROXY=${HTTP_PROXY:-}"
 Environment="HTTPS_PROXY=${HTTP_PROXY:-}"
 Environment="NO_PROXY=${NO_PROXY:-}"
 EOF
-          LOGNAME=$(logname 2> /dev/null || id -nu); readonly LOGNAME
           mkdir -p "/home/$LOGNAME/.docker"
           cat <<EOF >"/home/$LOGNAME/.docker/config.json"
 {
@@ -75,11 +84,14 @@ EOF
         sudo systemctl enable docker
         ;;
       8)
+        :
         ;;
     esac
     ;;
   ubuntu)
-    sudo usermod -aG docker "$(logname)"
+    LOGNAME=$(logname 2>/dev/null || id -nu)
+    readonly LOGNAME
+    sudo usermod -aG docker "$LOGNAME"
     if [[ -n "${HTTP_PROXY:-}" ]]; then
       sudo mkdir -p /etc/systemd/system/docker.service.d
       sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf <<EOF >/dev/null
@@ -88,7 +100,6 @@ Environment="HTTP_PROXY=${HTTP_PROXY:-}"
 Environment="HTTPS_PROXY=${HTTP_PROXY:-}"
 Environment="NO_PROXY=${NO_PROXY:-}"
 EOF
-      LOGNAME=$(logname 2> /dev/null || id -nu); readonly LOGNAME
       mkdir -p "/home/$LOGNAME/.docker"
       cat <<EOF >"/home/$LOGNAME/.docker/config.json"
 {

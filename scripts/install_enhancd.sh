@@ -1,7 +1,10 @@
 #!/bin/bash
 set -eu -o pipefail
 
-command -v fzy >/dev/null 2>&1 || { echo "ERROR: fzy is required for installation of enhancd."; exit 1; }
+command -v fzy >/dev/null 2>&1 || {
+  echo "ERROR: fzy is required for installation of enhancd."
+  exit 1
+}
 
 echo 'Install enhancd'
 mkdir -p "$HOME/.enhancd"

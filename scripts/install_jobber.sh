@@ -2,7 +2,11 @@
 set -eu -o pipefail
 
 # shellcheck disable=SC1091
-OS_ID=$(. /etc/os-release; echo "$ID"); readonly OS_ID
+OS_ID=$(
+  . /etc/os-release
+  echo "$ID"
+)
+readonly OS_ID
 
 echo 'Install Jobber'
 if [[ $(uname -m) == 'aarch64' ]]; then
@@ -22,7 +26,8 @@ case $OS_ID in
     sudo systemctl enable jobber
     ;;
   ubuntu)
-    DEB_FILE=$(mktemp); readonly DEB_FILE
+    DEB_FILE=$(mktemp)
+    readonly DEB_FILE
     curl -L# "https://github.com/dshearer/jobber/releases/download/${LATEST}/jobber_${LATEST#v}-1_amd64.deb" -o "$DEB_FILE"
     sudo dpkg -i "$DEB_FILE"
     rm "$DEB_FILE"

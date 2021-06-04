@@ -2,13 +2,18 @@
 set -eu -o pipefail
 
 # shellcheck disable=SC1091
-OS_ID=$(. /etc/os-release; echo "$ID"); readonly OS_ID
+OS_ID=$(
+  . /etc/os-release
+  echo "$ID"
+)
+readonly OS_ID
 
 echo 'Install fzy'
 case $OS_ID in
   ol)
     sudo yum -y install gcc
-    TEMP_DIR=$(mktemp -d); readonly TEMP_DIR
+    TEMP_DIR=$(mktemp -d)
+    readonly TEMP_DIR
     LATEST=$(
       curl -sSI https://github.com/jhawthorn/fzy/releases/latest \
         | tr -d '\r' \

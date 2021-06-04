@@ -7,7 +7,11 @@ if [[ -e .env ]]; then
 fi
 
 # shellcheck disable=SC1091
-OS_ID=$(. /etc/os-release; echo "$ID"); readonly OS_ID
+OS_ID=$(
+  . /etc/os-release
+  echo "$ID"
+)
+readonly OS_ID
 
 echo 'Install NFS client'
 case $OS_ID in

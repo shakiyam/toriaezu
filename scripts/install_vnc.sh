@@ -2,7 +2,11 @@
 set -eu -o pipefail
 
 # shellcheck disable=SC1091
-OS_ID=$(. /etc/os-release; echo "$ID"); readonly OS_ID
+OS_ID=$(
+  . /etc/os-release
+  echo "$ID"
+)
+readonly OS_ID
 
 echo 'Install VNC Server'
 case $OS_ID in
@@ -16,7 +20,7 @@ case $OS_ID in
     ;;
 esac
 mkdir -p ~/.vnc
-cat <<EOT >> ~/.vnc/xstartup
+cat <<EOT >>~/.vnc/xstartup
 #!/bin/bash
 [[ -e ~/.Xresources ]] && xrdb ~/.Xresources
 startxfce4 &
