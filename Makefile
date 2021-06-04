@@ -103,6 +103,9 @@ install_s3fs: ## Install s3fs
 install_shellcheck: ## Install ShellCheck (*)
 	@./scripts/install_shellcheck.sh
 
+install_shfmt: ## Install shfmt (*)
+	@./scripts/install_shfmt.sh
+
 install_tmux: ## Install tmux (*)
 	@./scripts/install_tmux.sh
 

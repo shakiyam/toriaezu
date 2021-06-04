@@ -24,6 +24,7 @@ alias loadenv='export $(grep -v "^#" .env | xargs -d "\n")'
 alias ls='ls -F --color=auto --show-control-char -N'
 alias mv='mv -i'
 alias rm='rm -i'
+alias shfmt='shfmt -l -d -i 2 -ci -bn'
 alias watch='watch --color'
 
 # shellcheck disable=SC1090

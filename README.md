@@ -45,6 +45,7 @@ For other software installation instructions, run `make help` and read the resul
 * Ruby
 * [s3fs](https://github.com/s3fs-fuse/s3fs-fuse)
 * [ShellCheck](https://github.com/koalaman/shellcheck) (*)
+* [shfmt](https://github.com/mvdan/sh) (*)
 * tmux (*)
 * UnZip (*)
 * Zip (*)
