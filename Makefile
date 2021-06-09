@@ -91,12 +91,6 @@ install_python3: ## Install Python3
 install_rg: ## Install rigrep (*)
 	@./scripts/install_rg.sh
 
-install_rubocop: ## Install RuboCop
-	@./scripts/install_rubocop.sh
-
-install_ruby: ## Install Ruby
-	@./scripts/install_ruby.sh
-
 install_s3fs: ## Install s3fs
 	@./scripts/install_s3fs.sh
 
