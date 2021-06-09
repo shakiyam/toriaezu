@@ -28,7 +28,7 @@ install_checkstyle: install_java ## Install Checkstyle
 install_csvq: ## Install csvq (*)
 	@./scripts/install_csvq.sh
 
-install_docker: ## Install Docker Engine (*)
+install_docker: install_jq ## Install Docker Engine (*)
 	@./scripts/install_docker.sh
 
 install_docker-compose: install_docker ## Install Docker Compose (*)
