@@ -32,7 +32,7 @@ For other software installation instructions, run `make help` and read the resul
 * [hadolint](https://github.com/hadolint/hadolint) (*)
 * OpenJDK Development Kit
 * [Jobber](https://github.com/dshearer/jobber)
-* jq
+* jq (*)
 * NFS client
 * Node.js
 * OCI CLI
@@ -46,7 +46,7 @@ For other software installation instructions, run `make help` and read the resul
 * [s3fs](https://github.com/s3fs-fuse/s3fs-fuse)
 * [ShellCheck](https://github.com/koalaman/shellcheck) (*)
 * [shfmt](https://github.com/mvdan/sh) (*)
-* tmux (*)
+* tmux
 * UnZip (*)
 * Zip (*)
 

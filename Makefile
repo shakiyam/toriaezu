@@ -64,7 +64,7 @@ install_java: ## Install OpenJDK Development Kit
 install_jobber: ## Install Jobber
 	@./scripts/install_jobber.sh
 
-install_jq: ## Install jq
+install_jq: ## Install jq (*)
 	@./scripts/install_jq.sh
 
 install_nfs: ## Install NFS client and mount
@@ -106,7 +106,7 @@ install_shellcheck: ## Install ShellCheck (*)
 install_shfmt: ## Install shfmt (*)
 	@./scripts/install_shfmt.sh
 
-install_tmux: ## Install tmux (*)
+install_tmux: ## Install tmux
 	@./scripts/install_tmux.sh
 
 install_unzip: ## Install UnZip (*)
