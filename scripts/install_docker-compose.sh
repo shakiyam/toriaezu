@@ -2,7 +2,7 @@
 set -eu -o pipefail
 
 echo 'Install Docker Compose'
-sudo docker pull ghcr.io/linuxserver/docker-compose:latest
+sudo -u "$(id -un)" docker pull ghcr.io/linuxserver/docker-compose:latest
 curl -L# https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh \
   | sudo tee /usr/local/bin/docker-compose >/dev/null
 sudo chmod +x /usr/local/bin/docker-compose

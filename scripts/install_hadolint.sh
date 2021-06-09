@@ -20,7 +20,7 @@ if [[ $(uname -m) == 'aarch64' ]]; then
   exit 0
 fi
 if [[ ${OS_ID:-} == 'ol' && ${OS_VERSION%%.*} -eq 7 ]]; then
-  sudo docker pull hadolint/hadolint
+  sudo -u "$(id -un)" docker pull hadolint/hadolint
   sudo cp "$(dirname "$0")/../bin/hadolint" /usr/local/bin/hadolint
 else
   LATEST=$(

@@ -4,7 +4,7 @@ set -eu -o pipefail
 echo 'Install RuboCop'
 readonly IMAGE_NAME='shakiyam/rubocop'
 if [[ $(command -v docker) ]]; then
-  sudo docker pull $IMAGE_NAME
+  sudo -u "$(id -un)" docker pull $IMAGE_NAME
 elif [[ $(command -v podman) ]]; then
   podman pull $IMAGE_NAME
 else
