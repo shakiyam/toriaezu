@@ -20,16 +20,8 @@ case $OS_ID in
   ol)
     case ${OS_VERSION%%.*} in
       7)
-        case $(uname -m) in
-          x86_64)
-            sudo yum -y install rh-git227
-            scl enable rh-git227 "$GIT_CONFIG"
-            ;;
-          aarch64)
-            sudo yum -y install rh-git218
-            scl enable rh-git218 "$GIT_CONFIG"
-            ;;
-        esac
+        sudo yum -y install rh-git218
+        scl enable rh-git218 "$GIT_CONFIG"
         ;;
       8)
         sudo dnf -y install git
