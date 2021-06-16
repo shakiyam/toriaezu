@@ -22,9 +22,6 @@ install_bash-completion: ## Install bash-completion (*)
 install_ble: ## Install Bash Line Editor (*)
 	@./scripts/install_ble.sh
 
-install_checkstyle: install_java ## Install Checkstyle
-	@./scripts/install_checkstyle.sh
-
 install_csvq: ## Install csvq (*)
 	@./scripts/install_csvq.sh
 

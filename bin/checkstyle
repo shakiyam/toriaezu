@@ -1,4 +1,0 @@
-#!/bin/bash
-set -eu -o pipefail
-
-java -jar /usr/local/lib/checkstyle/checkstyle.jar -c/google_checks.xml "$@"
