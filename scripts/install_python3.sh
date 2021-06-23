@@ -32,6 +32,3 @@ case $OS_ID in
     ;;
 esac
 python3 -m venv "$HOME/python3"
-# shellcheck disable=SC1091
-. "$HOME/python3/bin/activate"
-pip install --upgrade flake8 flake8-builtins flake8-import-order pip-tools
