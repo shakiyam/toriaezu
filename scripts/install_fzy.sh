@@ -20,7 +20,7 @@ case $OS_ID in
         | awk -F'/' '/^[Ll]ocation:/{print $NF}'
     )
     readonly LATEST
-    curl -L# "https://github.com/jhawthorn/fzy/releases/download/1.0/fzy-${LATEST}.tar.gz" \
+    curl -L# "https://github.com/jhawthorn/fzy/releases/download/${LATEST}/fzy-${LATEST}.tar.gz" \
       | tar xzf - -C "$TEMP_DIR" --strip=1
     make -C "$TEMP_DIR"
     sudo make -C "$TEMP_DIR" install
