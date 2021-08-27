@@ -77,7 +77,7 @@ EOF
   if [[ -e "$CONFIG_JSON" ]]; then
     mv "$CONFIG_JSON" "$CONFIG_BAKUP_JSON"
   else
-    cp /dev/null "$CONFIG_BAKUP_JSON"
+    echo {} >"$CONFIG_BAKUP_JSON"
   fi
   if [[ -n "${HTTP_PROXY:-}" ]]; then
     cat <<EOF >"$PROXIES_JSON"
@@ -94,7 +94,7 @@ EOF
   }
 EOF
   else
-    cp /dev/null "$PROXIES_JSON"
+    echo {} >"$PROXIES_JSON"
   fi
   jq -s '.[0]+.[1]' "$CONFIG_BAKUP_JSON" "$PROXIES_JSON" >"$CONFIG_JSON"
 fi
