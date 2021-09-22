@@ -8,6 +8,7 @@ show_version() {
 
 echo 'Installed Software:'
 
+show_version 'cho'                       1 'cho -v'
 show_version 'csvq'                      1 'csvq -v'
 show_version 'Docker'                    1 "$(command -v podman || command -v docker) -v"
 show_version 'Docker Compose'            1 'docker-compose version'

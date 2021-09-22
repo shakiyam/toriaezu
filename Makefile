@@ -22,6 +22,9 @@ install_bash-completion: ## Install bash-completion (*)
 install_ble: ## Install Bash Line Editor (*)
 	@./scripts/install_ble.sh
 
+install_cho: ## Install cho (*)
+	@./scripts/install_cho.sh
+
 install_csvq: ## Install csvq (*)
 	@./scripts/install_csvq.sh
 
@@ -40,10 +43,10 @@ install_dotfiles: ## Install dotfiles (*)
 install_dtools: ## Install some docker tools (*)
 	@./scripts/install_dtools.sh
 
-install_enhancd: install_fzy ## Install enhancd (*)
+install_enhancd: install_cho ## Install enhancd (*)
 	@./scripts/install_enhancd.sh
 
-install_fzy: ## Install fzy (*)
+install_fzy: ## Install fzy
 	@./scripts/install_fzy.sh
 
 install_git: ## Install Git (*)

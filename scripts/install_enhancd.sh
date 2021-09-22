@@ -1,8 +1,12 @@
 #!/bin/bash
 set -eu -o pipefail
 
-command -v fzy >/dev/null 2>&1 || {
-  echo "ERROR: fzy is required for installation of enhancd."
+command_exits() {
+  command -v "$1" >/dev/null 2>&1
+}
+
+command_exits cho || command_exits fzy || command_exits peco || {
+  echo "ERROR: To install enhancd, you will need cho or fzy or peco."
   exit 1
 }
 
