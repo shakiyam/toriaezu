@@ -18,6 +18,6 @@ case $(uname -m) in
     ;;
   aarch64)
     "$SCRIPT_DIR/install_go.sh"
-    go get github.com/mattn/cho
+    /usr/local/go/bin/go get github.com/mattn/cho
     ;;
 esac
