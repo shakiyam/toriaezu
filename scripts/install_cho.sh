@@ -14,7 +14,7 @@ case $(uname -m) in
     )
     readonly LATEST
     curl -L# "https://github.com/mattn/cho/releases/download/${LATEST}/cho_${LATEST}_linux_amd64.tar.gz" \
-      | sudo tar xzf - -C /usr/local/bin/ --strip=1 cho_${LATEST}_linux_amd64/cho
+      | sudo tar xzf - -C /usr/local/bin/ --strip=1 "cho_${LATEST}_linux_amd64/cho"
     ;;
   aarch64)
     "$SCRIPT_DIR/install_go.sh"
