@@ -19,7 +19,14 @@ case $OS_ID in
   ol)
     case ${OS_VERSION%%.*} in
       7)
-        sudo yum -y install docker-engine
+        case $(uname -m) in
+          x86_64)
+            sudo yum -y --enablerepo ol7_addons install docker-engine
+            ;;
+          aarch64)
+            sudo yum -y --enablerepo ol7_developer install docker-engine
+            ;;
+        esac
         ;;
       8)
         sudo dnf -y install podman
