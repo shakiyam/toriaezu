@@ -5,7 +5,7 @@ command_exits() {
   command -v "$1" >/dev/null 2>&1
 }
 
-command_exits cho || command_exits fzy || command_exits peco || {
+command_exits /usr/local/bin/cho || command_exits "$HOME"/bin/cho || command_exits fzy || command_exits peco || {
   echo "ERROR: To install enhancd, you will need cho or fzy or peco."
   exit 1
 }
