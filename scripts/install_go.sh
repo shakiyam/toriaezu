@@ -12,5 +12,5 @@ case $(uname -m) in
     ;;
 esac
 readonly ARCHITECTURE
-curl -L# https://golang.org/dl/go1.17.1.linux-${ARCHITECTURE}.tar.gz \
+curl -L# https://golang.org/dl/go1.17.2.linux-${ARCHITECTURE}.tar.gz \
   | sudo tar xzf - -C /usr/local
