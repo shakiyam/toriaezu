@@ -29,7 +29,7 @@ case $OS_ID in
         esac
         ;;
       8)
-        sudo dnf -y install podman
+        sudo dnf -y install podman podman-plugins
         ;;
     esac
     ;;
@@ -56,7 +56,8 @@ esac
 
 echo 'Setup Docker Engine'
 if [[ ${OS_ID:-} == 'ol' && ${OS_VERSION%%.*} -eq 8 ]]; then
-  :
+  systemctl --user daemon-reload
+  systemctl --user enable --now podman.socket
 else
   # sudo mkdir -p /etc/docker
   sudo mkdir -p /etc/systemd/system/docker.service.d
