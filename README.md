@@ -21,11 +21,12 @@ For other software installation instructions, run `make help` and read the resul
 * bash-completion (*)
 * [Bash Line Editor](https://github.com/akinomyoga/ble.sh) (*)
 * [csvq](https://github.com/mithrandie/csvq) (*)
+* [cho](https://github.com/mattn/cho) (*)
 * Docker Engine (*)
 * Docker Compose (*)
 * [dockviz](https://github.com/justone/dockviz)
 * [enhancd](https://github.com/b4b4r07/enhancd) (*)
-* [fzy](https://github.com/jhawthorn/fzy) (*)
+* [fzy](https://github.com/jhawthorn/fzy)
 * Git (*)
 * Go Programming Language
 * [hadolint](https://github.com/hadolint/hadolint) (*)
@@ -36,7 +37,7 @@ For other software installation instructions, run `make help` and read the resul
 * Node.js
 * OCI CLI
 * [peco](https://github.com/peco/peco)
-* [The Platinum Searcher](https://github.com/monochromegane/the_platinum_searcher) (*)
+* [The Platinum Searcher](https://github.com/monochromegane/the_platinum_searcher)
 * Python3
 * [rigrep](https://github.com/BurntSushi/ripgrep) (*)
 * [s3fs](https://github.com/s3fs-fuse/s3fs-fuse)
