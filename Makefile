@@ -79,9 +79,6 @@ install_oci: ## Install OCI CLI
 install_peco: ## Install peco
 	@./scripts/install_peco.sh
 
-install_pt: ## Install The Platinum Searcher
-	@./scripts/install_pt.sh
-
 install_python3: ## Install Python3
 	@./scripts/install_python3.sh
 
