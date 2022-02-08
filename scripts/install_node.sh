@@ -12,11 +12,11 @@ echo 'Install Node.js'
 # Check the latest version from https://nodejs.org/en/ and https://github.com/nodesource/distributions
 case $OS_ID in
   ol)
-    curl -sL https://rpm.nodesource.com/setup_16.x | sudo bash -
+    curl -sL https://rpm.nodesource.com/setup_16.x | sudo -E bash -
     sudo yum -y install nodejs gcc-c++ make
     ;;
   ubuntu)
-    curl -sL https://deb.nodesource.com/setup_16.x | sudo bash -
+    curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
     sudo apt -y install nodejs build-essential
     ;;
 esac
