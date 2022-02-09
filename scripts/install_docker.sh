@@ -56,10 +56,9 @@ esac
 
 echo 'Setup Docker Engine'
 if [[ ${OS_ID:-} == 'ol' && ${OS_VERSION%%.*} -eq 8 ]]; then
-  sudo -u "$(id -un)" XDG_RUNTIME_DIR=/run/user/$(id -u) systemctl --user daemon-reload
-  sudo -u "$(id -un)" XDG_RUNTIME_DIR=/run/user/$(id -u) systemctl --user enable --now podman.socket
+  sudo -u "$(id -un)" XDG_RUNTIME_DIR=/run/user/"$(id -u)" systemctl --user daemon-reload
+  sudo -u "$(id -un)" XDG_RUNTIME_DIR=/run/user/"$(id -u)" systemctl --user enable --now podman.socket
 else
-  # sudo mkdir -p /etc/docker
   sudo mkdir -p /etc/systemd/system/docker.service.d
   if [[ -n "${HTTP_PROXY:-}" ]]; then
     sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf <<EOF >/dev/null
@@ -89,17 +88,17 @@ EOF
   fi
   if [[ -n "${HTTP_PROXY:-}" ]]; then
     cat <<EOF >"$PROXIES_JSON"
+{
+  "proxies":
   {
-    "proxies":
+    "default":
     {
-      "default":
-      {
-        "httpProxy": "${HTTP_PROXY:-}",
-        "httpsProxy": "${HTTPS_PROXY:-}",
-        "noProxy": "${NO_PROXY:-}"
-      }
+      "httpProxy": "${HTTP_PROXY:-}",
+      "httpsProxy": "${HTTPS_PROXY:-}",
+      "noProxy": "${NO_PROXY:-}"
     }
   }
+}
 EOF
   else
     echo {} >"$PROXIES_JSON"
