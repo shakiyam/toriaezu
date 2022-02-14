@@ -2,7 +2,8 @@
 set -eu -o pipefail
 
 echo 'Install Go Programming Language'
-# Check the latest version from https://golang.org/dl/
+VERSION=$(curl -sS https://go.dev/VERSION?m=text)
+readonly VERSION
 case $(uname -m) in
   x86_64)
     ARCHITECTURE=amd64
@@ -12,5 +13,5 @@ case $(uname -m) in
     ;;
 esac
 readonly ARCHITECTURE
-curl -L# https://golang.org/dl/go1.17.6.linux-${ARCHITECTURE}.tar.gz \
+curl -L# "https://golang.org/dl/${VERSION}.linux-${ARCHITECTURE}.tar.gz" \
   | sudo tar xzf - -C /usr/local
