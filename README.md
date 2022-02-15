@@ -33,6 +33,7 @@ For other software installation instructions, run `make help` and read the resul
 * OpenJDK Development Kit
 * [Jobber](https://github.com/dshearer/jobber)
 * jq (*)
+* kubectl
 * NFS client
 * Node.js
 * OCI CLI

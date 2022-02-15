@@ -67,6 +67,9 @@ install_jobber: ## Install Jobber
 install_jq: ## Install jq (*)
 	@./scripts/install_jq.sh
 
+install_kubectl: ## Install kubectl
+	@./scripts/install_kubectl.sh
+
 install_nfs: ## Install NFS client and mount
 	@./scripts/install_nfs.sh
 
