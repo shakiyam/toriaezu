@@ -17,13 +17,12 @@ readonly OS_VERSION
 # Install Make
 case $OS_ID in
   ol)
-    sudo yum -y install make
     case ${OS_VERSION%%.*} in
       7)
-        sudo yum -y install oracle-epel-release-el7
+        sudo yum -y install make oracle-epel-release-el7
         ;;
       8)
-        sudo dnf -y install oracle-epel-release-el8
+        sudo dnf -y install make oracle-epel-release-el8
         ;;
     esac
     ;;
