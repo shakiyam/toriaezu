@@ -47,7 +47,7 @@ case $OS_ID in
         ;;
     esac
     readonly ARCHITECTURE
-    sudo add-apt-repository \
+    sudo add-apt-repository -y \
       "deb [arch=$ARCHITECTURE] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     sudo apt update
     sudo apt -y install docker-ce
