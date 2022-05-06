@@ -17,7 +17,7 @@ if command -v scl >/dev/null; then
 fi
 
 if [[ -f "$HOME/python3/bin/activate" ]]; then
-  # shellcheck disable=SC1090
+  # shellcheck disable=SC1091
   . "$HOME/python3/bin/activate"
 fi
 

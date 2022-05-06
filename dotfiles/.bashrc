@@ -1,6 +1,6 @@
 # shellcheck disable=SC2148
 
-# shellcheck disable=SC1090
+# shellcheck disable=SC1091
 [[ $- == *i* && -e "$HOME/.blesh/ble.sh" ]] && . "$HOME/.blesh/ble.sh" --noattach
 
 HISTCONTROL=erasedups
@@ -27,8 +27,9 @@ alias rm='rm -i'
 alias shfmt='shfmt -l -d -i 2 -ci -bn -kp'
 alias watch='watch --color'
 
-# shellcheck disable=SC1090
+# shellcheck disable=SC1091
 [[ -e "$HOME/.enhancd/init.sh" ]] && . "$HOME/.enhancd/init.sh"
 [[ ${BLE_VERSION-} ]] && ble-attach && ble-bind -m auto_complete -f 'C-f' 'auto_complete/insert'
 
+# shellcheck disable=SC1090
 command -v kubectl >/dev/null 2>&1 && source <(kubectl completion bash)
