@@ -19,15 +19,18 @@ case $OS_ID in
   ol)
     case ${OS_VERSION%%.*} in
       7)
+        sudo yum -y upgrade
         sudo yum -y install make oracle-epel-release-el7
         ;;
       8)
+        sudo dnf -y upgrade
         sudo dnf -y install make oracle-epel-release-el8
         ;;
     esac
     ;;
   ubuntu)
     sudo apt update
+    sudo apt -y upgrade
     sudo apt -y install make
     ;;
 esac
