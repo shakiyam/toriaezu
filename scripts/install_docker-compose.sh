@@ -15,17 +15,18 @@ OS_VERSION=$(
 readonly OS_VERSION
 
 echo 'Install Docker Compose'
+LATEST=$(
+  curl -sSI https://github.com/docker/compose/releases/latest \
+    | tr -d '\r' \
+    | awk -F'/' '/^[Ll]ocation:/{print $NF}'
+)
 if [[ ${OS_ID:-} == 'ol' && ${OS_VERSION%%.*} -eq 8 ]]; then
-  podman pull ghcr.io/linuxserver/docker-compose:latest
-  sudo cp "$(dirname "$0")/../bin/docker-compose" /usr/local/bin/docker-compose
+  curl -L# "https://github.com/docker/compose/releases/download/${LATEST}/docker-compose-linux-$(uname -m)" \
+    | sudo tee /usr/local/bin/docker-compose >/dev/null
   sudo chmod +x /usr/local/bin/docker-compose
-  # Docker Compose 1.29.2 is the latest Docker Compose v1
-  readonly LATEST=1.29.2
-  curl -L# "https://raw.githubusercontent.com/docker/compose/${LATEST}/contrib/completion/bash/docker-compose" \
-    | sudo tee /etc/bash_completion.d/docker-compose >/dev/null
 else
   sudo mkdir -p /usr/local/lib/docker/cli-plugins
-  curl -L# "https://github.com/docker/compose/releases/latest/download/docker-compose-linux-$(uname -m)" \
+  curl -L# "https://github.com/docker/compose/releases/download/${LATEST}/docker-compose-linux-$(uname -m)" \
     | sudo tee /usr/local/lib/docker/cli-plugins/docker-compose >/dev/null
   sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 fi

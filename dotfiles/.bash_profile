@@ -8,6 +8,11 @@ fi
 
 PATH="$PATH:/usr/local/go/bin:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
 
+if command -v podman >/dev/null; then
+  DOCKER_HOST="unix:///run/user/$(id -u)/podman/podman.sock"
+  export DOCKER_HOST
+fi
+
 if command -v scl >/dev/null; then
   collections=$(scl --list)
   for collection in ${collections}; do
