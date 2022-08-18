@@ -24,6 +24,9 @@ case $OS_ID in
       8)
         sudo dnf -y install python36
         ;;
+      9)
+        sudo dnf -y install python3
+        ;;
     esac
     ;;
   ubuntu)

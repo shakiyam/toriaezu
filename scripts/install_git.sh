@@ -27,6 +27,10 @@ case $OS_ID in
         sudo dnf -y install git
         $GIT_CONFIG
         ;;
+      9)
+        sudo dnf -y install git
+        $GIT_CONFIG
+        ;;
     esac
     ;;
   ubuntu)

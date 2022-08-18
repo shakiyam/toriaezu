@@ -24,6 +24,9 @@ case $OS_ID in
       8)
         sudo dnf -y install jq
         ;;
+      9)
+        sudo dnf -y install jq
+        ;;
     esac
     ;;
   ubuntu)

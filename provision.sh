@@ -26,6 +26,10 @@ case $OS_ID in
         sudo dnf -y upgrade
         sudo dnf -y install make oracle-epel-release-el8
         ;;
+      9)
+        sudo dnf -y upgrade
+        sudo dnf -y install make oracle-epel-release-el9
+        ;;
     esac
     ;;
   ubuntu)

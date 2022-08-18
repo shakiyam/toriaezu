@@ -31,6 +31,9 @@ case $OS_ID in
       8)
         sudo dnf -y install podman podman-plugins
         ;;
+      9)
+        sudo dnf -y install podman podman-plugins
+        ;;
     esac
     ;;
   ubuntu)
@@ -55,7 +58,7 @@ case $OS_ID in
 esac
 
 echo 'Setup Docker Engine'
-if [[ ${OS_ID:-} == 'ol' && ${OS_VERSION%%.*} -eq 8 ]]; then
+if [[ ${OS_ID:-} == 'ol' && ${OS_VERSION%%.*} -gt 8 ]]; then
   sudo -u "$(id -un)" XDG_RUNTIME_DIR=/run/user/"$(id -u)" systemctl --user daemon-reload
   sudo -u "$(id -un)" XDG_RUNTIME_DIR=/run/user/"$(id -u)" systemctl --user enable --now podman.socket
 else

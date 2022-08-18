@@ -24,7 +24,10 @@ esac
 readonly ARCHITECTURE
 
 echo 'Install hadolint'
-if [[ ${OS_ID:-} == 'ol' && ${OS_VERSION%%.*} -eq 7 ]]; then
+if [[ ${OS_ID:-} == 'ol' && ${OS_VERSION%%.*} -eq 9 ]]; then
+  echo 'hadolint is not yet supported on Oracle Linux 9.'
+  exit 0
+elif [[ ${OS_ID:-} == 'ol' && ${OS_VERSION%%.*} -eq 7 ]]; then
   sudo -u "$(id -un)" docker pull hadolint/hadolint
   sudo cp "$(dirname "$0")/../bin/hadolint" /usr/local/bin/hadolint
 else
