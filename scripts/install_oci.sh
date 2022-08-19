@@ -15,7 +15,7 @@ OS_VERSION=$(
 readonly OS_VERSION
 
 echo 'Install OCI CLI'
-if [[ ${OS_ID:-} == 'ol' && ${OS_VERSION%%.*} -gt 8 ]]; then
+if [[ ${OS_ID:-} == 'ol' && ${OS_VERSION%%.*} -ge 8 ]]; then
   case ${OS_VERSION%%.*} in
     8)
       sudo dnf -y install oraclelinux-developer-release-el8

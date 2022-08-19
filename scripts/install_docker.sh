@@ -58,7 +58,7 @@ case $OS_ID in
 esac
 
 echo 'Setup Docker Engine'
-if [[ ${OS_ID:-} == 'ol' && ${OS_VERSION%%.*} -gt 8 ]]; then
+if [[ ${OS_ID:-} == 'ol' && ${OS_VERSION%%.*} -ge 8 ]]; then
   sudo -u "$(id -un)" XDG_RUNTIME_DIR=/run/user/"$(id -u)" systemctl --user daemon-reload
   sudo -u "$(id -un)" XDG_RUNTIME_DIR=/run/user/"$(id -u)" systemctl --user enable --now podman.socket
 else
