@@ -61,9 +61,6 @@ install_hadolint: ## Install hadolint (*)
 install_java: ## Install OpenJDK Development Kit
 	@./scripts/install_java.sh
 
-install_jobber: ## Install Jobber
-	@./scripts/install_jobber.sh
-
 install_jq: ## Install jq (*)
 	@./scripts/install_jq.sh
 

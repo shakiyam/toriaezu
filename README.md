@@ -31,7 +31,6 @@ For other software installation instructions, run `make help` and read the resul
 * Go Programming Language
 * [hadolint](https://github.com/hadolint/hadolint) (*)
 * OpenJDK Development Kit
-* [Jobber](https://github.com/dshearer/jobber)
 * jq (*)
 * kubectl
 * NFS client
