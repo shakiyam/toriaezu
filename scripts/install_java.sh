@@ -31,6 +31,6 @@ case $OS_ID in
     ;;
   ubuntu)
     sudo apt update
-    sudo apt -y install openjdk-11-jdk
+    sudo apt -y install openjdk-17-jdk
     ;;
 esac
