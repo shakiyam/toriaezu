@@ -18,4 +18,4 @@ case $(uname -m) in
 esac
 readonly ARCHITECTURE
 curl -L# "https://github.com/peco/peco/releases/download/${LATEST}/peco_linux_${ARCHITECTURE}.tar.gz" \
-  | sudo tar xzf - -C /usr/local/bin/ --strip=1 peco_linux_${ARCHITECTURE}/peco
+  | sudo tar xzf - -C /usr/local/bin/ --strip=1 "peco_linux_${ARCHITECTURE}/peco"
