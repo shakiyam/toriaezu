@@ -22,6 +22,9 @@ install_bash-completion: ## Install bash-completion (*)
 install_ble: ## Install Bash Line Editor (*)
 	@./scripts/install_ble.sh
 
+install_chezmoi: ## Install chezmoi (*)
+	@./scripts/install_chezmoi.sh
+
 install_cho: ## Install cho (*)
 	@./scripts/install_cho.sh
 
@@ -36,9 +39,6 @@ install_docker-compose: install_docker ## Install Docker Compose (*)
 
 install_dockviz: install_docker ## Install dockviz
 	@./scripts/install_dockviz.sh
-
-install_dotfiles: ## Install dotfiles (*)
-	@./scripts/install_dotfiles.sh
 
 install_dtools: ## Install some docker tools (*)
 	@./scripts/install_dtools.sh
