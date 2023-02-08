@@ -38,6 +38,6 @@ case $OS_ID in
     ;;
   ubuntu)
     sudo apt update
-    sudo apt -y install ripgrep
+    sudo DEBIAN_FRONTEND=noninteractive apt -y install ripgrep
     ;;
 esac

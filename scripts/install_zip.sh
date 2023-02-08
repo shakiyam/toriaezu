@@ -15,6 +15,6 @@ case $OS_ID in
     ;;
   ubuntu)
     sudo apt update
-    sudo apt -y install zip
+    sudo DEBIAN_FRONTEND=noninteractive apt -y install zip
     ;;
 esac

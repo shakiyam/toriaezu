@@ -15,6 +15,6 @@ case $OS_ID in
     ;;
   ubuntu)
     sudo apt update
-    sudo apt -y install unzip
+    sudo DEBIAN_FRONTEND=noninteractive apt -y install unzip
     ;;
 esac

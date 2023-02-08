@@ -31,7 +31,7 @@ case $OS_ID in
     ;;
   ubuntu)
     sudo apt update
-    sudo apt -y install python3-venv
+    sudo DEBIAN_FRONTEND=noninteractive apt -y install python3-venv
     ;;
 esac
 python3 -m venv "$HOME/python3"

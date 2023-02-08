@@ -24,10 +24,10 @@ EOF
     ;;
   ubuntu)
     sudo apt update
-    sudo apt -y install apt-transport-https
+    sudo DEBIAN_FRONTEND=noninteractive apt -y install apt-transport-https
     curl -sSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
     echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list >/dev/null
     sudo apt update
-    sudo apt -y install kubectl
+    sudo DEBIAN_FRONTEND=noninteractive apt -y install kubectl
     ;;
 esac

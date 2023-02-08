@@ -37,7 +37,7 @@ case $OS_ID in
     ;;
   ubuntu)
     sudo apt update
-    sudo apt -y install s3fs
+    sudo DEBIAN_FRONTEND=noninteractive apt -y install s3fs
     ;;
 esac
 
