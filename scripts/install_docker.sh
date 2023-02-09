@@ -85,7 +85,7 @@ EOF
   readonly PROXIES_JSON="/home/$LOGNAME/.docker/proxies.json"
 
   if [[ -e "$CONFIG_JSON" ]]; then
-    mv "$CONFIG_JSON" "$CONFIG_BAKUP_JSON"
+    jq 'del(.proxies)' "$CONFIG_JSON" >"$CONFIG_BAKUP_JSON"
   else
     echo {} >"$CONFIG_BAKUP_JSON"
   fi
