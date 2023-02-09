@@ -1,9 +1,7 @@
 #!/bin/bash
 set -eu -o pipefail
 
-if [[ $(command -v hadolint) ]]; then
-  hadolint "$@"
-elif [[ $(command -v docker) ]]; then
+if [[ $(command -v docker) ]]; then
   docker container run \
     --name hadolint$$ \
     --rm \
