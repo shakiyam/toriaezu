@@ -22,10 +22,10 @@ case $OS_ID in
         sudo yum -y --enablerepo=ol7_developer_EPEL install python36
         ;;
       8)
-        sudo dnf -y install python36
+        sudo dnf -y install python39 python39-pip
         ;;
       9)
-        sudo dnf -y install python3
+        sudo dnf -y install python39 python-pip
         ;;
     esac
     ;;
