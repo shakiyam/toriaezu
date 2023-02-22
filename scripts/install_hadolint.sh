@@ -25,7 +25,7 @@ readonly ARCHITECTURE
 
 echo 'Install hadolint'
 if [[ ${OS_ID:-} == 'ol' && ${OS_VERSION%%.*} -eq 7 || ${OS_VERSION%%.*} -eq 9 ]]; then
-  sudo -u "$(id -un)" "$(command -v docker || command -v podman)" pull docker.io/hadolint/hadolint
+  sudo -u "$(id -un)" "$(command -v docker || command -v podman)" pull ghcr.io/hadolint/hadolint
   sudo cp "$(dirname "$0")/../bin/hadolint" /usr/local/bin/hadolint
 else
   LATEST=$(
