@@ -9,4 +9,4 @@ DOCKER=$(command -v docker || command -v podman) || {
 curl -L# https://raw.githubusercontent.com/shakiyam/oci-cli-docker/master/oci \
   | sudo tee /usr/local/bin/oci >/dev/null
 sudo chmod +x /usr/local/bin/oci
-"$DOCKER" pull docker.io/shakiyam/oci-cli
+sudo -u "$(id -un)" "$DOCKER" pull ghcr.io/shakiyam/oci-cli
