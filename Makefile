@@ -28,7 +28,7 @@ install_chezmoi: ## Install chezmoi (*)
 install_cho: ## Install cho (*)
 	@./scripts/install_cho.sh
 
-install_csvq: ## Install csvq (*)
+install_csvq: install_go ## Install csvq (*)
 	@./scripts/install_csvq.sh
 
 install_docker: install_jq ## Install Docker Engine (*)
