@@ -2,7 +2,7 @@
 set -eu -o pipefail
 
 echo 'Install Go Programming Language'
-VERSION=$(curl -sS https://go.dev/VERSION?m=text)
+VERSION=$(curl -sS https://go.dev/VERSION?m=text | head -n 1)
 readonly VERSION
 case $(uname -m) in
   x86_64)
