@@ -82,6 +82,9 @@ install_peco: ## Install peco
 install_python3: ## Install Python3
 	@./scripts/install_python3.sh
 
+install_regctl: ## Install regctl (*)
+	@./scripts/install_regctl.sh
+
 install_rg: ## Install rigrep (*)
 	@./scripts/install_rg.sh
 
