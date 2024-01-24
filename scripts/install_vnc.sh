@@ -37,7 +37,7 @@ User=$(id -un)
 Group=$(id -un)
 
 # Clean any existing files in /tmp/.X11-unix environment
-ExecStartPre=/bin/sh -c '/usr/bin/vncserver -kill %i > /dev/null 2>&1 || :'
+ExecStartPre=/bin/sh -c '/usr/bin/vncserver -kill %i &>/dev/null || :'
 ExecStart=/usr/bin/vncserver %i
 PIDFile=/$HOME/.vnc/%H%i.pid
 ExecStop=/usr/bin/vncserver -kill %i

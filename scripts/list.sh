@@ -3,7 +3,7 @@ set -eu -o pipefail
 
 show_version() {
   printf %-30s "$1"
-  command -v "${3%% *}" >/dev/null 2>&1 && $3 2>&1 | awk "NR==$2" || echo -e "\033[36mnot found\033[0m"
+  command -v "${3%% *}" &>/dev/null && $3 |& awk "NR==$2" || echo -e "\033[36mnot found\033[0m"
 }
 
 echo 'Installed Software:'

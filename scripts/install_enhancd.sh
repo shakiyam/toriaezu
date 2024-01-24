@@ -2,7 +2,7 @@
 set -eu -o pipefail
 
 command_exits() {
-  command -v "$1" >/dev/null 2>&1
+  command -v "$1" &>/dev/null
 }
 
 command_exits /usr/local/bin/cho || command_exits "$HOME"/go/bin/cho || command_exits fzy || command_exits peco || {

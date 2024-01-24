@@ -2,7 +2,7 @@
 set -eu -o pipefail
 
 check_command() {
-  command -v "$1" >/dev/null 2>&1 || {
+  command -v "$1" &>/dev/null || {
     echo -e "\033[36m$1 not found\033[0m"
     exit 1
   }
