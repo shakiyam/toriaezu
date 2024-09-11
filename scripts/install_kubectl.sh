@@ -14,20 +14,21 @@ case $OS_ID in
     sudo tee /etc/yum.repos.d/kubernetes.repo <<EOF >/dev/null
 [kubernetes]
 name=Kubernetes
-baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-$(uname -m)
+baseurl=https://pkgs.k8s.io/core:/stable:/v1.31/rpm/
 enabled=1
 gpgcheck=1
-repo_gpgcheck=1
-gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+gpgkey=https://pkgs.k8s.io/core:/stable:/v1.31/rpm/repodata/repomd.xml.key
 EOF
-    sudo yum install -y kubectl
+    sudo yum -y install kubectl
     ;;
   ubuntu)
     sudo apt update
-    sudo DEBIAN_FRONTEND=noninteractive apt -y install apt-transport-https
-    curl -sSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-    echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list >/dev/null
-    sudo apt update
-    sudo DEBIAN_FRONTEND=noninteractive apt -y install kubectl
+    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install apt-transport-https
+    curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+    sudo chmod 644 /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+    echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+    sudo chmod 644 /etc/apt/sources.list.d/kubernetes.list
+    sudo apt-get update
+    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install kubectl
     ;;
 esac
