@@ -4,7 +4,6 @@ SHELL := /bin/bash
 .SHELLFLAGS := -eu -o pipefail -c
 ALL_TARGETS := $(shell grep -E -o ^[0-9A-Za-z_-]+: $(MAKEFILE_LIST) | sed 's/://')
 .PHONY: $(ALL_TARGETS)
-STAR_TARGETS := $(shell ./scripts/star_targets.sh $(MAKEFILE_LIST))
 .DEFAULT_GOAL := help
 
 ALL_INSTALL_TARGETS := $(shell grep -E -o ^install_[0-9A-Za-z_-]+: $(MAKEFILE_LIST) | sed 's/://')
