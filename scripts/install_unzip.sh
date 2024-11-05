@@ -14,7 +14,7 @@ case $OS_ID in
     sudo yum -y install unzip
     ;;
   ubuntu)
-    sudo apt update
-    sudo DEBIAN_FRONTEND=noninteractive apt -y install unzip
+    sudo apt-get update
+    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install unzip
     ;;
 esac

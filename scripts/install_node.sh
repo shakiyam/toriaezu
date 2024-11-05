@@ -35,6 +35,6 @@ case $OS_ID in
     ;;
   ubuntu)
     curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-    sudo DEBIAN_FRONTEND=noninteractive apt -y install nodejs build-essential
+    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install nodejs build-essential
     ;;
 esac

@@ -30,7 +30,7 @@ case $OS_ID in
     esac
     ;;
   ubuntu)
-    sudo apt update
-    sudo DEBIAN_FRONTEND=noninteractive apt -y install openjdk-17-jdk
+    sudo apt-get update
+    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install openjdk-17-jdk
     ;;
 esac

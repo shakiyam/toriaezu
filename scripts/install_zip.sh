@@ -14,7 +14,7 @@ case $OS_ID in
     sudo yum -y install zip
     ;;
   ubuntu)
-    sudo apt update
-    sudo DEBIAN_FRONTEND=noninteractive apt -y install zip
+    sudo apt-get update
+    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install zip
     ;;
 esac

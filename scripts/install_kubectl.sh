@@ -22,7 +22,7 @@ EOF
     sudo yum -y install kubectl
     ;;
   ubuntu)
-    sudo apt update
+    sudo apt-get update
     sudo DEBIAN_FRONTEND=noninteractive apt-get -y install apt-transport-https
     curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
     sudo chmod 644 /etc/apt/keyrings/kubernetes-apt-keyring.gpg

@@ -24,7 +24,7 @@ case $OS_ID in
     fi
     ;;
   ubuntu)
-    sudo apt update
-    sudo DEBIAN_FRONTEND=noninteractive apt -y install bash-completion
+    sudo apt-get update
+    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install bash-completion
     ;;
 esac

@@ -33,9 +33,9 @@ case $OS_ID in
     esac
     ;;
   ubuntu)
-    sudo apt update
-    sudo DEBIAN_FRONTEND=noninteractive apt -y upgrade
-    sudo DEBIAN_FRONTEND=noninteractive apt -y install make
+    sudo apt-get update
+    sudo DEBIAN_FRONTEND=noninteractive apt-get -y upgrade
+    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install make
     ;;
 esac
 

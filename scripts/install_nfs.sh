@@ -19,7 +19,7 @@ case $OS_ID in
     sudo yum -y install nfs-utils
     ;;
   ubuntu)
-    sudo DEBIAN_FRONTEND=noninteractive apt -y install nfs-common
+    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install nfs-common
     ;;
 esac
 

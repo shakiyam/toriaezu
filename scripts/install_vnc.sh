@@ -62,8 +62,8 @@ EOT
     esac
     ;;
   ubuntu)
-    sudo apt update
-    sudo DEBIAN_FRONTEND=noninteractive apt -y install tigervnc-standalone-server xfce4
+    sudo apt-get update
+    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install tigervnc-standalone-server xfce4
     cat <<'EOT' >~/.vnc/xstartup
 #!/bin/bash
 unset SESSION_MANAGER

@@ -17,7 +17,7 @@ case $OS_ID in
     sudo chmod +x /usr/local/bin/shellcheck
     ;;
   ubuntu)
-    sudo apt update
-    sudo DEBIAN_FRONTEND=noninteractive apt -y install shellcheck
+    sudo apt-get update
+    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install shellcheck
     ;;
 esac

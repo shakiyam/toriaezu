@@ -27,7 +27,7 @@ case $OS_ID in
     rm -rf "$TEMP_DIR"
     ;;
   ubuntu)
-    sudo apt update
-    sudo DEBIAN_FRONTEND=noninteractive apt -y install fzy
+    sudo apt-get update
+    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install fzy
     ;;
 esac

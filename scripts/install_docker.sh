@@ -37,8 +37,8 @@ case $OS_ID in
     esac
     ;;
   ubuntu)
-    sudo apt update
-    sudo DEBIAN_FRONTEND=noninteractive apt -y install --no-install-recommends \
+    sudo apt-get update
+    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends \
       apt-transport-https ca-certificates curl software-properties-common
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     case $(uname -m) in
@@ -52,8 +52,8 @@ case $OS_ID in
     readonly ARCHITECTURE
     sudo add-apt-repository -y \
       "deb [arch=$ARCHITECTURE] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-    sudo apt update
-    sudo DEBIAN_FRONTEND=noninteractive apt -y install docker-ce
+    sudo apt-get update
+    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install docker-ce
     ;;
 esac
 

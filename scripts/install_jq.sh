@@ -30,7 +30,7 @@ case $OS_ID in
     esac
     ;;
   ubuntu)
-    sudo apt update
-    sudo DEBIAN_FRONTEND=noninteractive apt -y install jq
+    sudo apt-get update
+    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install jq
     ;;
 esac

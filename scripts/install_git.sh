@@ -34,8 +34,8 @@ case $OS_ID in
     esac
     ;;
   ubuntu)
-    sudo apt update
-    sudo DEBIAN_FRONTEND=noninteractive apt -y install git
+    sudo apt-get update
+    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install git
     $GIT_CONFIG
     ;;
 esac
