@@ -11,6 +11,12 @@ command_exits /usr/local/bin/cho || command_exits "$HOME"/go/bin/cho || command_
 }
 
 echo 'Install enhancd'
+LATEST=$(
+  curl -sSI https://github.com/babarot/enhancd/releases/latest \
+    | tr -d '\r' \
+    | awk -F'/' '/^[Ll]ocation:/{print $NF}'
+)
+readonly LATEST
 mkdir -p "$HOME/.enhancd"
-curl -L# https://github.com/b4b4r07/enhancd/archive/master.tar.gz \
-  | tar xzf - -C "$HOME/.enhancd" enhancd-master --strip=1
+curl -L# https://github.com/babarot/enhancd/archive/refs/tags/${LATEST}.tar.gz \
+  | tar xzf - -C "$HOME/.enhancd" enhancd-${LATEST#v} --strip=1
