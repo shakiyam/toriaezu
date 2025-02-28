@@ -30,8 +30,7 @@ case $OS_ID in
         sudo dnf -y --enablerepo=ol8_developer_EPEL install s3fs-fuse
         ;;
       9)
-        echo 's3fs is not yet supported on Oracle Linux 9.'
-        exit 0
+        sudo dnf -y --enablerepo=ol9_developer_EPEL install s3fs-fuse
         ;;
     esac
     ;;
