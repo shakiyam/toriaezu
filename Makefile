@@ -35,7 +35,7 @@ install_docker: install_jq ## Install Docker Engine (*)
 install_docker-compose: install_docker ## Install Docker Compose (*)
 	@./scripts/install_docker-compose.sh
 
-install_dockviz: install_docker ## Install dockviz
+install_dockviz: install_docker install_go ## Install dockviz
 	@./scripts/install_dockviz.sh
 
 install_dtools: ## Install some docker tools (*)
