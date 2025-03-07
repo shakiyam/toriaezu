@@ -30,7 +30,6 @@ For other software installation instructions, run `make help` and read the resul
 * Git (*)
 * Go Programming Language
 * [hadolint](https://github.com/hadolint/hadolint) (*)
-* OpenJDK Development Kit
 * jq (*)
 * kubectl
 * NFS client

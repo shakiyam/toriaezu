@@ -56,9 +56,6 @@ install_go: ## Install Go Programming Language
 install_hadolint: ## Install hadolint (*)
 	@./scripts/install_hadolint.sh
 
-install_java: ## Install OpenJDK Development Kit
-	@./scripts/install_java.sh
-
 install_jq: ## Install jq (*)
 	@./scripts/install_jq.sh
 
