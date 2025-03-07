@@ -26,7 +26,6 @@ For other software installation instructions, run `make help` and read the resul
 * Docker Compose (*)
 * [dockviz](https://github.com/justone/dockviz)
 * [enhancd](https://github.com/b4b4r07/enhancd) (*)
-* [fzy](https://github.com/jhawthorn/fzy)
 * Git (*)
 * Go Programming Language
 * [hadolint](https://github.com/hadolint/hadolint) (*)

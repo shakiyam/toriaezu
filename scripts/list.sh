@@ -22,7 +22,6 @@ else
   show_version 'Docker Compose'          1 'docker compose version'
 fi
 show_version 'dockviz'                   1 'dockviz -v'
-show_version 'fzy'                       1 'fzy -v'
 show_version 'Git'                       1 'git --version'
 show_version 'Go Programming Language'   1 'go version'
 show_version 'hadolint'                  1 'hadolint -v'

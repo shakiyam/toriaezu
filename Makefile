@@ -44,9 +44,6 @@ install_dtools: ## Install some docker tools (*)
 install_enhancd: install_cho ## Install enhancd (*)
 	@./scripts/install_enhancd.sh
 
-install_fzy: ## Install fzy
-	@./scripts/install_fzy.sh
-
 install_git: ## Install Git (*)
 	@./scripts/install_git.sh
 
