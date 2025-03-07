@@ -65,9 +65,6 @@ install_nfs: ## Install NFS client and mount
 install_oci: ## Install OCI CLI
 	@./scripts/install_oci.sh
 
-install_peco: ## Install peco
-	@./scripts/install_peco.sh
-
 install_regctl: ## Install regctl (*)
 	@./scripts/install_regctl.sh
 

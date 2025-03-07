@@ -33,7 +33,6 @@ For other software installation instructions, run `make help` and read the resul
 * kubectl
 * NFS client
 * OCI CLI
-* [peco](https://github.com/peco/peco)
 * [regctl](https://github.com/regclient/regclient) (*)
 * [rigrep](https://github.com/BurntSushi/ripgrep) (*)
 * [s3fs](https://github.com/s3fs-fuse/s3fs-fuse)
