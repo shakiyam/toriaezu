@@ -37,7 +37,6 @@ For other software installation instructions, run `make help` and read the resul
 * Node.js
 * OCI CLI
 * [peco](https://github.com/peco/peco)
-* Python3
 * [rigrep](https://github.com/BurntSushi/ripgrep) (*)
 * [s3fs](https://github.com/s3fs-fuse/s3fs-fuse)
 * [ShellCheck](https://github.com/koalaman/shellcheck) (*)

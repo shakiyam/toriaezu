@@ -77,9 +77,6 @@ install_oci: ## Install OCI CLI
 install_peco: ## Install peco
 	@./scripts/install_peco.sh
 
-install_python3: ## Install Python3
-	@./scripts/install_python3.sh
-
 install_regctl: ## Install regctl (*)
 	@./scripts/install_regctl.sh
 
