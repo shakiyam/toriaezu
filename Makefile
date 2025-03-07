@@ -23,7 +23,7 @@ install_ble: ## Install Bash Line Editor (*)
 install_chezmoi: ## Install chezmoi (*)
 	@./scripts/install_chezmoi.sh
 
-install_cho: ## Install cho (*)
+install_cho: ## Install cho
 	@./scripts/install_cho.sh
 
 install_csvq: install_go ## Install csvq (*)
@@ -43,6 +43,9 @@ install_dtools: ## Install some docker tools (*)
 
 install_enhancd: install_cho ## Install enhancd (*)
 	@./scripts/install_enhancd.sh
+
+install_fzf: ## Install fzf (*)
+	@./scripts/install_fzf.sh
 
 install_git: ## Install Git (*)
 	@./scripts/install_git.sh
