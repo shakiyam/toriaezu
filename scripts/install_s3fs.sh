@@ -23,9 +23,6 @@ echo 'Install s3fs'
 case $OS_ID in
   ol)
     case ${OS_VERSION%%.*} in
-      7)
-        sudo yum -y --enablerepo=ol7_developer_EPEL install s3fs-fuse
-        ;;
       8)
         sudo dnf -y --enablerepo=ol8_developer_EPEL install s3fs-fuse
         ;;

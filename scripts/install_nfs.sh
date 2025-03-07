@@ -16,7 +16,7 @@ readonly OS_ID
 echo 'Install NFS client'
 case $OS_ID in
   ol)
-    sudo yum -y install nfs-utils
+    sudo dnf -y install nfs-utils
     ;;
   ubuntu)
     sudo DEBIAN_FRONTEND=noninteractive apt-get -y install nfs-common

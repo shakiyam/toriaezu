@@ -22,7 +22,7 @@ For other software installation instructions, run `make help` and read the resul
 * [Bash Line Editor](https://github.com/akinomyoga/ble.sh) (*)
 * [csvq](https://github.com/mithrandie/csvq) (*)
 * [cho](https://github.com/mattn/cho) (*)
-* Docker Engine (*)
+* Docker Engine or Podman (*)
 * Docker Compose (*)
 * [dockviz](https://github.com/justone/dockviz)
 * [enhancd](https://github.com/b4b4r07/enhancd) (*)
@@ -49,9 +49,8 @@ For other software installation instructions, run `make help` and read the resul
 Target OS
 ---------
 
-* Oracle Linux Server 9.0 (experimental)
-* Oracle Linux Server 8.6
-* Oracle Linux Server 7.9
+* Oracle Linux Server 9
+* Oracle Linux Server 8
 * Ubuntu 22.04 LTS
 
 Author

@@ -11,7 +11,7 @@ readonly OS_ID
 echo 'Install UnZip'
 case $OS_ID in
   ol)
-    sudo yum -y install unzip
+    sudo dnf -y install unzip
     ;;
   ubuntu)
     sudo apt-get update

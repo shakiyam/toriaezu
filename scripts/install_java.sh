@@ -7,27 +7,11 @@ OS_ID=$(
   echo "$ID"
 )
 readonly OS_ID
-# shellcheck disable=SC1091
-OS_VERSION=$(
-  . /etc/os-release
-  echo "$VERSION"
-)
-readonly OS_VERSION
 
 echo 'Install OpenJDK Development Kit'
 case $OS_ID in
   ol)
-    case ${OS_VERSION%%.*} in
-      7)
-        sudo yum -y install java-11-openjdk-devel
-        ;;
-      8)
-        sudo dnf -y install java-17-openjdk-devel
-        ;;
-      9)
-        sudo dnf -y install java-17-openjdk-devel
-        ;;
-    esac
+    sudo dnf -y install java-17-openjdk-devel
     ;;
   ubuntu)
     sudo apt-get update

@@ -11,7 +11,7 @@ readonly OS_ID
 echo 'Install Zip'
 case $OS_ID in
   ol)
-    sudo yum -y install zip
+    sudo dnf -y install zip
     ;;
   ubuntu)
     sudo apt-get update

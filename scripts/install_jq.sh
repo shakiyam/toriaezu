@@ -7,27 +7,11 @@ OS_ID=$(
   echo "$ID"
 )
 readonly OS_ID
-# shellcheck disable=SC1091
-OS_VERSION=$(
-  . /etc/os-release
-  echo "$VERSION"
-)
-readonly OS_VERSION
 
 echo 'Install jq'
 case $OS_ID in
   ol)
-    case ${OS_VERSION%%.*} in
-      7)
-        sudo yum -y install jq
-        ;;
-      8)
-        sudo dnf -y install jq
-        ;;
-      9)
-        sudo dnf -y install jq
-        ;;
-    esac
+    sudo dnf -y install jq
     ;;
   ubuntu)
     sudo apt-get update

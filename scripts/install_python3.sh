@@ -18,9 +18,6 @@ echo 'Install Python3'
 case $OS_ID in
   ol)
     case ${OS_VERSION%%.*} in
-      7)
-        sudo yum -y --enablerepo=ol7_developer_EPEL install python36
-        ;;
       8)
         sudo dnf -y install python39 python39-pip
         ;;

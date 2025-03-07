@@ -18,18 +18,6 @@ echo 'Install ripgrep'
 case $OS_ID in
   ol)
     case ${OS_VERSION%%.*} in
-      7)
-        case $(uname -m) in
-          aarch64)
-            echo 'ripgrep Arm binary for Oracle Linux 7 is not available.'
-            exit 0
-            ;;
-          x86_64)
-            sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
-            sudo yum -y install ripgrep
-            ;;
-        esac
-        ;;
       8)
         sudo dnf -y --enablerepo=ol8_developer_EPEL install ripgrep
         ;;

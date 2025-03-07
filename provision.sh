@@ -17,17 +17,12 @@ readonly OS_VERSION
 # Install Make
 case $OS_ID in
   ol)
+    sudo dnf -y upgrade
     case ${OS_VERSION%%.*} in
-      7)
-        sudo yum -y upgrade
-        sudo yum -y install make oracle-epel-release-el7
-        ;;
       8)
-        sudo dnf -y upgrade
         sudo dnf -y install make oracle-epel-release-el8
         ;;
       9)
-        sudo dnf -y upgrade
         sudo dnf -y install make oracle-epel-release-el9
         ;;
     esac

@@ -19,32 +19,6 @@ mkdir -p ~/.vnc
 case $OS_ID in
   ol)
     case ${OS_VERSION%%.*} in
-      7)
-        sudo yum -y --enablerepo=ol7_developer_EPEL install Thunar tigervnc-server xfce4-panel xfce4-session xfce4-settings xfce4-terminal xfconf xfdesktop xfwm4
-        cat <<EOT >~/.vnc/xstartup
-#!/bin/bash
-[[ -e ~/.Xresources ]] && xrdb ~/.Xresources
-startxfce4 &
-EOT
-        chmod +x ~/.vnc/xstartup
-        echo "VNC Password"
-        vncpasswd
-        sudo tee /etc/systemd/system/vncserver@:1.service <<EOT >/dev/null
-[Service]
-Type=forking
-WorkingDirectory=$HOME
-User=$(id -un)
-Group=$(id -un)
-
-# Clean any existing files in /tmp/.X11-unix environment
-ExecStartPre=/bin/sh -c '/usr/bin/vncserver -kill %i &>/dev/null || :'
-ExecStart=/usr/bin/vncserver %i
-PIDFile=/$HOME/.vnc/%H%i.pid
-ExecStop=/usr/bin/vncserver -kill %i
-EOT
-        sudo systemctl daemon-reload
-        sudo systemctl enable --now vncserver@:1
-        ;;
       8)
         sudo dnf -y --enablerepo=ol8_developer_EPEL install Thunar tigervnc-server xfce4-panel xfce4-session xfce4-settings xfce4-terminal xfconf xfdesktop xfwm4
         sudo tee -a /etc/tigervnc/vncserver.users <<EOT >/dev/null

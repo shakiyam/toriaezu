@@ -7,34 +7,11 @@ OS_ID=$(
   echo "$ID"
 )
 readonly OS_ID
-# shellcheck disable=SC1091
-OS_VERSION=$(
-  . /etc/os-release
-  echo "$VERSION"
-)
-readonly OS_VERSION
 
 echo 'Install Docker Engine'
 case $OS_ID in
   ol)
-    case ${OS_VERSION%%.*} in
-      7)
-        case $(uname -m) in
-          x86_64)
-            sudo yum -y --enablerepo ol7_addons install docker-engine
-            ;;
-          aarch64)
-            sudo yum -y --enablerepo ol7_developer install docker-engine
-            ;;
-        esac
-        ;;
-      8)
-        sudo dnf -y install podman podman-plugins
-        ;;
-      9)
-        sudo dnf -y install podman podman-plugins
-        ;;
-    esac
+    sudo dnf -y install podman podman-plugins
     ;;
   ubuntu)
     sudo apt-get update
@@ -58,7 +35,7 @@ case $OS_ID in
 esac
 
 echo 'Setup Docker Engine'
-if [[ ${OS_ID:-} == 'ol' && ${OS_VERSION%%.*} -ge 8 ]]; then
+if [[ ${OS_ID:-} == 'ol' ]]; then
   sudo -u "$(id -un)" XDG_RUNTIME_DIR=/run/user/"$(id -u)" systemctl --user daemon-reload
   sudo -u "$(id -un)" XDG_RUNTIME_DIR=/run/user/"$(id -u)" systemctl --user enable --now podman.socket
 else

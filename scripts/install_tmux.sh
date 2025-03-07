@@ -11,7 +11,7 @@ readonly OS_ID
 echo 'Install tmux'
 case $OS_ID in
   ol)
-    sudo yum -y install tmux
+    sudo dnf -y install tmux
     ;;
   ubuntu)
     sudo apt-get update
