@@ -33,7 +33,6 @@ For other software installation instructions, run `make help` and read the resul
 * jq (*)
 * kubectl
 * NFS client
-* Node.js
 * OCI CLI
 * [peco](https://github.com/peco/peco)
 * [regctl](https://github.com/regclient/regclient) (*)
