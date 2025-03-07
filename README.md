@@ -20,8 +20,8 @@ For other software installation instructions, run `make help` and read the resul
 
 * bash-completion (*)
 * [Bash Line Editor](https://github.com/akinomyoga/ble.sh) (*)
-* [csvq](https://github.com/mithrandie/csvq) (*)
 * [cho](https://github.com/mattn/cho) (*)
+* [csvq](https://github.com/mithrandie/csvq) (*)
 * Docker Engine or Podman (*)
 * Docker Compose (*)
 * [dockviz](https://github.com/justone/dockviz)
@@ -36,6 +36,7 @@ For other software installation instructions, run `make help` and read the resul
 * Node.js
 * OCI CLI
 * [peco](https://github.com/peco/peco)
+* [regctl](https://github.com/regclient/regclient) (*)
 * [rigrep](https://github.com/BurntSushi/ripgrep) (*)
 * [s3fs](https://github.com/s3fs-fuse/s3fs-fuse)
 * [ShellCheck](https://github.com/koalaman/shellcheck) (*)
