@@ -1,22 +1,19 @@
 #!/bin/bash
 set -eu -o pipefail
 
+# Source common functions
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+# shellcheck disable=SC1091
+source "${SCRIPT_DIR}/common.sh"
+
 if [[ -e .env ]]; then
   # shellcheck disable=SC1091
   . .env
 fi
 
-# shellcheck disable=SC1091
-OS_ID=$(
-  . /etc/os-release
-  echo "$ID"
-)
+OS_ID=$(get_os_id)
 readonly OS_ID
-# shellcheck disable=SC1091
-OS_VERSION=$(
-  . /etc/os-release
-  echo "$VERSION"
-)
+OS_VERSION=$(get_os_version)
 readonly OS_VERSION
 
 echo 'Install s3fs'
@@ -32,8 +29,7 @@ case $OS_ID in
     esac
     ;;
   ubuntu)
-    sudo apt-get update
-    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install s3fs
+    install_package s3fs
     ;;
 esac
 

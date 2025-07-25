@@ -1,11 +1,12 @@
 #!/bin/bash
 set -eu -o pipefail
 
+# Source common functions
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck disable=SC1091
-OS_ID=$(
-  . /etc/os-release
-  echo "$ID"
-)
+source "${SCRIPT_DIR}/common.sh"
+
+OS_ID=$(get_os_id)
 readonly OS_ID
 
 echo 'Install kubectl'
@@ -22,13 +23,11 @@ EOF
     sudo yum -y install kubectl
     ;;
   ubuntu)
-    sudo apt-get update
-    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install apt-transport-https
+    install_package apt-transport-https
     curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
     sudo chmod 644 /etc/apt/keyrings/kubernetes-apt-keyring.gpg
     echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
     sudo chmod 644 /etc/apt/sources.list.d/kubernetes.list
-    sudo apt-get update
-    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install kubectl
+    install_package kubectl
     ;;
 esac

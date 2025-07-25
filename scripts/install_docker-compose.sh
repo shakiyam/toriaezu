@@ -1,19 +1,16 @@
 #!/bin/bash
 set -eu -o pipefail
 
+# Source common functions
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck disable=SC1091
-OS_ID=$(
-  . /etc/os-release
-  echo "$ID"
-)
+source "${SCRIPT_DIR}/common.sh"
+OS_ID=$(get_os_id)
 readonly OS_ID
 
 echo 'Install Docker Compose'
-LATEST=$(
-  curl -sSI https://github.com/docker/compose/releases/latest \
-    | tr -d '\r' \
-    | awk -F'/' '/^[Ll]ocation:/{print $NF}'
-)
+LATEST=$(get_github_latest_release "docker/compose")
+readonly LATEST
 case $OS_ID in
   ol)
     curl -L# "https://github.com/docker/compose/releases/download/${LATEST}/docker-compose-linux-$(uname -m)" \

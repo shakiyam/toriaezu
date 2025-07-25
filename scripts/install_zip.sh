@@ -1,20 +1,10 @@
 #!/bin/bash
 set -eu -o pipefail
 
+# Source common functions
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck disable=SC1091
-OS_ID=$(
-  . /etc/os-release
-  echo "$ID"
-)
-readonly OS_ID
+source "${SCRIPT_DIR}/common.sh"
 
 echo 'Install Zip'
-case $OS_ID in
-  ol)
-    sudo dnf -y install zip
-    ;;
-  ubuntu)
-    sudo apt-get update
-    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install zip
-    ;;
-esac
+install_package zip

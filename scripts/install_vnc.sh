@@ -1,17 +1,14 @@
 #!/bin/bash
 set -eu -o pipefail
 
+# Source common functions
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck disable=SC1091
-OS_ID=$(
-  . /etc/os-release
-  echo "$ID"
-)
+source "${SCRIPT_DIR}/common.sh"
+
+OS_ID=$(get_os_id)
 readonly OS_ID
-# shellcheck disable=SC1091
-OS_VERSION=$(
-  . /etc/os-release
-  echo "$VERSION"
-)
+OS_VERSION=$(get_os_version)
 readonly OS_VERSION
 
 echo 'Install VNC Server'
@@ -36,8 +33,7 @@ EOT
     esac
     ;;
   ubuntu)
-    sudo apt-get update
-    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install tigervnc-standalone-server xfce4
+    install_package tigervnc-standalone-server xfce4
     cat <<'EOT' >~/.vnc/xstartup
 #!/bin/bash
 unset SESSION_MANAGER

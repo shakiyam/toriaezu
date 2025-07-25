@@ -1,25 +1,26 @@
 #!/bin/bash
 set -eu -o pipefail
 
+# Source common functions
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+# shellcheck disable=SC1091
+source "${SCRIPT_DIR}/common.sh"
+
 if [[ -e .env ]]; then
   # shellcheck disable=SC1091
   . .env
 fi
 
-# shellcheck disable=SC1091
-OS_ID=$(
-  . /etc/os-release
-  echo "$ID"
-)
+OS_ID=$(get_os_id)
 readonly OS_ID
 
 echo 'Install NFS client'
 case $OS_ID in
   ol)
-    sudo dnf -y install nfs-utils
+    install_package nfs-utils
     ;;
   ubuntu)
-    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install nfs-common
+    install_package nfs-common
     ;;
 esac
 

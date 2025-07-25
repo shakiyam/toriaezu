@@ -1,12 +1,13 @@
 #!/bin/bash
 set -eu -o pipefail
 
+# Source common functions
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+# shellcheck disable=SC1091
+source "${SCRIPT_DIR}/common.sh"
+
 echo 'Install shfmt'
-LATEST=$(
-  curl -sSI https://github.com/mvdan/sh/releases/latest \
-    | tr -d '\r' \
-    | awk -F'/' '/^[Ll]ocation:/{print $NF}'
-)
+LATEST=$(get_github_latest_release "mvdan/sh")
 readonly LATEST
 case $(uname -m) in
   x86_64)

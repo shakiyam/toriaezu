@@ -1,17 +1,18 @@
 #!/bin/bash
 set -eu -o pipefail
 
+# Source common functions
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck disable=SC1091
-OS_ID=$(
-  . /etc/os-release
-  echo "$ID"
-)
+source "${SCRIPT_DIR}/common.sh"
+
+OS_ID=$(get_os_id)
 readonly OS_ID
 
 echo 'Install Docker Engine'
 case $OS_ID in
   ol)
-    sudo dnf -y install podman podman-plugins
+    install_package podman podman-plugins
     ;;
   ubuntu)
     sudo apt-get update
@@ -30,7 +31,7 @@ case $OS_ID in
     sudo add-apt-repository -y \
       "deb [arch=$ARCHITECTURE] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     sudo apt-get update
-    sudo DEBIAN_FRONTEND=noninteractive apt-get -y install docker-ce
+    install_package docker-ce
     ;;
 esac
 
