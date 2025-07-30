@@ -6,14 +6,14 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck disable=SC1091
 source "${SCRIPT_DIR}/common.sh"
 
-command_exists() {
-  command -v "$1" &>/dev/null
+check_command() {
+  command -v "$1" &>/dev/null || {
+    echo -e "\033[36m$1 not found\033[0m"
+    exit 1
+  }
 }
 
-command_exists /usr/local/bin/cho || command_exists "$HOME"/go/bin/cho || command_exists fzf || {
-  echo "ERROR: To install enhancd, you will need cho or fzf or peco."
-  exit 1
-}
+check_command fzf
 
 echo 'Install enhancd'
 LATEST=$(get_github_latest_release "babarot/enhancd")

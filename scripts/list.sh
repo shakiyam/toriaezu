@@ -9,7 +9,6 @@ show_version() {
 echo 'Installed Software:'
 
 show_version 'chezmoi'                   1 'chezmoi --version'
-show_version 'cho'                       1 'cho -v'
 show_version 'csvq'                      1 'csvq -v'
 if command -v docker &>/dev/null; then
   show_version 'Docker'                  1 'docker -v'

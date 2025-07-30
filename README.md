@@ -20,7 +20,6 @@ For other software installation instructions, run `make help` and read the resul
 
 * bash-completion (*)
 * [Bash Line Editor](https://github.com/akinomyoga/ble.sh) (*)
-* [cho](https://github.com/mattn/cho)
 * [csvq](https://github.com/mithrandie/csvq) (*)
 * Docker Engine or Podman (*)
 * Docker Compose (*)
