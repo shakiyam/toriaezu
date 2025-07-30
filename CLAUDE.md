@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-This is the **toriaezu** project - a Bash-based developer environment setup tool that automates the installation of various development tools and utilities on Oracle Linux 8/9 and Ubuntu 22.04 LTS.
+This is the **toriaezu** project - a Bash-based developer environment setup tool that automates the installation of various development tools and utilities on Oracle Linux 8/9 and Ubuntu 24.04 LTS.
 
 ## Key Commands
 
