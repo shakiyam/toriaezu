@@ -47,7 +47,7 @@ else
   sudo systemctl daemon-reload
   sudo systemctl restart docker
   sudo systemctl enable docker
-  LOGNAME=$(logname 2>/dev/null || id -nu)
+  LOGNAME="${SUDO_USER:-$(logname 2>/dev/null || id -nu)}"
   readonly LOGNAME
   sudo usermod -aG docker "$LOGNAME"
 fi
