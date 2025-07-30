@@ -32,6 +32,7 @@ For other software installation instructions, run `make help` and read the resul
 * jq (*)
 * kubectl
 * NFS client
+* Node.js
 * OCI CLI
 * [regctl](https://github.com/regclient/regclient) (*)
 * [ripgrep](https://github.com/BurntSushi/ripgrep) (*)
