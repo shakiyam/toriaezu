@@ -12,9 +12,9 @@ DOCKER=$(command -v podman || command -v docker)
 readonly DOCKER
 
 check_command dcls
-check_command cho
+check_command fzf
 
-CONTAINER_ID="$(dcls | cho | awk '{print $1}')"
+CONTAINER_ID="$(dcls | fzf --info=hidden --header-lines=1 | awk '{print $1}')"
 readonly CONTAINER_ID
 
 if [[ -z "$CONTAINER_ID" ]]; then

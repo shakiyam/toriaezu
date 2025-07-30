@@ -38,10 +38,10 @@ install_docker-compose: install_docker ## Install Docker Compose (*)
 install_dockviz: install_docker install_go ## Install dockviz
 	@./scripts/install_dockviz.sh
 
-install_dtools: ## Install some docker tools (*)
+install_dtools: install_fzf ## Install some docker tools (*)
 	@./scripts/install_dtools.sh
 
-install_enhancd: install_cho ## Install enhancd (*)
+install_enhancd: install_fzf ## Install enhancd (*)
 	@./scripts/install_enhancd.sh
 
 install_fzf: ## Install fzf (*)

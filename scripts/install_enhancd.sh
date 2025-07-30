@@ -10,8 +10,8 @@ command_exists() {
   command -v "$1" &>/dev/null
 }
 
-command_exists /usr/local/bin/cho || command_exists "$HOME"/go/bin/cho || command_exists fzy || command_exists peco || {
-  echo "ERROR: To install enhancd, you will need cho or fzy or peco."
+command_exists /usr/local/bin/cho || command_exists "$HOME"/go/bin/cho || command_exists fzf || {
+  echo "ERROR: To install enhancd, you will need cho or fzf or peco."
   exit 1
 }
 
