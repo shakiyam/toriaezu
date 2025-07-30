@@ -23,7 +23,7 @@ This is the **toriaezu** project - a Bash-based developer environment setup tool
 
 ### Directory Structure
 - `scripts/` - Individual installation scripts for each tool
-- `bin/` - Utility scripts (dclogs, dcls, hadolint)
+- `bin/` - Utility scripts (dclogs, dcls)
 - `Makefile` - Central build orchestration with dependency management
 - `provision.sh` - Main entry point that runs `make toriaezu`
 
