@@ -17,8 +17,11 @@ case $OS_ID in
   ubuntu)
     sudo apt-get update
     sudo DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends \
-      apt-transport-https ca-certificates curl software-properties-common
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+      ca-certificates curl gnupg lsb-release
+    sudo mkdir -p /etc/apt/keyrings
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
+      | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    sudo chmod a+r /etc/apt/keyrings/docker.gpg
     case $(uname -m) in
       x86_64)
         ARCHITECTURE=amd64
@@ -28,8 +31,9 @@ case $OS_ID in
         ;;
     esac
     readonly ARCHITECTURE
-    sudo add-apt-repository -y \
-      "deb [arch=$ARCHITECTURE] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    echo \
+      "deb [arch=$ARCHITECTURE signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
+        | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
     sudo apt-get update
     install_package docker-ce
     ;;
