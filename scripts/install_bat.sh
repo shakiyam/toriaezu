@@ -32,6 +32,10 @@ case $OS_ID in
   ubuntu)
     install_package bat
     mkdir -p "$HOME"/.local/bin
-    ln -s /usr/bin/batcat "$HOME/.local/bin/bat"
+    if [ -L "$HOME/.local/bin/bat" ] && [ "$(readlink "$HOME/.local/bin/bat")" = "/usr/bin/batcat" ]; then
+      echo "bat symlink already correctly set up"
+    else
+      ln -sf /usr/bin/batcat "$HOME/.local/bin/bat"
+    fi
     ;;
 esac
