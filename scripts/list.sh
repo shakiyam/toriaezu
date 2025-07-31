@@ -1,12 +1,15 @@
 #!/bin/bash
 set -eu -o pipefail
 
+# shellcheck disable=SC1091
+source "$(dirname "$0")/colored_echo.sh"
+
 show_version() {
   printf %-30s "$1"
-  command -v "${3%% *}" &>/dev/null && $3 |& awk "NR==$2" || echo -e "\033[36mnot found\033[0m"
+  command -v "${3%% *}" &>/dev/null && $3 |& awk "NR==$2" || echo_warn "not found"
 }
 
-echo 'Installed Software:'
+echo_info 'Installed Software:'
 
 show_version 'bat'                       1 'bat --version'
 show_version 'chezmoi'                   1 'chezmoi --version'

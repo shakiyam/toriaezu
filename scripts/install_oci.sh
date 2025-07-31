@@ -1,9 +1,12 @@
 #!/bin/bash
 set -eu -o pipefail
 
-echo 'Install OCI CLI'
+# shellcheck disable=SC1091
+source "$(dirname "$0")/colored_echo.sh"
+
+echo_info 'Install OCI CLI'
 DOCKER=$(command -v docker || command -v podman) || {
-  echo -e "\033[36mdocker or podman not found\033[0m"
+  echo_error "docker or podman not found"
   exit 1
 }
 curl -L# https://raw.githubusercontent.com/shakiyam/oci-cli-docker/main/oci \

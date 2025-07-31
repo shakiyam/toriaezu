@@ -1,21 +1,20 @@
 #!/bin/bash
 set -eu -o pipefail
 
-# Source common functions
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck disable=SC1091
 source "${SCRIPT_DIR}/common.sh"
 
 check_command() {
   command -v "$1" &>/dev/null || {
-    echo -e "\033[36m$1 not found\033[0m"
+    echo_error "$1 not found"
     exit 1
   }
 }
 
 check_command fzf
 
-echo 'Install enhancd'
+echo_info 'Install enhancd'
 LATEST=$(get_github_latest_release "babarot/enhancd")
 readonly LATEST
 mkdir -p "$HOME/.enhancd"

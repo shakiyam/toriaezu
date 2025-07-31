@@ -1,7 +1,6 @@
 #!/bin/bash
 set -eu -o pipefail
 
-# Source common functions
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck disable=SC1091
 source "${SCRIPT_DIR}/common.sh"
@@ -9,7 +8,7 @@ source "${SCRIPT_DIR}/common.sh"
 OS_ID=$(get_os_id)
 readonly OS_ID
 
-echo 'Install bat'
+echo_info 'Install bat'
 case $OS_ID in
   ol)
     case $(uname -m) in
@@ -33,7 +32,7 @@ case $OS_ID in
     install_package bat
     mkdir -p "$HOME"/.local/bin
     if [ -L "$HOME/.local/bin/bat" ] && [ "$(readlink "$HOME/.local/bin/bat")" = "/usr/bin/batcat" ]; then
-      echo "bat symlink already correctly set up"
+      echo_info "bat symlink already correctly set up"
     else
       ln -sf /usr/bin/batcat "$HOME/.local/bin/bat"
     fi

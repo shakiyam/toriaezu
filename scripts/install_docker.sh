@@ -1,7 +1,6 @@
 #!/bin/bash
 set -eu -o pipefail
 
-# Source common functions
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck disable=SC1091
 source "${SCRIPT_DIR}/common.sh"
@@ -9,7 +8,7 @@ source "${SCRIPT_DIR}/common.sh"
 OS_ID=$(get_os_id)
 readonly OS_ID
 
-echo 'Install Docker Engine'
+echo_info 'Install Docker Engine'
 case $OS_ID in
   ol)
     install_package podman podman-plugins
@@ -36,7 +35,7 @@ case $OS_ID in
     ;;
 esac
 
-echo 'Setup Docker Engine'
+echo_info 'Setup Docker Engine'
 LOGNAME="${SUDO_USER:-$(logname 2>/dev/null || id -nu)}"
 readonly LOGNAME
 case $OS_ID in

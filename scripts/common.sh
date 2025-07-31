@@ -1,6 +1,9 @@
 #!/bin/bash
 set -eu -o pipefail
 
+# shellcheck disable=SC1091
+source "$(dirname "$0")/colored_echo.sh"
+
 # Get OS ID (ubuntu, ol, etc.)
 get_os_id() {
   # shellcheck disable=SC1091
@@ -37,7 +40,7 @@ install_package() {
       sudo dnf install -y "$@"
       ;;
     *)
-      echo >&2 "Error: Unsupported OS $os_id"
+      echo_error "Error: Unsupported OS $os_id"
       return 1
       ;;
   esac

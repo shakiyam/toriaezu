@@ -1,7 +1,6 @@
 #!/bin/bash
 set -eu -o pipefail
 
-# Source common functions
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck disable=SC1091
 source "${SCRIPT_DIR}/common.sh"
@@ -11,7 +10,7 @@ readonly OS_ID
 OS_VERSION=$(get_os_version)
 readonly OS_VERSION
 
-echo 'Install ripgrep'
+echo_info 'Install ripgrep'
 case $OS_ID in
   ol)
     case ${OS_VERSION%%.*} in

@@ -1,7 +1,6 @@
 #!/bin/bash
 set -eu -o pipefail
 
-# Source common functions
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck disable=SC1091
 source "${SCRIPT_DIR}/common.sh"
@@ -9,7 +8,7 @@ source "${SCRIPT_DIR}/common.sh"
 OS_ID=$(get_os_id)
 readonly OS_ID
 
-echo 'Install eza'
+echo_info 'Install eza'
 case $OS_ID in
   ol)
     case $(uname -m) in

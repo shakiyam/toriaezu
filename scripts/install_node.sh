@@ -1,7 +1,6 @@
 #!/bin/bash
 set -eu -o pipefail
 
-# Source common functions
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck disable=SC1091
 source "${SCRIPT_DIR}/common.sh"
@@ -9,7 +8,7 @@ source "${SCRIPT_DIR}/common.sh"
 OS_ID=$(get_os_id)
 readonly OS_ID
 
-echo 'Install Node.js'
+echo_info 'Install Node.js'
 # Check the latest version from https://nodejs.org/en/ and https://github.com/nodesource/distributions
 case $OS_ID in
   ol)

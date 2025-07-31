@@ -1,7 +1,6 @@
 #!/bin/bash
 set -eu -o pipefail
 
-# Source common functions
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck disable=SC1091
 source "${SCRIPT_DIR}/common.sh"
@@ -11,7 +10,7 @@ readonly OS_ID
 OS_VERSION=$(get_os_version)
 readonly OS_VERSION
 
-echo 'Install VNC Server'
+echo_info 'Install VNC Server'
 mkdir -p ~/.vnc
 case $OS_ID in
   ol)
@@ -21,12 +20,12 @@ case $OS_ID in
         sudo tee -a /etc/tigervnc/vncserver.users <<EOT >/dev/null
 :1=$(id -un)
 EOT
-        echo "VNC Password"
+        echo_info "VNC Password"
         vncpasswd
         sudo systemctl enable --now vncserver@:1
         ;;
       9)
-        echo 'VNC Server is not yet tested on Oracle Linux 9.'
+        echo_warn 'VNC Server is not yet tested on Oracle Linux 9.'
         exit 0
         # sudo dnf -y --enablerepo=ol9_developer_EPEL install Thunar tigervnc-server xfce4-panel xfce4-session xfce4-settings xfce4-terminal xfconf xfdesktop xfwm4
         ;;
@@ -44,8 +43,8 @@ unset DBUS_SESSION_BUS_ADDRESS
 x-window-manager &
 EOT
     chmod +x ~/.vnc/xstartup
-    echo "VNC Password"
+    echo_info "VNC Password"
     vncpasswd
-    echo "Run 'vncserver -localhost no'"
+    echo_info "Run 'vncserver -localhost no'"
     ;;
 esac

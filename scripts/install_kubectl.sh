@@ -1,7 +1,6 @@
 #!/bin/bash
 set -eu -o pipefail
 
-# Source common functions
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck disable=SC1091
 source "${SCRIPT_DIR}/common.sh"
@@ -9,7 +8,7 @@ source "${SCRIPT_DIR}/common.sh"
 OS_ID=$(get_os_id)
 readonly OS_ID
 
-echo 'Install kubectl'
+echo_info 'Install kubectl'
 case $OS_ID in
   ol)
     sudo tee /etc/yum.repos.d/kubernetes.repo <<EOF >/dev/null

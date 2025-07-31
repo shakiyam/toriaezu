@@ -1,7 +1,6 @@
 #!/bin/bash
 set -eu -o pipefail
 
-# Source common functions
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck disable=SC1091
 source "${SCRIPT_DIR}/common.sh"
@@ -14,7 +13,7 @@ fi
 OS_ID=$(get_os_id)
 readonly OS_ID
 
-echo 'Install NFS client'
+echo_info 'Install NFS client'
 case $OS_ID in
   ol)
     install_package nfs-utils
@@ -25,7 +24,7 @@ case $OS_ID in
 esac
 
 if [[ -n "${NFS_MOUNT_POINT:-}" && -n "${NFS_REMOTETARGET:-}" ]]; then
-  echo 'Mount by nfs'
+  echo_info 'Mount by nfs'
   sudo mkdir -p "${NFS_MOUNT_POINT}"
   sudo chown "$(id -u)":"$(id -g)" "${NFS_MOUNT_POINT}"
   sudo mount "$NFS_REMOTETARGET" "${NFS_MOUNT_POINT}"

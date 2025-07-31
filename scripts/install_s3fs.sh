@@ -1,7 +1,6 @@
 #!/bin/bash
 set -eu -o pipefail
 
-# Source common functions
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck disable=SC1091
 source "${SCRIPT_DIR}/common.sh"
@@ -16,7 +15,7 @@ readonly OS_ID
 OS_VERSION=$(get_os_version)
 readonly OS_VERSION
 
-echo 'Install s3fs'
+echo_info 'Install s3fs'
 case $OS_ID in
   ol)
     case ${OS_VERSION%%.*} in
@@ -34,7 +33,7 @@ case $OS_ID in
 esac
 
 if [[ -n "${AWS_ACCESS_KEY_ID:-}" && -n "${AWS_SECRET_ACCESS_KEY:-}" && -n "${BUCKET:-}" && -n "${MOUNT_POINT:-}" ]]; then
-  echo 'Mount s3fs'
+  echo_info 'Mount s3fs'
   echo "$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY" | sudo tee /etc/passwd-s3fs >/dev/null
   sudo chmod 640 /etc/passwd-s3fs
   sudo mkdir -p "${MOUNT_POINT}"
