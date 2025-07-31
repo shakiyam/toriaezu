@@ -2,9 +2,9 @@
 set -eu -o pipefail
 
 # shellcheck disable=SC1091
-source "$(dirname "$0")/colored_echo.sh"
+. "$(dirname "${BASH_SOURCE[0]}")/common.sh"
 
-BIN_DIR=$(cd "$(dirname "$0")/../bin" && pwd)
+BIN_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/../bin" && pwd)
 readonly BIN_DIR
 
 echo_info 'Install dtools'

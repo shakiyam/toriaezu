@@ -1,9 +1,8 @@
 #!/bin/bash
 set -eu -o pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck disable=SC1091
-source "${SCRIPT_DIR}/common.sh"
+.  "$(dirname "${BASH_SOURCE[0]}")/common.sh"
 
 echo_info 'Install Bash Line Editor'
 mkdir -p "$HOME/.blesh"

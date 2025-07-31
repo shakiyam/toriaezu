@@ -2,7 +2,7 @@
 set -eu -o pipefail
 
 # shellcheck disable=SC1091
-source "$(dirname "$0")/colored_echo.sh"
+. "$(dirname "${BASH_SOURCE[0]}")/common.sh"
 
 echo_info 'Install Go Programming Language'
 VERSION=$(curl -sS https://go.dev/VERSION?m=text | head -n 1)

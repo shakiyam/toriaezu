@@ -2,7 +2,7 @@
 set -eu -o pipefail
 
 # shellcheck disable=SC1091
-source "$(dirname "$0")/scripts/common.sh"
+. "$(dirname "$0")/scripts/common.sh"
 
 echo_info 'Update system packages'
 case $(get_os_id) in

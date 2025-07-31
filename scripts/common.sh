@@ -2,7 +2,7 @@
 set -eu -o pipefail
 
 # shellcheck disable=SC1091
-source "$(dirname "${BASH_SOURCE[0]}")/colored_echo.sh"
+. "$(dirname "${BASH_SOURCE[0]}")/colored_echo.sh"
 
 # Get OS ID (ubuntu, ol, etc.)
 get_os_id() {
