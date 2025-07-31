@@ -11,16 +11,6 @@ echo_info 'Install Node.js'
 # Check the latest version from https://nodejs.org/en/
 case $OS_ID in
   ol)
-    case $(uname -m) in
-      x86_64)
-        ARCHITECTURE=x86_64
-        ;;
-      aarch64)
-        ARCHITECTURE=aarch64
-        ;;
-    esac
-    readonly ARCHITECTURE
-
     sudo curl -fsSL https://rpm.nodesource.com/gpgkey/ns-operations-public.key \
       -o /etc/pki/rpm-gpg/NODESOURCE-GPG-SIGNING-KEY-EL
     sudo rpm --import /etc/pki/rpm-gpg/NODESOURCE-GPG-SIGNING-KEY-EL
@@ -35,7 +25,6 @@ repo_gpgcheck=0
 gpgkey=file:///etc/pki/rpm-gpg/NODESOURCE-GPG-SIGNING-KEY-EL
 module_hotfixes=1
 EOF
-    sudo sed -i "s/\$basearch/$ARCHITECTURE/g" /etc/yum.repos.d/nodesource-el.repo
     install_package nodejs gcc-c++ make
     ;;
   ubuntu)
