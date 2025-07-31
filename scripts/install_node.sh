@@ -31,7 +31,7 @@ baseurl=https://rpm.nodesource.com/pub_22.x/nodistro/nodejs/$basearch
 priority=9
 enabled=1
 gpgcheck=1
-repo_gpgcheck=1
+repo_gpgcheck=0
 gpgkey=file:///etc/pki/rpm-gpg/NODESOURCE-GPG-SIGNING-KEY-EL
 module_hotfixes=1
 EOF
