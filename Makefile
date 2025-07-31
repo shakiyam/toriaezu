@@ -17,6 +17,9 @@ toriaezu: $(STAR_TARGETS) ## Install star(*) tools
 install_bash-completion: ## Install bash-completion (*)
 	@./scripts/install_bash-completion.sh
 
+install_bat: ## Install bat (*)
+	@./scripts/install_bat.sh
+
 install_ble: ## Install Bash Line Editor (*)
 	@./scripts/install_ble.sh
 

@@ -8,6 +8,7 @@ show_version() {
 
 echo 'Installed Software:'
 
+show_version 'bat'                       1 'bat --version'
 show_version 'chezmoi'                   1 'chezmoi --version'
 show_version 'csvq'                      1 'csvq -v'
 if command -v docker &>/dev/null; then
