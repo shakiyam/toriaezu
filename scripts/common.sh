@@ -24,11 +24,9 @@ get_github_latest_release() {
 }
 
 install_package() {
-  local OS_ID
-  OS_ID=$(get_os_id)
-  readonly OS_ID
+  local -r _OS_ID=${OS_ID:-$(get_os_id)}
 
-  case "$OS_ID" in
+  case "$_OS_ID" in
     ubuntu)
       sudo apt-get update
       sudo DEBIAN_FRONTEND=noninteractive apt-get install -y "$@"
@@ -37,7 +35,7 @@ install_package() {
       sudo dnf install -y "$@"
       ;;
     *)
-      echo_error "Error: Unsupported OS $OS_ID"
+      echo_error "Error: Unsupported OS $_OS_ID"
       return 1
       ;;
   esac
