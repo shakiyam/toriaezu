@@ -4,8 +4,13 @@ set -eu -o pipefail
 # shellcheck disable=SC1091
 . "$(dirname "$0")/scripts/common.sh"
 
+OS_ID=$(get_os_id)
+readonly OS_ID
+OS_VERSION=$(get_os_version)
+readonly OS_VERSION
+
 echo_info 'Update system packages'
-case $(get_os_id) in
+case $OS_ID in
   ol)
     sudo dnf -y upgrade
     ;;
@@ -18,9 +23,9 @@ esac
 echo_info 'Install Make'
 install_package make
 
-if [[ $(get_os_id) == "ol" ]]; then
+if [[ $OS_ID == "ol" ]]; then
   echo_info 'Install EPEL repository'
-  case $(get_os_version) in
+  case $OS_VERSION in
     8*)
       install_package oracle-epel-release-el8
       ;;
@@ -28,7 +33,7 @@ if [[ $(get_os_id) == "ol" ]]; then
       install_package oracle-epel-release-el9
       ;;
     *)
-      echo_warn "Unknown Oracle Linux version: $(get_os_version)"
+      echo_warn "Unknown Oracle Linux version: $OS_VERSION"
       ;;
   esac
 fi
