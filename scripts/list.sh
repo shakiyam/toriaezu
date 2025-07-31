@@ -6,7 +6,11 @@ source "$(dirname "$0")/colored_echo.sh"
 
 show_version() {
   printf %-30s "$1"
-  command -v "${3%% *}" &>/dev/null && $3 |& awk "NR==$2" || echo_warn "not found"
+  if command -v "${3%% *}" &>/dev/null; then
+    $3 |& awk "NR==$2"
+  else
+    echo_warn "not found"
+  fi
 }
 
 echo_info 'Installed Software:'
