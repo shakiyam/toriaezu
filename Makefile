@@ -44,6 +44,9 @@ install_dtools: install_fzf ## Install some docker tools (*)
 install_enhancd: install_fzf ## Install enhancd (*)
 	@./scripts/install_enhancd.sh
 
+install_eza: ## Install eza (*)
+	@./scripts/install_eza.sh
+
 install_fzf: ## Install fzf (*)
 	@./scripts/install_fzf.sh
 

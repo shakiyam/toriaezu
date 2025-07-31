@@ -26,6 +26,7 @@ For other software installation instructions, run `make help` and read the resul
 * Docker Compose (*)
 * [dockviz](https://github.com/justone/dockviz)
 * [enhancd](https://github.com/b4b4r07/enhancd) (*)
+* [eza](https://github.com/eza-community/eza) (*)
 * [fzf](https://github.com/junegunn/fzf) (*)
 * Git (*)
 * Go Programming Language
