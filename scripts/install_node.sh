@@ -11,18 +11,31 @@ echo_info 'Install Node.js'
 # Check the latest version from https://nodejs.org/en/
 case $OS_ID in
   ol)
-    sudo curl -fsSL https://rpm.nodesource.com/pub/el/NODESOURCE-GPG-SIGNING-KEY-EL \
+    case $(uname -m) in
+      x86_64)
+        ARCHITECTURE=x86_64
+        ;;
+      aarch64)
+        ARCHITECTURE=aarch64
+        ;;
+    esac
+    readonly ARCHITECTURE
+
+    sudo curl -fsSL https://rpm.nodesource.com/gpgkey/ns-operations-public.key \
       -o /etc/pki/rpm-gpg/NODESOURCE-GPG-SIGNING-KEY-EL
     sudo rpm --import /etc/pki/rpm-gpg/NODESOURCE-GPG-SIGNING-KEY-EL
     sudo tee /etc/yum.repos.d/nodesource-el.repo <<'EOF' >/dev/null
 [nodesource]
-name=Node.js Packages for Enterprise Linux $releasever - $basearch
-baseurl=https://rpm.nodesource.com/pub_22.x/el/$releasever/$basearch
-gpgcheck=1
+name=Node.js Packages for Enterprise Linux - $basearch
+baseurl=https://rpm.nodesource.com/pub_22.x/nodistro/nodejs/$basearch
+priority=9
 enabled=1
-gpgkey=file:///etc/pki/rpm-gpg/NODESOURCE-GPG-SIGNING-KEY-EL
+gpgcheck=1
 repo_gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/NODESOURCE-GPG-SIGNING-KEY-EL
+module_hotfixes=1
 EOF
+    sudo sed -i "s/\$basearch/$ARCHITECTURE/g" /etc/yum.repos.d/nodesource-el.repo
     install_package nodejs gcc-c++ make
     ;;
   ubuntu)
