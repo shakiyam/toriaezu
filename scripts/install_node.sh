@@ -8,14 +8,30 @@ OS_ID=$(get_os_id)
 readonly OS_ID
 
 echo_info 'Install Node.js'
-# Check the latest version from https://nodejs.org/en/ and https://github.com/nodesource/distributions
+# Check the latest version from https://nodejs.org/en/
 case $OS_ID in
   ol)
-    curl -sL https://rpm.nodesource.com/setup_lts.x | sudo -E bash -
+    sudo curl -fsSL https://rpm.nodesource.com/pub/el/NODESOURCE-GPG-SIGNING-KEY-EL \
+      -o /etc/pki/rpm-gpg/NODESOURCE-GPG-SIGNING-KEY-EL
+    sudo rpm --import /etc/pki/rpm-gpg/NODESOURCE-GPG-SIGNING-KEY-EL
+    sudo tee /etc/yum.repos.d/nodesource-el.repo <<'EOF' >/dev/null
+[nodesource]
+name=Node.js Packages for Enterprise Linux $releasever - $basearch
+baseurl=https://rpm.nodesource.com/pub_22.x/el/$releasever/$basearch
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/NODESOURCE-GPG-SIGNING-KEY-EL
+repo_gpgcheck=1
+EOF
     install_package nodejs gcc-c++ make
     ;;
   ubuntu)
-    curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+    install_package gnupg
+    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key \
+      | sudo gpg --yes --dearmor -o /etc/apt/keyrings/nodesource.gpg
+    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_22.x nodistro main" \
+      | sudo tee /etc/apt/sources.list.d/nodesource.list >/dev/null
+    sudo chmod 644 /etc/apt/keyrings/nodesource.gpg /etc/apt/sources.list.d/nodesource.list
     install_package nodejs build-essential
     ;;
 esac
