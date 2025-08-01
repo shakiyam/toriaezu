@@ -17,6 +17,7 @@ echo_info 'Installed Software:'
 
 show_version 'bat'                       1 'bat --version'
 show_version 'chezmoi'                   1 'chezmoi --version'
+show_version 'Claude Code'               1 'claude --version'
 show_version 'csvq'                      1 'csvq -v'
 if command -v docker &>/dev/null; then
   show_version 'Docker'                  1 'docker -v'

@@ -21,6 +21,8 @@ For other software installation instructions, run `make help` and read the resul
 * bash-completion (*)
 * [Bash Line Editor](https://github.com/akinomyoga/ble.sh) (*)
 * [bat](https://github.com/sharkdp/bat) (*)
+* [chezmoi](https://www.chezmoi.io/) (*)
+* [Claude Code](https://claude.ai/code) (*)
 * [csvq](https://github.com/mithrandie/csvq) (*)
 * Docker Engine or Podman (*)
 * Docker Compose (*)

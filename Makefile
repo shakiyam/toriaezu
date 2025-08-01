@@ -26,6 +26,9 @@ install_ble: ## Install Bash Line Editor (*)
 install_chezmoi: ## Install chezmoi (*)
 	@./scripts/install_chezmoi.sh
 
+install_claude-code: install_node ## Install Claude Code (*)
+	@./scripts/install_claude-code.sh
+
 install_csvq: install_go ## Install csvq (*)
 	@./scripts/install_csvq.sh
 
