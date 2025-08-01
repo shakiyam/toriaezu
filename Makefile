@@ -20,7 +20,7 @@ install_bash-completion: ## Install bash-completion (*)
 install_bat: ## Install bat (*)
 	@./scripts/install_bat.sh
 
-install_ble: ## Install Bash Line Editor (*)
+install_ble: install_xz ## Install Bash Line Editor (*)
 	@./scripts/install_ble.sh
 
 install_chezmoi: ## Install chezmoi (*)
@@ -89,7 +89,7 @@ install_rg: ## Install rigrep (*)
 install_s3fs: ## Install s3fs
 	@./scripts/install_s3fs.sh
 
-install_shellcheck: ## Install ShellCheck (*)
+install_shellcheck: install_xz ## Install ShellCheck (*)
 	@./scripts/install_shellcheck.sh
 
 install_shfmt: ## Install shfmt (*)
@@ -100,6 +100,9 @@ install_tmux: ## Install tmux
 
 install_unzip: ## Install UnZip (*)
 	@./scripts/install_unzip.sh
+
+install_xz: ## Install xz (*)
+	@./scripts/install_xz.sh
 
 install_zip: ## Install Zip (*)
 	@./scripts/install_zip.sh

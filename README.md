@@ -46,6 +46,7 @@ For other software installation instructions, run `make help` and read the resul
 * [shfmt](https://github.com/mvdan/sh) (*)
 * tmux
 * UnZip (*)
+* XZ Utils (*)
 * Zip (*)
 
 Target OS
