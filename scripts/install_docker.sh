@@ -35,18 +35,22 @@ case $OS_ID in
 esac
 
 echo_info 'Setup Docker Engine'
-LOGNAME="${SUDO_USER:-$(logname 2>/dev/null || id -nu)}"
-readonly LOGNAME
-case $OS_ID in
-  ol)
-    sudo -u "$LOGNAME" XDG_RUNTIME_DIR=/run/user/"$(id -u "$LOGNAME")" systemctl --user daemon-reload
-    sudo -u "$LOGNAME" XDG_RUNTIME_DIR=/run/user/"$(id -u "$LOGNAME")" systemctl --user enable podman.socket
-    sudo -u "$LOGNAME" XDG_RUNTIME_DIR=/run/user/"$(id -u "$LOGNAME")" systemctl --user restart podman.socket
-    ;;
-  ubuntu)
-    sudo systemctl daemon-reload
-    sudo systemctl enable docker
-    sudo systemctl restart docker
-    sudo usermod -aG docker "$LOGNAME"
-    ;;
-esac
+if [[ -f /.dockerenv ]] || grep -q 'docker\|lxc' /proc/1/cgroup 2>/dev/null; then
+  echo_warn 'Running in container environment, skipping systemctl setup'
+else
+  LOGNAME="${SUDO_USER:-$(logname 2>/dev/null || id -nu)}"
+  readonly LOGNAME
+  case $OS_ID in
+    ol)
+      sudo -u "$LOGNAME" XDG_RUNTIME_DIR=/run/user/"$(id -u "$LOGNAME")" systemctl --user daemon-reload
+      sudo -u "$LOGNAME" XDG_RUNTIME_DIR=/run/user/"$(id -u "$LOGNAME")" systemctl --user enable podman.socket
+      sudo -u "$LOGNAME" XDG_RUNTIME_DIR=/run/user/"$(id -u "$LOGNAME")" systemctl --user restart podman.socket
+      ;;
+    ubuntu)
+      sudo systemctl daemon-reload
+      sudo systemctl enable docker
+      sudo systemctl restart docker
+      sudo usermod -aG docker "$LOGNAME"
+      ;;
+  esac
+fi

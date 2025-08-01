@@ -4,6 +4,12 @@ set -eu -o pipefail
 # shellcheck disable=SC1091
 . "$(dirname "${BASH_SOURCE[0]}")/common.sh"
 
+# Skip OCI CLI installation in container environments
+if [[ -f /.dockerenv ]] || grep -q 'docker\|lxc' /proc/1/cgroup 2>/dev/null; then
+  echo_warn 'Running in container environment, skipping OCI CLI installation (requires Docker/Podman)'
+  exit 0
+fi
+
 echo_info 'Install OCI CLI'
 DOCKER=$(command -v docker || command -v podman) || {
   echo_error "docker or podman not found"

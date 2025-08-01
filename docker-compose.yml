@@ -1,0 +1,42 @@
+services:
+  oracle8:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: oraclelinux:8
+    volumes:
+      - ./scripts:/home/testuser/toriaezu/scripts:ro
+      - ./bin:/home/testuser/toriaezu/bin:ro
+      - ./Makefile:/home/testuser/toriaezu/Makefile:ro
+      - ./provision.sh:/home/testuser/toriaezu/provision.sh:ro
+    command: /bin/bash
+    tty: true
+    stdin_open: true
+
+  oracle9:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: oraclelinux:9
+    volumes:
+      - ./scripts:/home/testuser/toriaezu/scripts:ro
+      - ./bin:/home/testuser/toriaezu/bin:ro
+      - ./Makefile:/home/testuser/toriaezu/Makefile:ro
+      - ./provision.sh:/home/testuser/toriaezu/provision.sh:ro
+    command: /bin/bash
+    tty: true
+    stdin_open: true
+
+  ubuntu24:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu:24.04
+    volumes:
+      - ./scripts:/home/testuser/toriaezu/scripts:ro
+      - ./bin:/home/testuser/toriaezu/bin:ro
+      - ./Makefile:/home/testuser/toriaezu/Makefile:ro
+      - ./provision.sh:/home/testuser/toriaezu/provision.sh:ro
+    command: /bin/bash
+    tty: true
+    stdin_open: true
