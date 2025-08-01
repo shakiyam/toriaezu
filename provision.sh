@@ -20,8 +20,8 @@ case $OS_ID in
     ;;
 esac
 
-echo_info 'Install Make'
-install_package make
+echo_info 'Install make and curl'
+install_package make curl
 
 if [[ $OS_ID == "ol" ]]; then
   echo_info 'Install EPEL repository'
