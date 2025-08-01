@@ -113,6 +113,12 @@ list: ## List tools
 help: ## Print this help
 	@./scripts/help.sh $(MAKEFILE_LIST)
 
+shellcheck: # Lint shell scripts
+	@shellcheck provision.sh bin/* scripts/*.sh
+
+shfmt: # Lint shell script formatting
+	@shfmt -l -d -i 2 -ci -bn -kp provision.sh bin/* scripts/*.sh
+
 test-oracle8: # Run Oracle Linux 8 test container
 	@docker compose run --rm oracle8
 
