@@ -30,6 +30,7 @@ For other software installation instructions, run `make help` and read the resul
 * [enhancd](https://github.com/b4b4r07/enhancd) (*)
 * [eza](https://github.com/eza-community/eza) (*)
 * [fzf](https://github.com/junegunn/fzf) (*)
+* [fish](https://fishshell.com/)
 * Git (*)
 * Go Programming Language
 * [hadolint](https://github.com/hadolint/hadolint) (*)

@@ -53,6 +53,9 @@ install_eza: ## Install eza (*)
 install_fzf: ## Install fzf (*)
 	@./scripts/install_fzf.sh
 
+install_fish: ## Install fish shell
+	@./scripts/install_fish.sh
+
 install_git: ## Install Git (*)
 	@./scripts/install_git.sh
 
