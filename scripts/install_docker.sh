@@ -13,7 +13,7 @@ case $OS_ID in
     install_package podman podman-plugins
     ;;
   ubuntu)
-    install_package gnupg
+    install_package gnupg lsb-release
     sudo mkdir -p /etc/apt/keyrings
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
       | sudo gpg --yes --dearmor -o /etc/apt/keyrings/docker.gpg
