@@ -12,5 +12,5 @@ RUN if command -v dnf >/dev/null 2>&1; then \
 WORKDIR /home/testuser/toriaezu
 COPY --chown=testuser:testuser . .
 USER testuser
-ENV PATH="/home/testuser/.local/bin:/home/testuser/go/bin:${PATH}"
+ENV PATH="/home/testuser/.local/bin:/home/testuser/go/bin:${PATH}:/usr/local/go/bin"
 CMD ["/bin/bash"]
