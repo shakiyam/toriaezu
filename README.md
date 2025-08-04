@@ -18,8 +18,6 @@ Installed Software
 All software with an asterisk is installed by default.
 For other software installation instructions, run `make help` and read the results.
 
-* bash-completion (*)
-* [Bash Line Editor](https://github.com/akinomyoga/ble.sh) (*)
 * [bat](https://github.com/sharkdp/bat) (*)
 * [chezmoi](https://www.chezmoi.io/) (*)
 * [Claude Code](https://claude.ai/code)
@@ -30,7 +28,8 @@ For other software installation instructions, run `make help` and read the resul
 * [enhancd](https://github.com/b4b4r07/enhancd) (*)
 * [eza](https://github.com/eza-community/eza) (*)
 * [fzf](https://github.com/junegunn/fzf) (*)
-* [fish](https://fishshell.com/)
+* [fish](https://fishshell.com/) (*)
+* [Fisher](https://github.com/jorgebucaran/fisher) (*)
 * Git (*)
 * Go Programming Language
 * [hadolint](https://github.com/hadolint/hadolint) (*)

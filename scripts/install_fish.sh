@@ -25,3 +25,13 @@ case $OS_ID in
     install_package fish
     ;;
 esac
+
+echo_info 'Change login shell to Fish'
+if ! command -v chsh &>/dev/null; then
+  case $OS_ID in
+    ol)
+      sudo dnf install -y util-linux-user
+      ;;
+  esac
+fi
+sudo chsh -s /usr/bin/fish $(id -u -n)

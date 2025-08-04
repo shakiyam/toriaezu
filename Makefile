@@ -14,14 +14,8 @@ STAR_TARGETS := $(shell ./scripts/star_targets.sh $(MAKEFILE_LIST))
 toriaezu: $(STAR_TARGETS) ## Install star(*) tools
 	@:
 
-install_bash-completion: ## Install bash-completion (*)
-	@./scripts/install_bash-completion.sh
-
 install_bat: ## Install bat (*)
 	@./scripts/install_bat.sh
-
-install_ble: install_xz ## Install Bash Line Editor (*)
-	@./scripts/install_ble.sh
 
 install_chezmoi: ## Install chezmoi (*)
 	@./scripts/install_chezmoi.sh
@@ -44,8 +38,8 @@ install_dockviz: install_docker install_go ## Install dockviz
 install_dtools: install_fzf ## Install some docker tools (*)
 	@./scripts/install_dtools.sh
 
-install_enhancd: install_fzf ## Install enhancd (*)
-	@./scripts/install_enhancd.sh
+install_enhancd: install_fisher install_fzf ## Install enhancd (*)
+	@./scripts/install_enhancd.fish
 
 install_eza: ## Install eza (*)
 	@./scripts/install_eza.sh
@@ -53,8 +47,11 @@ install_eza: ## Install eza (*)
 install_fzf: ## Install fzf (*)
 	@./scripts/install_fzf.sh
 
-install_fish: ## Install fish shell
+install_fish: ## Install fish shell (*)
 	@./scripts/install_fish.sh
+
+install_fisher: install_fish ## Install Fisher (*)
+	@./scripts/install_fisher.fish
 
 install_git: ## Install Git (*)
 	@./scripts/install_git.sh
@@ -118,6 +115,9 @@ shellcheck: # Lint shell scripts
 
 shfmt: # Lint shell script formatting
 	@shfmt -l -d -i 2 -ci -bn -kp provision.sh bin/* scripts/*.sh
+
+fishlint: # Lint Fish scripts
+	@./scripts/fishlint.fish scripts/*.fish
 
 test-oracle8: # Run Oracle Linux 8 test container
 	@docker compose run --rm oracle8

@@ -7,7 +7,7 @@ set -eu -o pipefail
 show_version() {
   printf %-30s "$1"
   if command -v "${3%% *}" &>/dev/null; then
-    $3 |& awk "NR==$2"
+    eval "$3" |& awk "NR==$2"
   else
     echo_warn "not found"
   fi
@@ -33,6 +33,12 @@ show_version 'dockviz'                   1 'dockviz -v'
 show_version 'eza'                       2 'eza --version'
 show_version 'fzf'                       1 'fzf --version'
 show_version 'fish'                      1 'fish --version'
+if fish -c "functions -q fisher" &>/dev/null; then
+  show_version 'Fisher'                  1 'fish -c "fisher -v"'
+else
+  printf %-30s "Fisher"
+  echo_warn "not found"
+fi
 show_version 'Git'                       1 'git --version'
 show_version 'Go Programming Language'   1 'go version'
 show_version 'hadolint'                  1 'hadolint -v'
