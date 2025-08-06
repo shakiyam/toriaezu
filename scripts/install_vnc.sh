@@ -2,7 +2,7 @@
 set -eu -o pipefail
 
 # shellcheck disable=SC1091
-.  "$(dirname "${BASH_SOURCE[0]}")/common.sh"
+. "$(dirname "${BASH_SOURCE[0]}")/common.sh"
 
 OS_ID=$(get_os_id)
 readonly OS_ID
@@ -15,7 +15,7 @@ case $OS_ID in
   ol)
     case ${OS_VERSION%%.*} in
       8)
-        sudo dnf -y --enablerepo=ol8_developer_EPEL install Thunar tigervnc-server xfce4-panel xfce4-session xfce4-settings xfce4-terminal xfconf xfdesktop xfwm4
+        install_package --epel Thunar tigervnc-server xfce4-panel xfce4-session xfce4-settings xfce4-terminal xfconf xfdesktop xfwm4
         sudo tee -a /etc/tigervnc/vncserver.users <<EOT >/dev/null
 :1=$(id -un)
 EOT
@@ -26,7 +26,7 @@ EOT
       9)
         echo_warn 'VNC Server is not yet tested on Oracle Linux 9.'
         exit 0
-        # sudo dnf -y --enablerepo=ol9_developer_EPEL install Thunar tigervnc-server xfce4-panel xfce4-session xfce4-settings xfce4-terminal xfconf xfdesktop xfwm4
+        # install_package --epel Thunar tigervnc-server xfce4-panel xfce4-session xfce4-settings xfce4-terminal xfconf xfdesktop xfwm4
         ;;
     esac
     ;;

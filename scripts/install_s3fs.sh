@@ -2,7 +2,7 @@
 set -eu -o pipefail
 
 # shellcheck disable=SC1091
-.  "$(dirname "${BASH_SOURCE[0]}")/common.sh"
+. "$(dirname "${BASH_SOURCE[0]}")/common.sh"
 
 if [[ -e .env ]]; then
   # shellcheck disable=SC1091
@@ -11,20 +11,11 @@ fi
 
 OS_ID=$(get_os_id)
 readonly OS_ID
-OS_VERSION=$(get_os_version)
-readonly OS_VERSION
 
 echo_info 'Install s3fs'
 case $OS_ID in
   ol)
-    case ${OS_VERSION%%.*} in
-      8)
-        sudo dnf -y --enablerepo=ol8_developer_EPEL install s3fs-fuse
-        ;;
-      9)
-        sudo dnf -y --enablerepo=ol9_developer_EPEL install s3fs-fuse
-        ;;
-    esac
+    install_package --epel s3fs-fuse
     ;;
   ubuntu)
     install_package s3fs
