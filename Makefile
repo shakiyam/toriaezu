@@ -119,11 +119,11 @@ shfmt: # Lint shell script formatting
 fishlint: # Lint Fish scripts
 	@./scripts/fishlint.fish scripts/*.fish
 
-test-oracle8: # Run Oracle Linux 8 test container
-	@docker compose run --rm oracle8
+test-oraclelinux8: # Run Oracle Linux 8 test container
+	@docker compose run --rm oraclelinux8
 
-test-oracle9: # Run Oracle Linux 9 test container
-	@docker compose run --rm oracle9
+test-oraclelinux9: # Run Oracle Linux 9 test container
+	@docker compose run --rm oraclelinux9
 
 test-ubuntu24: # Run Ubuntu 24.04 test container
 	@docker compose run --rm ubuntu24

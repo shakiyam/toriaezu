@@ -1,5 +1,5 @@
 services:
-  oracle8:
+  oraclelinux8:
     build:
       context: .
       args:
@@ -13,7 +13,7 @@ services:
     tty: true
     stdin_open: true
 
-  oracle9:
+  oraclelinux9:
     build:
       context: .
       args:
