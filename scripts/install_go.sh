@@ -5,7 +5,10 @@ set -eu -o pipefail
 . "$(dirname "${BASH_SOURCE[0]}")/common.sh"
 
 echo_info 'Install Go Programming Language'
-VERSION=$(curl -sS https://go.dev/VERSION?m=text | head -n 1)
+VERSION=$(curl -fsSL https://go.dev/VERSION?m=text | head -n 1) || {
+  echo_error "Failed to fetch Go version"
+  exit 1
+}
 readonly VERSION
 case $(uname -m) in
   x86_64)
