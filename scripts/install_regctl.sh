@@ -14,6 +14,10 @@ case $(uname -m) in
   aarch64)
     ARCHITECTURE=arm64
     ;;
+  *)
+    echo_error "Unsupported architecture: $(uname -m)"
+    exit 1
+    ;;
 esac
 readonly ARCHITECTURE
 curl -L# "https://github.com/regclient/regclient/releases/download/${LATEST}/regctl-linux-${ARCHITECTURE}" \
