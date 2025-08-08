@@ -18,9 +18,12 @@ get_os_version() {
 
 get_github_latest_release() {
   local repo="$1"
-  curl -fsSL "https://api.github.com/repos/${repo}/releases/latest" \
+  curl -fsSL "https://api.github.com/repos/${repo}/releases/latest" 2>/dev/null \
     | grep '"tag_name":' \
-    | sed -E 's/.*"([^"]+)".*/\1/'
+    | sed -E 's/.*"([^"]+)".*/\1/' || {
+    echo_error "Failed to fetch latest release for ${repo}"
+    return 1
+  }
 }
 
 install_package() {
