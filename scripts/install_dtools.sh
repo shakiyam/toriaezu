@@ -8,6 +8,5 @@ BIN_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/../bin" && pwd)
 readonly BIN_DIR
 
 echo_info 'Install dtools'
-mkdir -p "$HOME/.local/bin"
-cp -v "$BIN_DIR/dcls" "$HOME/.local/bin/"
-cp -v "$BIN_DIR/dclogs" "$HOME/.local/bin/"
+install -v -D -m 755 "$BIN_DIR/dcls" "$HOME/.local/bin/dcls"
+install -v -m 755 "$BIN_DIR/dclogs" "$HOME/.local/bin/dclogs"

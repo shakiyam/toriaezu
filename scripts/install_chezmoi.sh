@@ -25,7 +25,7 @@ readonly TEMP_DIR
 trap 'sudo rm -rf "$TEMP_DIR"' EXIT
 curl -fL# "https://github.com/twpayne/chezmoi/releases/download/${LATEST}/chezmoi_${LATEST#v}_linux_${ARCHITECTURE}.tar.gz" \
   | sudo tar xzf - -C "$TEMP_DIR"
-sudo cp "$TEMP_DIR"/chezmoi /usr/local/bin/
-sudo cp "$TEMP_DIR"/completions/chezmoi-completion.bash /usr/share/bash-completion/completions/chezmoi
+sudo install -m 755 "$TEMP_DIR"/chezmoi /usr/local/bin/
+sudo install -m 644 "$TEMP_DIR"/completions/chezmoi-completion.bash /usr/share/bash-completion/completions/chezmoi
 /usr/local/bin/chezmoi init https://github.com/shakiyam/dotfiles
 /usr/local/bin/chezmoi apply
