@@ -21,6 +21,6 @@ readonly ARCHITECTURE
 
 LATEST=$(get_github_latest_release "hadolint/hadolint")
 readonly LATEST
-curl -L# "https://github.com/hadolint/hadolint/releases/download/${LATEST}/hadolint-Linux-${ARCHITECTURE}" \
+curl -fL# "https://github.com/hadolint/hadolint/releases/download/${LATEST}/hadolint-Linux-${ARCHITECTURE}" \
   | sudo tee /usr/local/bin/hadolint >/dev/null
 sudo chmod +x /usr/local/bin/hadolint

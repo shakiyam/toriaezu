@@ -23,7 +23,7 @@ readonly ARCHITECTURE
 TEMP_DIR=$(mktemp -d)
 readonly TEMP_DIR
 trap 'sudo rm -rf "$TEMP_DIR"' EXIT
-curl -L# "https://github.com/twpayne/chezmoi/releases/download/${LATEST}/chezmoi_${LATEST#v}_linux_${ARCHITECTURE}.tar.gz" \
+curl -fL# "https://github.com/twpayne/chezmoi/releases/download/${LATEST}/chezmoi_${LATEST#v}_linux_${ARCHITECTURE}.tar.gz" \
   | sudo tar xzf - -C "$TEMP_DIR"
 sudo cp "$TEMP_DIR"/chezmoi /usr/local/bin/
 sudo cp "$TEMP_DIR"/completions/chezmoi-completion.bash /usr/share/bash-completion/completions/chezmoi

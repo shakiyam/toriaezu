@@ -27,7 +27,7 @@ case $OS_ID in
     LATEST=$(get_github_latest_release "eza-community/eza")
     readonly LATEST
 
-    curl -L# "https://github.com/eza-community/eza/releases/download/${LATEST}/eza_${ARCHITECTURE}.tar.gz" \
+    curl -fL# "https://github.com/eza-community/eza/releases/download/${LATEST}/eza_${ARCHITECTURE}.tar.gz" \
       | sudo tar xzf - -C /usr/local/bin/
     sudo chmod +x /usr/local/bin/eza
     ;;

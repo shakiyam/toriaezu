@@ -20,6 +20,6 @@ case $(uname -m) in
     ;;
 esac
 readonly ARCHITECTURE
-curl -L# "https://github.com/regclient/regclient/releases/download/${LATEST}/regctl-linux-${ARCHITECTURE}" \
+curl -fL# "https://github.com/regclient/regclient/releases/download/${LATEST}/regctl-linux-${ARCHITECTURE}" \
   | sudo tee /usr/local/bin/regctl >/dev/null
 sudo chmod 755 /usr/local/bin/regctl

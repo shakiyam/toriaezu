@@ -20,6 +20,6 @@ case $(uname -m) in
     ;;
 esac
 readonly ARCHITECTURE
-curl -L# "https://github.com/mvdan/sh/releases/download/${LATEST}/shfmt_${LATEST}_linux_${ARCHITECTURE}" \
+curl -fL# "https://github.com/mvdan/sh/releases/download/${LATEST}/shfmt_${LATEST}_linux_${ARCHITECTURE}" \
   | sudo tee /usr/local/bin/shfmt >/dev/null
 sudo chmod 755 /usr/local/bin/shfmt

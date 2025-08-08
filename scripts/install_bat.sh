@@ -27,7 +27,7 @@ case $OS_ID in
     LATEST=$(get_github_latest_release "sharkdp/bat")
     readonly LATEST
 
-    curl -L# "https://github.com/sharkdp/bat/releases/download/${LATEST}/bat-${LATEST}-${ARCHITECTURE}.tar.gz" \
+    curl -fL# "https://github.com/sharkdp/bat/releases/download/${LATEST}/bat-${LATEST}-${ARCHITECTURE}.tar.gz" \
       | sudo tar xzf - -C /usr/local/bin/ --strip=1 "bat-${LATEST}-${ARCHITECTURE}/bat"
     sudo chmod +x /usr/local/bin/bat
     ;;
