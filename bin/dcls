@@ -18,6 +18,7 @@ T1=$(mktemp)
 readonly T1
 T2=$(mktemp)
 readonly T2
+trap 'rm -f "$T1" "$T2"' EXIT
 
 $DOCKER container ls --format "{{.ID}},{{.Names}},{{.Image}},{{.CreatedAt}},{{.Status}}" -a >"$T1"
 
@@ -39,5 +40,3 @@ if [[ $(wc -l <"$T1") -gt 0 ]]; then
     WHERE t1.c1 = t2.c1
   "
 fi
-
-rm "$T1" "$T2"
