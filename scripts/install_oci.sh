@@ -16,6 +16,5 @@ DOCKER=$(command -v docker || command -v podman) || {
   exit 1
 }
 curl -fL# https://raw.githubusercontent.com/shakiyam/oci-cli-docker/main/oci \
-  | sudo tee /usr/local/bin/oci >/dev/null
-sudo chmod +x /usr/local/bin/oci
+  | sudo install -m 755 /dev/stdin /usr/local/bin/oci
 sudo -u "$(id -un)" "$DOCKER" pull ghcr.io/shakiyam/oci-cli

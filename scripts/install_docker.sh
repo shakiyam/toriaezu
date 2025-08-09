@@ -17,6 +17,7 @@ case $OS_ID in
     sudo mkdir -p /etc/apt/keyrings
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
       | sudo gpg --yes --dearmor -o /etc/apt/keyrings/docker.gpg
+    sudo chmod 644 /etc/apt/keyrings/docker.gpg
     case $(uname -m) in
       x86_64)
         ARCHITECTURE=amd64
@@ -32,8 +33,7 @@ case $OS_ID in
     readonly ARCHITECTURE
     echo \
       "deb [arch=$ARCHITECTURE signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
-        | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
-    sudo chmod 644 /etc/apt/keyrings/docker.gpg /etc/apt/sources.list.d/docker.list
+        | sudo install -m 644 /dev/stdin /etc/apt/sources.list.d/docker.list
     install_package docker-ce
     ;;
 esac

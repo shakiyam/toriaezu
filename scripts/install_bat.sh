@@ -28,8 +28,7 @@ case $OS_ID in
     readonly LATEST
 
     curl -fL# "https://github.com/sharkdp/bat/releases/download/${LATEST}/bat-${LATEST}-${ARCHITECTURE}.tar.gz" \
-      | sudo tar xzf - -C /usr/local/bin/ --strip=1 "bat-${LATEST}-${ARCHITECTURE}/bat"
-    sudo chmod +x /usr/local/bin/bat
+      | tar xzf - -O "bat-${LATEST}-${ARCHITECTURE}/bat" | sudo install -m 755 /dev/stdin /usr/local/bin/bat
     ;;
   ubuntu)
     install_package bat

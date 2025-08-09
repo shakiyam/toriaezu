@@ -28,17 +28,16 @@ case $OS_ID in
     readonly LATEST
 
     curl -fL# "https://github.com/eza-community/eza/releases/download/${LATEST}/eza_${ARCHITECTURE}.tar.gz" \
-      | sudo tar xzf - -C /usr/local/bin/
-    sudo chmod +x /usr/local/bin/eza
+      | tar xzf - -O ./eza | sudo install -m 755 /dev/stdin /usr/local/bin/eza
     ;;
   ubuntu)
     install_package gnupg
     sudo mkdir -p /etc/apt/keyrings
     curl -fsSL https://raw.githubusercontent.com/eza-community/eza/main/deb.asc \
       | sudo gpg --yes --dearmor -o /etc/apt/keyrings/gierens.gpg
+    sudo chmod 644 /etc/apt/keyrings/gierens.gpg
     echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" \
-      | sudo tee /etc/apt/sources.list.d/gierens.list >/dev/null
-    sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+      | sudo install -m 644 /dev/stdin /etc/apt/sources.list.d/gierens.list
     install_package eza
     ;;
 esac

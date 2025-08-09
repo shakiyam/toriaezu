@@ -11,9 +11,7 @@ echo_info 'Install ShellCheck'
 case $OS_ID in
   ol)
     curl -fL# "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.$(uname -m).tar.xz" \
-      | sudo tar xJf - -C /usr/local/bin/ --strip=1 shellcheck-stable/shellcheck
-    sudo chown root:root /usr/local/bin/shellcheck
-    sudo chmod +x /usr/local/bin/shellcheck
+      | tar xJf - -O shellcheck-stable/shellcheck | sudo install -m 755 /dev/stdin /usr/local/bin/shellcheck
     ;;
   ubuntu)
     install_package shellcheck

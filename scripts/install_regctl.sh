@@ -21,5 +21,4 @@ case $(uname -m) in
 esac
 readonly ARCHITECTURE
 curl -fL# "https://github.com/regclient/regclient/releases/download/${LATEST}/regctl-linux-${ARCHITECTURE}" \
-  | sudo tee /usr/local/bin/regctl >/dev/null
-sudo chmod 755 /usr/local/bin/regctl
+  | sudo install -m 755 /dev/stdin /usr/local/bin/regctl
