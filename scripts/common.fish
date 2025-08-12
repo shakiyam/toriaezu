@@ -27,3 +27,16 @@ function check_command
     end
     die "Error: Command not found: $argv[1]"
 end
+
+function verify_command
+    if test (count $argv) -eq 0
+        die "Error: No command specified for verify_command"
+    end
+
+    set command $argv[1]
+    if command -v $command &>/dev/null; or functions -q $command
+        echo_success "Verification passed: $command is installed and accessible"
+    else
+        die "Error: Command $command not found in PATH"
+    end
+end
