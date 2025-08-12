@@ -4,10 +4,9 @@ set -eu -o pipefail
 # shellcheck disable=SC1091
 . "$(dirname "${BASH_SOURCE[0]}")/colored_echo.sh"
 
-# Unified error exit function
 die() {
-  local message="$1"
-  local exit_code="${2:-1}"
+  local -r message="$1"
+  local -r exit_code="${2:-1}"
   echo_error "$message"
   exit "$exit_code"
 }
@@ -25,18 +24,17 @@ get_os_version() {
 }
 
 get_github_latest_release() {
-  local repo="$1"
+  local -r repo="$1"
   curl -fsSL "https://api.github.com/repos/${repo}/releases/latest" 2>/dev/null \
     | grep '"tag_name":' \
     | sed -E 's/.*"([^"]+)".*/\1/' || die "Error: Failed to fetch latest release for ${repo}"
 }
 
 install_package() {
-  local -r _OS_ID=${OS_ID:-$(get_os_id)}
+  local -r os_id=$(get_os_id)
   local use_epel=false
   local packages=()
 
-  # Parse arguments for --epel flag
   while [[ $# -gt 0 ]]; do
     case "$1" in
       --epel)
@@ -50,22 +48,21 @@ install_package() {
     esac
   done
 
-  # Check if packages array is empty
   if [[ ${#packages[@]} -eq 0 ]]; then
     die "Error: No packages specified for installation"
   fi
 
-  case "$_OS_ID" in
+  case "$os_id" in
     ubuntu)
       sudo apt-get update
       sudo DEBIAN_FRONTEND=noninteractive apt-get install -y "${packages[@]}"
       ;;
     ol)
       if [[ "$use_epel" == true ]]; then
-        local -r _OS_VERSION=${OS_VERSION:-$(get_os_version)}
+        local -r os_version=$(get_os_version)
         local epel_repo=""
 
-        case "$_OS_VERSION" in
+        case "$os_version" in
           8*)
             epel_repo="ol8_developer_EPEL"
             ;;
@@ -73,7 +70,7 @@ install_package() {
             epel_repo="ol9_developer_EPEL"
             ;;
           *)
-            die "Error: Unknown Oracle Linux version: $_OS_VERSION"
+            die "Error: Unknown Oracle Linux version: $os_version"
             ;;
         esac
 
@@ -83,18 +80,16 @@ install_package() {
       fi
       ;;
     *)
-      die "Error: Unsupported OS $_OS_ID"
+      die "Error: Unsupported OS $os_id"
       ;;
   esac
 }
 
-# Verify command exists and is executable
 verify_command() {
-  local command="$1"
-
-  if ! command -v "$command" >/dev/null 2>&1; then
+  local -r command="$1"
+  if command -v "$command" >/dev/null 2>&1; then
+    echo_success "Verification passed: $command is installed and accessible"
+  else
     die "Error: Command $command not found in PATH"
   fi
-
-  echo_success "Verification passed: $command is installed and accessible"
 }
