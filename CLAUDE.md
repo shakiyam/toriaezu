@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-This is the **toriaezu** project - a Bash-based developer environment setup tool that automates the installation of various development tools and utilities on Oracle Linux 8/9 and Ubuntu 24.04 LTS.
+This is the **toriaezu** project - an environment setup tool that automates the installation of various development tools and utilities on Oracle Linux 8/9 and Ubuntu 24.04 LTS.
 
 ## Key Commands
 
@@ -16,8 +16,12 @@ This is the **toriaezu** project - a Bash-based developer environment setup tool
 - `make list` - List all available tools
 
 ### Development Commands
-- `shellcheck scripts/*.sh` - Run ShellCheck on all shell scripts
-- `shfmt -d scripts/*.sh` - Check shell script formatting (use `-w` to fix)
+- `make shellcheck` - Lint shell scripts
+- `make shfmt` - Lint shell script formatting
+- `make fishlint` - Lint Fish scripts
+- `make test-oraclelinux8` - Run Oracle Linux 8 test container
+- `make test-oraclelinux9` - Run Oracle Linux 9 test container
+- `make test-ubuntu24` - Run Ubuntu 24.04 test container
 
 ## Architecture
 
@@ -31,8 +35,7 @@ This is the **toriaezu** project - a Bash-based developer environment setup tool
 1. **Modular Installation**: Each tool has its own `install_*.sh` script in the `scripts/` directory
 2. **Dependency Management**: Makefile handles inter-tool dependencies (e.g., csvq requires Go)
 3. **Cross-Platform Support**: Scripts detect OS and use appropriate package manager (dnf for Oracle Linux, apt for Ubuntu)
-4. **Error Handling**: All scripts use `set -eu -o pipefail` for strict error handling
-5. **Star System**: Tools marked with (*) in Makefile comments are installed by default
+4. **Star System**: Tools marked with (*) in Makefile comments are installed by default
 
 ### Installation Flow
 1. User runs `./provision.sh`
@@ -45,6 +48,8 @@ This is the **toriaezu** project - a Bash-based developer environment setup tool
 
 ### Code Standards
 - Shell scripts follow strict bash practices with error handling
-- Consistent 2-space indentation (4-space tabs in Makefile)
+- Bash scripts (.sh) use 2-space indentation
+- Fish scripts (.fish) use 4-space indentation
+- Makefile uses tabs for indentation
 - ShellCheck directives used where needed
 - Scripts are designed to be idempotent
