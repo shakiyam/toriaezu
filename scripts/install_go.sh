@@ -5,7 +5,7 @@ set -eu -o pipefail
 . "$(dirname "${BASH_SOURCE[0]}")/common.sh"
 
 echo_info 'Install Go Programming Language'
-VERSION=$(curl -fsSL https://go.dev/VERSION?m=text | head -n 1) || die "Failed to fetch Go version"
+VERSION=$(curl -fsSL https://go.dev/VERSION?m=text | head -n 1) || die "Error: Failed to fetch Go version"
 readonly VERSION
 case $(uname -m) in
   x86_64)
@@ -15,7 +15,7 @@ case $(uname -m) in
     ARCHITECTURE=arm64
     ;;
   *)
-    die "Unsupported architecture: $(uname -m)"
+    die "Error: Unsupported architecture: $(uname -m)"
     ;;
 esac
 readonly ARCHITECTURE

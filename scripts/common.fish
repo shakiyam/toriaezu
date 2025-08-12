@@ -16,10 +16,10 @@ end
 
 function check_command
     if test (count $argv) -eq 0
-        die "check_command: No command specified"
+        die "Error: No command specified for check_command"
     end
     if command -v $argv[1] &>/dev/null; or functions -q $argv[1]
         return 0
     end
-    die "$argv[1] not found"
+    die "Error: Command not found: $argv[1]"
 end

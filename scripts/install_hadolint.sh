@@ -13,7 +13,7 @@ case $(uname -m) in
     ARCHITECTURE=arm64
     ;;
   *)
-    die "Unsupported architecture: $(uname -m)"
+    die "Error: Unsupported architecture: $(uname -m)"
     ;;
 esac
 readonly ARCHITECTURE
