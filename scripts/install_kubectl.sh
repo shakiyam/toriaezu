@@ -30,3 +30,6 @@ EOF
     install_package kubectl
     ;;
 esac
+
+echo_info 'Verify kubectl installation'
+verify_command kubectl

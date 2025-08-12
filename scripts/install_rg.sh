@@ -16,3 +16,6 @@ case $OS_ID in
     install_package ripgrep
     ;;
 esac
+
+echo_info 'Verify ripgrep installation'
+verify_command rg

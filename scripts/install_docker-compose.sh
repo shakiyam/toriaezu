@@ -20,3 +20,6 @@ case $OS_ID in
       | sudo install -m 755 /dev/stdin /usr/local/lib/docker/cli-plugins/docker-compose
     ;;
 esac
+
+echo_info 'Verify Docker Compose installation'
+verify_command docker-compose

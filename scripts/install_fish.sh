@@ -26,3 +26,6 @@ if ! command -v chsh &>/dev/null; then
   esac
 fi
 sudo chsh -s /usr/bin/fish "$(id -u -n)"
+
+echo_info 'Verify fish installation'
+verify_command fish

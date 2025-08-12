@@ -17,3 +17,6 @@ case $OS_ID in
     die "Error: Unsupported OS $OS_ID"
     ;;
 esac
+
+echo_info 'Verify xz installation'
+verify_command xz

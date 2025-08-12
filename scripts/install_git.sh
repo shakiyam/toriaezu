@@ -7,3 +7,6 @@ set -eu -o pipefail
 echo_info 'Install Git'
 install_package git
 git config --global user.useConfigOnly true
+
+echo_info 'Verify Git installation'
+verify_command git

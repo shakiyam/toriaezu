@@ -17,3 +17,6 @@ case $OS_ID in
     install_package shellcheck
     ;;
 esac
+
+echo_info 'Verify ShellCheck installation'
+verify_command shellcheck

@@ -22,3 +22,6 @@ LATEST=$(get_github_latest_release "hadolint/hadolint")
 readonly LATEST
 curl -fL# "https://github.com/hadolint/hadolint/releases/download/${LATEST}/hadolint-Linux-${ARCHITECTURE}" \
   | sudo install -m 755 /dev/stdin /usr/local/bin/hadolint
+
+echo_info 'Verify hadolint installation'
+verify_command hadolint

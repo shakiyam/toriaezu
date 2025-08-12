@@ -39,3 +39,6 @@ case $OS_ID in
     fi
     ;;
 esac
+
+echo_info 'Verify bat installation'
+verify_command bat

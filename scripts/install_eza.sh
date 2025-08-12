@@ -40,3 +40,6 @@ case $OS_ID in
     install_package eza
     ;;
 esac
+
+echo_info 'Verify eza installation'
+verify_command eza

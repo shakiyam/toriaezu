@@ -22,6 +22,9 @@ case $OS_ID in
     ;;
 esac
 
+echo_info 'Verify s3fs installation'
+verify_command s3fs
+
 if [[ -n "${AWS_ACCESS_KEY_ID:-}" && -n "${AWS_SECRET_ACCESS_KEY:-}" && -n "${BUCKET:-}" && -n "${MOUNT_POINT:-}" ]]; then
   echo_info 'Mount s3fs'
   echo "$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY" | sudo install -m 600 /dev/stdin /etc/passwd-s3fs

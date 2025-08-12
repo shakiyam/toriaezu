@@ -57,3 +57,13 @@ else
       ;;
   esac
 fi
+
+echo_info 'Verify Docker installation'
+case $OS_ID in
+  ol)
+    verify_command podman
+    ;;
+  ubuntu)
+    verify_command docker
+    ;;
+esac

@@ -21,3 +21,6 @@ esac
 readonly ARCHITECTURE
 curl -fL# "https://github.com/mvdan/sh/releases/download/${LATEST}/shfmt_${LATEST}_linux_${ARCHITECTURE}" \
   | sudo install -m 755 /dev/stdin /usr/local/bin/shfmt
+
+echo_info 'Verify shfmt installation'
+verify_command shfmt

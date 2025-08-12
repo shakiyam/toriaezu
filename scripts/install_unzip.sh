@@ -6,3 +6,6 @@ set -eu -o pipefail
 
 echo_info 'Install UnZip'
 install_package unzip
+
+echo_info 'Verify UnZip installation'
+verify_command unzip

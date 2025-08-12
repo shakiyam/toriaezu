@@ -18,3 +18,7 @@ case $OS_ID in
     install_package nodejs build-essential
     ;;
 esac
+
+echo_info 'Verify Node.js installation'
+verify_command node
+verify_command npm

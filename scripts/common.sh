@@ -87,3 +87,14 @@ install_package() {
       ;;
   esac
 }
+
+# Verify command exists and is executable
+verify_command() {
+  local command="$1"
+
+  if ! command -v "$command" >/dev/null 2>&1; then
+    die "Error: Command $command not found in PATH"
+  fi
+
+  echo_success "Verification passed: $command is installed and accessible"
+}

@@ -16,3 +16,6 @@ case $OS_ID in
     install_package fzf
     ;;
 esac
+
+echo_info 'Verify fzf installation'
+verify_command fzf

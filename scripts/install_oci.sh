@@ -15,3 +15,6 @@ DOCKER=$(command -v docker || command -v podman) || die "Error: Command not foun
 curl -fL# https://raw.githubusercontent.com/shakiyam/oci-cli-docker/main/oci \
   | sudo install -m 755 /dev/stdin /usr/local/bin/oci
 sudo -u "$(id -un)" "$DOCKER" pull ghcr.io/shakiyam/oci-cli
+
+echo_info 'Verify OCI CLI installation'
+verify_command oci
