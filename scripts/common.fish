@@ -18,19 +18,21 @@ function die
     exit $exit_code
 end
 
-function check_command
+function check_dependency
     if test (count $argv) -eq 0
-        die "Error: No command specified for check_command"
+        die "Error: No command specified for check_dependency"
     end
-    if command -v $argv[1] &>/dev/null; or functions -q $argv[1]
+
+    set command $argv[1]
+    if command -v $command &>/dev/null; or functions -q $command
         return 0
     end
-    die "Error: Command not found: $argv[1]"
+    die "Error: Command not found: $command"
 end
 
-function verify_command
+function verify_installation
     if test (count $argv) -eq 0
-        die "Error: No command specified for verify_command"
+        die "Error: No command specified for verify_installation"
     end
 
     set command $argv[1]

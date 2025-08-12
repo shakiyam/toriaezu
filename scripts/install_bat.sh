@@ -41,4 +41,4 @@ case $OS_ID in
 esac
 
 echo_info 'Verify bat installation'
-verify_command bat
+verify_installation bat

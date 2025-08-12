@@ -18,4 +18,4 @@ case $OS_ID in
 esac
 
 echo_info 'Verify ripgrep installation'
-verify_command rg
+verify_installation rg

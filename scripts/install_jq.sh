@@ -8,4 +8,4 @@ echo_info 'Install jq'
 install_package jq
 
 echo_info 'Verify jq installation'
-verify_command jq
+verify_installation jq

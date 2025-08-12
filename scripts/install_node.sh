@@ -20,5 +20,5 @@ case $OS_ID in
 esac
 
 echo_info 'Verify Node.js installation'
-verify_command node
-verify_command npm
+verify_installation node
+verify_installation npm

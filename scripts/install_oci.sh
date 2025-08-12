@@ -17,4 +17,4 @@ curl -fL# https://raw.githubusercontent.com/shakiyam/oci-cli-docker/main/oci \
 sudo -u "$(id -un)" "$DOCKER" pull ghcr.io/shakiyam/oci-cli
 
 echo_info 'Verify OCI CLI installation'
-verify_command oci
+verify_installation oci

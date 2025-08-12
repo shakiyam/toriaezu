@@ -9,4 +9,4 @@ install_package git
 git config --global user.useConfigOnly true
 
 echo_info 'Verify Git installation'
-verify_command git
+verify_installation git

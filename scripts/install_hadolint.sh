@@ -24,4 +24,4 @@ curl -fL# "https://github.com/hadolint/hadolint/releases/download/${LATEST}/hado
   | sudo install -m 755 /dev/stdin /usr/local/bin/hadolint
 
 echo_info 'Verify hadolint installation'
-verify_command hadolint
+verify_installation hadolint

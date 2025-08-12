@@ -94,9 +94,9 @@ install_package() {
   esac
 }
 
-verify_command() {
+verify_installation() {
   if [[ $# -eq 0 ]]; then
-    die "Error: No command specified for verify_command"
+    die "Error: No command specified for verify_installation"
   fi
 
   local -r command="$1"

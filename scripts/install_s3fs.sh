@@ -23,7 +23,7 @@ case $OS_ID in
 esac
 
 echo_info 'Verify s3fs installation'
-verify_command s3fs
+verify_installation s3fs
 
 if [[ -n "${AWS_ACCESS_KEY_ID:-}" && -n "${AWS_SECRET_ACCESS_KEY:-}" && -n "${BUCKET:-}" && -n "${MOUNT_POINT:-}" ]]; then
   echo_info 'Mount s3fs'

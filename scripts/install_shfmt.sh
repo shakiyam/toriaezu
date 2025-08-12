@@ -23,4 +23,4 @@ curl -fL# "https://github.com/mvdan/sh/releases/download/${LATEST}/shfmt_${LATES
   | sudo install -m 755 /dev/stdin /usr/local/bin/shfmt
 
 echo_info 'Verify shfmt installation'
-verify_command shfmt
+verify_installation shfmt

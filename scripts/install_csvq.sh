@@ -10,4 +10,4 @@ readonly LATEST
 /usr/local/go/bin/go install "github.com/mithrandie/csvq@$LATEST"
 
 echo_info 'Verify csvq installation'
-verify_command csvq
+verify_installation csvq

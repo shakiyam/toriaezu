@@ -28,4 +28,4 @@ fi
 sudo chsh -s /usr/bin/fish "$(id -u -n)"
 
 echo_info 'Verify fish installation'
-verify_command fish
+verify_installation fish

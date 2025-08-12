@@ -8,4 +8,4 @@ echo_info 'Install tmux'
 install_package tmux
 
 echo_info 'Verify tmux installation'
-verify_command tmux
+verify_installation tmux

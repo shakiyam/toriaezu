@@ -32,4 +32,4 @@ EOF
 esac
 
 echo_info 'Verify kubectl installation'
-verify_command kubectl
+verify_installation kubectl

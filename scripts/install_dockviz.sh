@@ -10,4 +10,4 @@ readonly LATEST
 /usr/local/go/bin/go install "github.com/justone/dockviz@$LATEST"
 
 echo_info 'Verify dockviz installation'
-verify_command dockviz
+verify_installation dockviz

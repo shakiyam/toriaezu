@@ -23,4 +23,4 @@ curl -fL# "https://github.com/regclient/regclient/releases/download/${LATEST}/re
   | sudo install -m 755 /dev/stdin /usr/local/bin/regctl
 
 echo_info 'Verify regctl installation'
-verify_command regctl
+verify_installation regctl

@@ -8,4 +8,4 @@ echo_info 'Install Claude Code'
 sudo npm install -g @anthropic-ai/claude-code
 
 echo_info 'Verify Claude Code installation'
-verify_command claude
+verify_installation claude

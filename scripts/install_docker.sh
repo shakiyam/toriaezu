@@ -61,9 +61,9 @@ fi
 echo_info 'Verify Docker installation'
 case $OS_ID in
   ol)
-    verify_command podman
+    verify_installation podman
     ;;
   ubuntu)
-    verify_command docker
+    verify_installation docker
     ;;
 esac

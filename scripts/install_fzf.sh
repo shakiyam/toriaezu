@@ -18,4 +18,4 @@ case $OS_ID in
 esac
 
 echo_info 'Verify fzf installation'
-verify_command fzf
+verify_installation fzf

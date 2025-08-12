@@ -19,4 +19,4 @@ case $OS_ID in
 esac
 
 echo_info 'Verify ShellCheck installation'
-verify_command shellcheck
+verify_installation shellcheck

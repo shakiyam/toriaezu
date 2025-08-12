@@ -42,4 +42,4 @@ case $OS_ID in
 esac
 
 echo_info 'Verify eza installation'
-verify_command eza
+verify_installation eza

@@ -22,4 +22,15 @@ case $OS_ID in
 esac
 
 echo_info 'Verify Docker Compose installation'
-verify_command docker-compose
+case $OS_ID in
+  ol)
+    verify_installation docker-compose
+    ;;
+  ubuntu)
+    if docker compose version >/dev/null 2>&1; then
+      echo_success "Verification passed: docker compose is installed and accessible"
+    else
+      die "Error: docker compose not found or not working"
+    fi
+    ;;
+esac

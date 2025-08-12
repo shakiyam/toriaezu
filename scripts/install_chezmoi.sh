@@ -30,4 +30,4 @@ sudo install -m 644 "$TEMP_DIR"/completions/chezmoi-completion.bash /usr/share/b
 /usr/local/bin/chezmoi apply
 
 echo_info 'Verify chezmoi installation'
-verify_command chezmoi
+verify_installation chezmoi
