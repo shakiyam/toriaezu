@@ -3,8 +3,12 @@
 set script_dir (dirname (status --current-filename))
 source "$script_dir/colored_echo.fish"
 
-# Unified error exit function
 function die
+    if test (count $argv) -eq 0
+        echo_error "Error: No message specified for die"
+        exit 1
+    end
+
     set message $argv[1]
     set exit_code 1
     if test (count $argv) -ge 2
