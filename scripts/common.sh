@@ -5,6 +5,11 @@ set -eu -o pipefail
 . "$(dirname "${BASH_SOURCE[0]}")/colored_echo.sh"
 
 die() {
+  if [[ $# -eq 0 ]]; then
+    echo_error "Error: No message specified for die"
+    exit 1
+  fi
+
   local -r message="$1"
   local -r exit_code="${2:-1}"
   echo_error "$message"
@@ -24,6 +29,10 @@ get_os_version() {
 }
 
 get_github_latest_release() {
+  if [[ $# -eq 0 ]]; then
+    die "Error: No repository specified for get_github_latest_release"
+  fi
+
   local -r repo="$1"
   curl -fsSL "https://api.github.com/repos/${repo}/releases/latest" 2>/dev/null \
     | grep '"tag_name":' \
@@ -49,7 +58,7 @@ install_package() {
   done
 
   if [[ ${#packages[@]} -eq 0 ]]; then
-    die "Error: No packages specified for installation"
+    die "Error: No packages specified for install_package"
   fi
 
   case "$os_id" in
@@ -86,6 +95,10 @@ install_package() {
 }
 
 verify_command() {
+  if [[ $# -eq 0 ]]; then
+    die "Error: No command specified for verify_command"
+  fi
+
   local -r command="$1"
   if command -v "$command" >/dev/null 2>&1; then
     echo_success "Verification passed: $command is installed and accessible"
