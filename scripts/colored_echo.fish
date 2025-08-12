@@ -1,18 +1,18 @@
 #!/usr/bin/fish
 
 function echo_error
-    if isatty stdout
-        echo -e "\033[1;31m$argv\033[0m" # Bold Red
+    if isatty stderr
+        echo -e "\033[1;31m$argv\033[0m" >&2 # Bold Red
     else
-        echo $argv
+        echo $argv >&2
     end
 end
 
 function echo_warn
-    if isatty stdout
-        echo -e "\033[1;33m$argv\033[0m" # Bold Yellow
+    if isatty stderr
+        echo -e "\033[1;33m$argv\033[0m" >&2 # Bold Yellow
     else
-        echo $argv
+        echo $argv >&2
     end
 end
 

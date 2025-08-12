@@ -14,7 +14,6 @@ case $OS_ID in
     install_package xz-utils
     ;;
   *)
-    echo_error "Error: Unsupported OS $OS_ID"
-    exit 1
+    die "Error: Unsupported OS $OS_ID"
     ;;
 esac

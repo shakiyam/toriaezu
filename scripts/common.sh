@@ -4,6 +4,14 @@ set -eu -o pipefail
 # shellcheck disable=SC1091
 . "$(dirname "${BASH_SOURCE[0]}")/colored_echo.sh"
 
+# Unified error exit function
+die() {
+  local message="$1"
+  local exit_code="${2:-1}"
+  echo_error "$message"
+  exit "$exit_code"
+}
+
 get_os_id() {
   # shellcheck disable=SC1091
   . /etc/os-release
@@ -20,10 +28,7 @@ get_github_latest_release() {
   local repo="$1"
   curl -fsSL "https://api.github.com/repos/${repo}/releases/latest" 2>/dev/null \
     | grep '"tag_name":' \
-    | sed -E 's/.*"([^"]+)".*/\1/' || {
-    echo_error "Failed to fetch latest release for ${repo}"
-    return 1
-  }
+    | sed -E 's/.*"([^"]+)".*/\1/' || die "Failed to fetch latest release for ${repo}"
 }
 
 install_package() {
@@ -47,8 +52,7 @@ install_package() {
 
   # Check if packages array is empty
   if [[ ${#packages[@]} -eq 0 ]]; then
-    echo_error "Error: No packages specified for installation"
-    return 1
+    die "Error: No packages specified for installation"
   fi
 
   case "$_OS_ID" in
@@ -69,8 +73,7 @@ install_package() {
             epel_repo="ol9_developer_EPEL"
             ;;
           *)
-            echo_error "Error: Unknown Oracle Linux version: $_OS_VERSION"
-            return 1
+            die "Error: Unknown Oracle Linux version: $_OS_VERSION"
             ;;
         esac
 
@@ -80,8 +83,7 @@ install_package() {
       fi
       ;;
     *)
-      echo_error "Error: Unsupported OS $_OS_ID"
-      return 1
+      die "Error: Unsupported OS $_OS_ID"
       ;;
   esac
 }

@@ -2,18 +2,18 @@
 set -eu -o pipefail
 
 echo_error() {
-  if [[ -t 1 ]]; then
-    echo -e "\033[1;31m$*\033[0m" # Bold Red
+  if [[ -t 2 ]]; then
+    echo -e "\033[1;31m$*\033[0m" >&2 # Bold Red
   else
-    echo "$@"
+    echo "$@" >&2
   fi
 }
 
 echo_warn() {
-  if [[ -t 1 ]]; then
-    echo -e "\033[1;33m$*\033[0m" # Bold Yellow
+  if [[ -t 2 ]]; then
+    echo -e "\033[1;33m$*\033[0m" >&2 # Bold Yellow
   else
-    echo "$@"
+    echo "$@" >&2
   fi
 }
 

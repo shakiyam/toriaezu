@@ -18,8 +18,7 @@ case $OS_ID in
         ARCHITECTURE=aarch64-unknown-linux-gnu
         ;;
       *)
-        echo_error "Unsupported architecture: $(uname -m)"
-        exit 1
+        die "Unsupported architecture: $(uname -m)"
         ;;
     esac
     readonly ARCHITECTURE

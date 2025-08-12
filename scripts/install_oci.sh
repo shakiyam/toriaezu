@@ -11,10 +11,7 @@ if [[ -f /.dockerenv ]] || grep -q 'docker\|lxc' /proc/1/cgroup 2>/dev/null; the
 fi
 
 echo_info 'Install OCI CLI'
-DOCKER=$(command -v docker || command -v podman) || {
-  echo_error "docker or podman not found"
-  exit 1
-}
+DOCKER=$(command -v docker || command -v podman) || die "docker or podman not found"
 curl -fL# https://raw.githubusercontent.com/shakiyam/oci-cli-docker/main/oci \
   | sudo install -m 755 /dev/stdin /usr/local/bin/oci
 sudo -u "$(id -un)" "$DOCKER" pull ghcr.io/shakiyam/oci-cli

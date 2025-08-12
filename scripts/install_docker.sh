@@ -26,8 +26,7 @@ case $OS_ID in
         ARCHITECTURE=arm64
         ;;
       *)
-        echo_error "Unsupported architecture: $(uname -m)"
-        exit 1
+        die "Unsupported architecture: $(uname -m)"
         ;;
     esac
     readonly ARCHITECTURE
