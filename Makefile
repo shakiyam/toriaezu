@@ -114,7 +114,7 @@ shellcheck: # Lint shell scripts
 	@shellcheck provision.sh bin/* scripts/*.sh
 
 shfmt: # Lint shell script formatting
-	@shfmt -l -d -i 2 -ci -bn -kp provision.sh bin/* scripts/*.sh
+	@shfmt -l -d -i 2 -ci -bn provision.sh bin/* scripts/*.sh
 
 fishlint: # Lint Fish scripts
 	@./scripts/fishlint.fish scripts/*.fish

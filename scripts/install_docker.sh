@@ -2,7 +2,7 @@
 set -eu -o pipefail
 
 # shellcheck disable=SC1091
-.  "$(dirname "${BASH_SOURCE[0]}")/common.sh"
+. "$(dirname "${BASH_SOURCE[0]}")/common.sh"
 
 OS_ID=$(get_os_id)
 readonly OS_ID
@@ -30,9 +30,8 @@ case $OS_ID in
         ;;
     esac
     readonly ARCHITECTURE
-    echo \
-      "deb [arch=$ARCHITECTURE signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
-        | sudo install -m 644 /dev/stdin /etc/apt/sources.list.d/docker.list
+    echo "deb [arch=$ARCHITECTURE signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
+      | sudo install -m 644 /dev/stdin /etc/apt/sources.list.d/docker.list
     install_package docker-ce
     ;;
 esac
