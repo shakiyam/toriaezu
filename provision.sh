@@ -38,4 +38,8 @@ if [[ $OS_ID == "ol" ]]; then
   esac
 fi
 
-make toriaezu
+if [[ $# -eq 0 ]]; then
+  make toriaezu
+else
+  make "$@"
+fi
