@@ -16,9 +16,12 @@ This is the **toriaezu** project - an environment setup tool that automates the 
 - `make list` - List all available tools
 
 ### Development Commands
+*Note: These development commands are not shown in `make help` but are available for development use*
 - `make shellcheck` - Lint shell scripts
 - `make shfmt` - Lint shell script formatting
 - `make fishlint` - Lint Fish scripts
+- `make hadolint` - Lint Dockerfile
+- `make lint` - Run all linting tasks
 - `make test-oraclelinux8` - Run Oracle Linux 8 test container
 - `make test-oraclelinux9` - Run Oracle Linux 9 test container
 - `make test-ubuntu24` - Run Ubuntu 24.04 test container
