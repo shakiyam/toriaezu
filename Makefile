@@ -119,6 +119,12 @@ shfmt: # Lint shell script formatting
 fishlint: # Lint Fish scripts
 	@./scripts/fishlint.fish scripts/*.fish
 
+hadolint: # Lint Dockerfiles
+	@hadolint Dockerfile
+
+lint: shellcheck shfmt fishlint hadolint # Run all linting tasks
+	@echo "All linting tasks completed"
+
 test-oraclelinux8: # Run Oracle Linux 8 test container
 	@docker compose run --rm oraclelinux8
 
