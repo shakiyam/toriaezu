@@ -23,6 +23,12 @@ esac
 echo_info 'Install make and curl'
 install_package make curl
 
+for dir in "$HOME/.local/bin" "$HOME/go/bin" "/usr/local/go/bin"; do
+  if [[ -d "$dir" && ":$PATH:" != *":$dir:"* ]]; then
+    export PATH="$dir:$PATH"
+  fi
+done
+
 if [[ $OS_ID == "ol" ]]; then
   echo_info 'Install EPEL repository'
   case $OS_VERSION in
