@@ -139,7 +139,7 @@ verify_installation() {
   fi
 
   local -r command="$1"
-  if command -v "$command" >/dev/null 2>&1; then
+  if command -v "$command" &>/dev/null; then
     echo_success "Verification passed: $command is installed and accessible"
   else
     die "Error: Command $command not found in PATH"
