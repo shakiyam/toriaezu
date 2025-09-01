@@ -26,8 +26,9 @@ curl -fL# "https://github.com/twpayne/chezmoi/releases/download/${LATEST}/chezmo
   | sudo tar xzf - -C "$TEMP_DIR"
 sudo install -m 755 "$TEMP_DIR"/chezmoi /usr/local/bin/
 sudo install -m 644 "$TEMP_DIR"/completions/chezmoi-completion.bash /usr/share/bash-completion/completions/chezmoi
-/usr/local/bin/chezmoi init https://github.com/shakiyam/dotfiles
-/usr/local/bin/chezmoi apply
-
 echo_info 'Verify chezmoi installation'
 verify_installation chezmoi
+
+echo_info 'Initialize and apply dotfiles'
+/usr/local/bin/chezmoi init https://github.com/shakiyam/dotfiles
+/usr/local/bin/chezmoi apply
