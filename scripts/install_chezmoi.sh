@@ -30,5 +30,5 @@ echo_info 'Verify chezmoi installation'
 verify_installation chezmoi
 
 echo_info 'Initialize and apply dotfiles'
-/usr/local/bin/chezmoi init https://github.com/shakiyam/dotfiles
-/usr/local/bin/chezmoi apply
+chezmoi init https://github.com/shakiyam/dotfiles
+chezmoi apply

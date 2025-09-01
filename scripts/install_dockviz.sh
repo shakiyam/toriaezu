@@ -7,7 +7,7 @@ set -eu -o pipefail
 echo_info 'Install dockviz'
 LATEST=$(get_github_latest_release "justone/dockviz")
 readonly LATEST
-/usr/local/go/bin/go install "github.com/justone/dockviz@$LATEST"
+go install "github.com/justone/dockviz@$LATEST"
 
 echo_info 'Verify dockviz installation'
 verify_installation dockviz
