@@ -5,7 +5,7 @@ set -eu -o pipefail
 . "$(dirname "${BASH_SOURCE[0]}")/common.sh"
 
 echo_info 'Install dockerfmt'
-LATEST=$(get_github_latest_release "jessfraz/dockfmt")
+LATEST=$(get_github_latest_release "reteps/dockerfmt")
 readonly LATEST
 case $(uname -m) in
   x86_64)
@@ -19,8 +19,9 @@ case $(uname -m) in
     ;;
 esac
 readonly ARCHITECTURE
-curl -fL# "https://github.com/jessfraz/dockfmt/releases/download/${LATEST}/dockfmt-linux-${ARCHITECTURE}" \
-  | sudo install -m 755 /dev/stdin /usr/local/bin/dockfmt
+curl -fL# "https://github.com/reteps/dockerfmt/releases/download/${LATEST}/dockerfmt-${LATEST}-linux-${ARCHITECTURE}.tar.gz" \
+  | tar xzf - -O dockerfmt \
+  | sudo install -m 755 /dev/stdin /usr/local/bin/dockerfmt
 
 echo_info 'Verify dockerfmt installation'
-verify_installation dockfmt
+verify_installation dockerfmt

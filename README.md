@@ -24,7 +24,7 @@ For other software installation instructions, run `make help` and read the resul
 * [csvq](https://github.com/mithrandie/csvq) (*)
 * Docker Engine or Podman (*)
 * Docker Compose (*)
-* [dockerfmt](https://github.com/jessfraz/dockfmt)
+* [dockerfmt](https://github.com/reteps/dockerfmt)
 * [dockviz](https://github.com/justone/dockviz)
 * [enhancd](https://github.com/b4b4r07/enhancd) (*)
 * [eza](https://github.com/eza-community/eza) (*)
