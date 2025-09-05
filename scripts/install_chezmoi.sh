@@ -39,6 +39,8 @@ curl -fL# "https://github.com/twpayne/chezmoi/releases/download/${LATEST}/chezmo
   | sudo tar xzf - -C "$TEMP_DIR"
 sudo install -m 755 "$TEMP_DIR"/chezmoi /usr/local/bin/
 sudo install -m 644 "$TEMP_DIR"/completions/chezmoi-completion.bash /usr/share/bash-completion/completions/chezmoi
+sudo mkdir -p /usr/share/fish/vendor_completions.d
+sudo install -m 644 "$TEMP_DIR"/completions/chezmoi.fish /usr/share/fish/vendor_completions.d/
 echo_info 'Verify chezmoi installation'
 verify_installation chezmoi
 
