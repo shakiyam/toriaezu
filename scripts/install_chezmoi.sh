@@ -19,10 +19,23 @@ case $(uname -m) in
     ;;
 esac
 readonly ARCHITECTURE
+
+# Use musl version for Oracle Linux 8 x86_64 to avoid GLIBC compatibility issues
+OS_ID=$(get_os_id)
+readonly OS_ID
+OS_VERSION=$(get_os_version)
+readonly OS_VERSION
+MUSL_SUFFIX=""
+if [[ "$OS_ID" == "ol" && "${OS_VERSION%%.*}" == "8" && "$ARCHITECTURE" == "amd64" ]]; then
+  echo_info 'Using musl static binary for GLIBC compatibility'
+  MUSL_SUFFIX="-musl"
+fi
+readonly MUSL_SUFFIX
+
 TEMP_DIR=$(mktemp -d)
 readonly TEMP_DIR
 trap 'sudo rm -rf "$TEMP_DIR"' EXIT
-curl -fL# "https://github.com/twpayne/chezmoi/releases/download/${LATEST}/chezmoi_${LATEST#v}_linux_${ARCHITECTURE}.tar.gz" \
+curl -fL# "https://github.com/twpayne/chezmoi/releases/download/${LATEST}/chezmoi_${LATEST#v}_linux${MUSL_SUFFIX}_${ARCHITECTURE}.tar.gz" \
   | sudo tar xzf - -C "$TEMP_DIR"
 sudo install -m 755 "$TEMP_DIR"/chezmoi /usr/local/bin/
 sudo install -m 644 "$TEMP_DIR"/completions/chezmoi-completion.bash /usr/share/bash-completion/completions/chezmoi
