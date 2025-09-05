@@ -32,6 +32,9 @@ install_docker: ## Install Docker Engine (*)
 install_docker-compose: install_docker ## Install Docker Compose (*)
 	@./scripts/install_docker-compose.sh
 
+install_dockerfmt: ## Install dockerfmt
+	@./scripts/install_dockerfmt.sh
+
 install_dockviz: install_docker install_go ## Install dockviz
 	@./scripts/install_dockviz.sh
 
