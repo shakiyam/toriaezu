@@ -24,7 +24,7 @@ echo_info 'Install make and curl'
 install_package make curl
 
 for dir in "$HOME/.local/bin" "$HOME/go/bin" "/usr/local/go/bin"; do
-  if [[ -d "$dir" && ":$PATH:" != *":$dir:"* ]]; then
+  if [[ ":$PATH:" != *":$dir:"* ]]; then
     export PATH="$dir:$PATH"
   fi
 done
