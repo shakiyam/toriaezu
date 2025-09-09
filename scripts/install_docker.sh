@@ -66,3 +66,19 @@ case $OS_ID in
     verify_installation docker
     ;;
 esac
+
+if [[ $(uname -m) == "aarch64" ]] && ! ([[ -f /.dockerenv ]] || grep -q 'docker\|lxc' /proc/1/cgroup 2>/dev/null); then
+  echo_info 'Setup multi-architecture support for ARM64 hosts'
+  case $OS_ID in
+    ol)
+      echo_warn 'Multi-arch emulation (AMD64 on ARM64) is not supported on Oracle Linux'
+      echo_warn 'Use native ARM64 containers or consider using Ubuntu for cross-platform support'
+      ;;
+    ubuntu)
+      echo_info 'Enable multi-arch emulation for Docker'
+      install_package qemu-user-static binfmt-support
+      sudo systemctl restart systemd-binfmt
+      echo_info 'Multi-architecture support enabled for AMD64 containers on ARM64'
+      ;;
+  esac
+fi
