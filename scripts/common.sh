@@ -34,7 +34,7 @@ get_github_latest_release() {
   fi
 
   local -r repo="$1"
-  curl -fsSL "https://api.github.com/repos/${repo}/releases/latest" 2>/dev/null \
+  curl -fsSL --proto '=https' --tlsv1.2 "https://api.github.com/repos/${repo}/releases/latest" 2>/dev/null \
     | grep '"tag_name":' \
     | sed -E 's/.*"([^"]+)".*/\1/' || die "Error: Failed to fetch latest release for ${repo}"
 }

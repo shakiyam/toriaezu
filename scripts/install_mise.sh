@@ -5,7 +5,7 @@ set -eEu -o pipefail
 . "$(dirname "${BASH_SOURCE[0]}")/common.sh"
 
 echo_info 'Install mise'
-curl -fsSL https://mise.jdx.dev/install.sh | sh
+curl -fsSL --proto '=https' --tlsv1.2 https://mise.jdx.dev/install.sh | sh
 eval "$(mise activate bash)"
 
 if [ -f "$HOME/.bashrc" ]; then

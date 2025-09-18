@@ -11,12 +11,12 @@ LATEST=$(get_github_latest_release "docker/compose")
 readonly LATEST
 case $OS_ID in
   ol)
-    curl -fL# "https://github.com/docker/compose/releases/download/${LATEST}/docker-compose-linux-$(uname -m)" \
+    curl -fL# --proto '=https' --tlsv1.2 "https://github.com/docker/compose/releases/download/${LATEST}/docker-compose-linux-$(uname -m)" \
       | sudo install -m 755 /dev/stdin /usr/local/bin/docker-compose
     ;;
   ubuntu)
     sudo mkdir -p /usr/local/lib/docker/cli-plugins
-    curl -fL# "https://github.com/docker/compose/releases/download/${LATEST}/docker-compose-linux-$(uname -m)" \
+    curl -fL# --proto '=https' --tlsv1.2 "https://github.com/docker/compose/releases/download/${LATEST}/docker-compose-linux-$(uname -m)" \
       | sudo install -m 755 /dev/stdin /usr/local/lib/docker/cli-plugins/docker-compose
     ;;
 esac

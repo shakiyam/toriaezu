@@ -15,7 +15,7 @@ case $OS_ID in
   ubuntu)
     install_package gnupg lsb-release
     sudo mkdir -p /etc/apt/keyrings
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
+    curl -fsSL --proto '=https' --tlsv1.2 https://download.docker.com/linux/ubuntu/gpg \
       | sudo gpg --yes --dearmor -o /etc/apt/keyrings/docker.gpg
     sudo chmod 644 /etc/apt/keyrings/docker.gpg
     case $(uname -m) in

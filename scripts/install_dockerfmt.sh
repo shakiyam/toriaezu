@@ -19,7 +19,7 @@ case $(uname -m) in
     ;;
 esac
 readonly ARCHITECTURE
-curl -fL# "https://github.com/reteps/dockerfmt/releases/download/${LATEST}/dockerfmt-${LATEST}-linux-${ARCHITECTURE}.tar.gz" \
+curl -fL# --proto '=https' --tlsv1.2 "https://github.com/reteps/dockerfmt/releases/download/${LATEST}/dockerfmt-${LATEST}-linux-${ARCHITECTURE}.tar.gz" \
   | tar xzf - -O dockerfmt \
   | sudo install -m 755 /dev/stdin /usr/local/bin/dockerfmt
 

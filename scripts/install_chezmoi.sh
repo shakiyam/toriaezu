@@ -35,7 +35,7 @@ readonly MUSL_SUFFIX
 TEMP_DIR=$(mktemp -d)
 readonly TEMP_DIR
 trap 'sudo rm -rf "$TEMP_DIR"' EXIT
-curl -fL# "https://github.com/twpayne/chezmoi/releases/download/${LATEST}/chezmoi_${LATEST#v}_linux${MUSL_SUFFIX}_${ARCHITECTURE}.tar.gz" \
+curl -fL# --proto '=https' --tlsv1.2 "https://github.com/twpayne/chezmoi/releases/download/${LATEST}/chezmoi_${LATEST#v}_linux${MUSL_SUFFIX}_${ARCHITECTURE}.tar.gz" \
   | sudo tar xzf - -C "$TEMP_DIR"
 sudo install -m 755 "$TEMP_DIR"/chezmoi /usr/local/bin/
 sudo install -m 644 "$TEMP_DIR"/completions/chezmoi-completion.bash /usr/share/bash-completion/completions/chezmoi

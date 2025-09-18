@@ -19,7 +19,7 @@ case $(uname -m) in
     ;;
 esac
 readonly ARCHITECTURE
-curl -fL# "https://github.com/regclient/regclient/releases/download/${LATEST}/regctl-linux-${ARCHITECTURE}" \
+curl -fL# --proto '=https' --tlsv1.2 "https://github.com/regclient/regclient/releases/download/${LATEST}/regctl-linux-${ARCHITECTURE}" \
   | sudo install -m 755 /dev/stdin /usr/local/bin/regctl
 
 echo_info 'Verify regctl installation'
