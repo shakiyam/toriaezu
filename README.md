@@ -28,9 +28,9 @@ For other software installation instructions, run `make help` and read the resul
 * [dockviz](https://github.com/justone/dockviz)
 * [enhancd](https://github.com/b4b4r07/enhancd) (*)
 * [eza](https://github.com/eza-community/eza) (*)
-* [fzf](https://github.com/junegunn/fzf) (*)
 * [fish](https://fishshell.com/) (*)
 * [Fisher](https://github.com/jorgebucaran/fisher) (*)
+* [fzf](https://github.com/junegunn/fzf) (*)
 * Git (*)
 * Go Programming Language
 * [hadolint](https://github.com/hadolint/hadolint) (*)
