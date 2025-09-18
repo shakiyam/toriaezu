@@ -14,13 +14,13 @@ STAR_TARGETS := $(shell ./scripts/star_targets.sh $(MAKEFILE_LIST))
 toriaezu: $(STAR_TARGETS) ## Install star(*) tools
 	@:
 
-install_bat: ## Install bat (*)
+install_bat: install_mise ## Install bat (*)
 	@./scripts/install_bat.sh
 
 install_chezmoi: ## Install chezmoi (*)
 	@./scripts/install_chezmoi.sh
 
-install_claude-code: install_node ## Install Claude Code
+install_claude-code: install_mise install_node ## Install Claude Code
 	@./scripts/install_claude-code.sh
 
 install_csvq: install_go ## Install csvq (*)
@@ -44,7 +44,7 @@ install_dtools: install_fzf ## Install some docker tools (*)
 install_enhancd: install_fisher install_fzf ## Install enhancd (*)
 	@./scripts/install_enhancd.fish
 
-install_eza: ## Install eza (*)
+install_eza: install_mise ## Install eza (*)
 	@./scripts/install_eza.sh
 
 install_fzf: ## Install fzf (*)
@@ -59,16 +59,16 @@ install_fisher: install_fish ## Install Fisher (*)
 install_git: ## Install Git (*)
 	@./scripts/install_git.sh
 
-install_go: ## Install Go Programming Language
+install_go: install_mise ## Install Go Programming Language
 	@./scripts/install_go.sh
 
-install_hadolint: ## Install hadolint (*)
+install_hadolint: install_mise ## Install hadolint (*)
 	@./scripts/install_hadolint.sh
 
 install_jq: ## Install jq (*)
 	@./scripts/install_jq.sh
 
-install_kubectl: ## Install kubectl
+install_kubectl: install_mise ## Install kubectl
 	@./scripts/install_kubectl.sh
 
 install_mise: ## Install mise (*)
@@ -77,7 +77,7 @@ install_mise: ## Install mise (*)
 install_nfs: ## Install NFS client and mount
 	@./scripts/install_nfs.sh
 
-install_node: ## Install Node.js
+install_node: install_mise ## Install Node.js
 	@./scripts/install_node.sh
 
 install_oci: ## Install OCI CLI
@@ -86,16 +86,16 @@ install_oci: ## Install OCI CLI
 install_regctl: ## Install regctl (*)
 	@./scripts/install_regctl.sh
 
-install_rg: ## Install rigrep (*)
+install_rg: ## Install ripgrep (*)
 	@./scripts/install_rg.sh
 
 install_s3fs: ## Install s3fs
 	@./scripts/install_s3fs.sh
 
-install_shellcheck: install_xz ## Install ShellCheck (*)
+install_shellcheck: install_mise ## Install ShellCheck (*)
 	@./scripts/install_shellcheck.sh
 
-install_shfmt: ## Install shfmt (*)
+install_shfmt: install_mise ## Install shfmt (*)
 	@./scripts/install_shfmt.sh
 
 install_tmux: ## Install tmux
@@ -104,7 +104,7 @@ install_tmux: ## Install tmux
 install_unzip: ## Install UnZip (*)
 	@./scripts/install_unzip.sh
 
-install_xz: ## Install xz (*)
+install_xz: ## Install XZ Utils (*)
 	@./scripts/install_xz.sh
 
 install_zip: ## Install Zip (*)

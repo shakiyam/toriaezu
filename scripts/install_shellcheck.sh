@@ -4,19 +4,14 @@ set -eu -o pipefail
 # shellcheck disable=SC1091
 . "$(dirname "${BASH_SOURCE[0]}")/common.sh"
 
-OS_ID=$(get_os_id)
-readonly OS_ID
-
 echo_info 'Install ShellCheck'
-case $OS_ID in
-  ol)
-    curl -fL# "https://github.com/koalaman/shellcheck/releases/download/stable/shellcheck-stable.linux.$(uname -m).tar.xz" \
-      | tar xJf - -O shellcheck-stable/shellcheck | sudo install -m 755 /dev/stdin /usr/local/bin/shellcheck
-    ;;
-  ubuntu)
-    install_package shellcheck
-    ;;
-esac
+if ! command -v mise &>/dev/null; then
+  die "mise is required but not installed. Run 'make install_mise' first."
+fi
+
+eval "$(mise activate bash)"
+mise use --global shellcheck@latest
+eval "$(mise activate bash)"
 
 echo_info 'Verify ShellCheck installation'
 verify_installation shellcheck

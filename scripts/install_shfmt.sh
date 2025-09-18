@@ -5,22 +5,13 @@ set -eu -o pipefail
 . "$(dirname "${BASH_SOURCE[0]}")/common.sh"
 
 echo_info 'Install shfmt'
-LATEST=$(get_github_latest_release "mvdan/sh")
-readonly LATEST
-case $(uname -m) in
-  x86_64)
-    ARCHITECTURE=amd64
-    ;;
-  aarch64)
-    ARCHITECTURE=arm64
-    ;;
-  *)
-    die "Error: Unsupported architecture: $(uname -m)"
-    ;;
-esac
-readonly ARCHITECTURE
-curl -fL# "https://github.com/mvdan/sh/releases/download/${LATEST}/shfmt_${LATEST}_linux_${ARCHITECTURE}" \
-  | sudo install -m 755 /dev/stdin /usr/local/bin/shfmt
+if ! command -v mise &>/dev/null; then
+  die "mise is required but not installed. Run 'make install_mise' first."
+fi
+
+eval "$(mise activate bash)"
+mise use --global shfmt@latest
+eval "$(mise activate bash)"
 
 echo_info 'Verify shfmt installation'
 verify_installation shfmt

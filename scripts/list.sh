@@ -4,6 +4,10 @@ set -eu -o pipefail
 # shellcheck disable=SC1091
 . "$(dirname "${BASH_SOURCE[0]}")/common.sh"
 
+if command -v mise &>/dev/null; then
+  eval "$(mise activate bash)"
+fi
+
 show_version() {
   local -r display_name="$1"
   local -r line_number="$2"

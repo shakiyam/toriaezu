@@ -6,11 +6,8 @@ set -eu -o pipefail
 
 echo_info 'Install mise'
 curl -fsSL https://mise.jdx.dev/install.sh | sh
+eval "$(mise activate bash)"
 
-# Add to PATH for current session
-export PATH="$HOME/.local/bin:$PATH"
-
-# Setup shell integration for Bash
 if [ -f "$HOME/.bashrc" ]; then
   if ! grep -q 'mise activate bash' "$HOME/.bashrc" 2>/dev/null; then
     # shellcheck disable=SC2016
@@ -19,7 +16,6 @@ if [ -f "$HOME/.bashrc" ]; then
   fi
 fi
 
-# Setup shell integration for Fish if installed
 if command -v fish &>/dev/null; then
   FISH_CONFIG="$HOME/.config/fish/config.fish"
   if [ -f "$FISH_CONFIG" ]; then
@@ -31,8 +27,4 @@ if command -v fish &>/dev/null; then
 fi
 
 echo_info 'Verify mise installation'
-if [ -x "$HOME/.local/bin/mise" ]; then
-  "$HOME/.local/bin/mise" --version
-else
-  die "Failed to install mise"
-fi
+verify_installation mise
