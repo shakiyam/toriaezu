@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eu -o pipefail
+set -eEu -o pipefail
 
 # shellcheck disable=SC1091
 . "$(dirname "$0")/common.sh"

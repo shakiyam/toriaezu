@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -eEu -o pipefail
 
 # shellcheck source=scripts/colored_echo.sh
 source "$(dirname "$0")/colored_echo.sh"

@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eu -o pipefail
+set -eEu -o pipefail
 
 # shellcheck disable=SC1091
 . "$(dirname "${BASH_SOURCE[0]}")/colored_echo.sh"

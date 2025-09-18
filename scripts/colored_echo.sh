@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eu -o pipefail
+set -eEu -o pipefail
 
 echo_error() {
   if [[ -t 2 ]]; then
