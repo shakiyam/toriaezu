@@ -71,6 +71,9 @@ install_jq: ## Install jq (*)
 install_kubectl: ## Install kubectl
 	@./scripts/install_kubectl.sh
 
+install_mise: ## Install mise (*)
+	@./scripts/install_mise.sh
+
 install_nfs: ## Install NFS client and mount
 	@./scripts/install_nfs.sh
 

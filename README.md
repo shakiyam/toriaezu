@@ -36,6 +36,7 @@ For other software installation instructions, run `make help` and read the resul
 * [hadolint](https://github.com/hadolint/hadolint) (*)
 * jq (*)
 * kubectl
+* [mise](https://mise.jdx.dev/) (*)
 * NFS client
 * Node.js
 * OCI CLI
