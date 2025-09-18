@@ -28,12 +28,18 @@ readonly LATEST
 curl -fL# "https://github.com/hadolint/hadolint/releases/download/${LATEST}/hadolint-Linux-${ARCHITECTURE}" \
   | sudo install -m 755 /dev/stdin /usr/local/bin/hadolint
 
-echo_info 'Decompress hadolint for Oracle Linux 9 SELinux compatibility'
 if [[ "$OS_ID" == "ol" && "${OS_VERSION%%.*}" == "9" ]]; then
+  echo_info 'Check if hadolint needs decompression for Oracle Linux 9 SELinux compatibility'
   if ! command -v upx &>/dev/null; then
     install_package --epel upx
   fi
-  sudo upx -d /usr/local/bin/hadolint
+  # Try to decompress, but ignore error if already decompressed or not packed
+  if sudo upx -t /usr/local/bin/hadolint &>/dev/null; then
+    echo_info 'Decompress hadolint'
+    sudo upx -d /usr/local/bin/hadolint
+  else
+    echo_info 'hadolint is not UPX compressed, skipping decompression'
+  fi
 fi
 
 echo_info 'Verify hadolint installation'
