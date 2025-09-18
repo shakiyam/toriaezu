@@ -4,7 +4,8 @@ set script_dir (dirname (status --current-filename))
 source "$script_dir/colored_echo.fish"
 
 if test (count $argv) -eq 0
-    echo_error "Usage: fishlint.fish <files...>"
+    echo_error "Error: No input files specified"
+    echo "Usage: fishlint.fish <files...>" >&2
     exit 1
 end
 
@@ -18,7 +19,7 @@ for f in $files
             set failed 1
         end
     else
-        echo_error "File not found: $f"
+        echo_error "Error: File not found: $f"
         set failed 1
     end
 end

@@ -128,7 +128,7 @@ install_package() {
       fi
       ;;
     *)
-      die "Error: Unsupported OS $os_id"
+      die "Error: Unsupported OS: $os_id"
       ;;
   esac
 }

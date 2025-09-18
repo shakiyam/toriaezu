@@ -6,7 +6,7 @@ set -eEu -o pipefail
 
 echo_info 'Install bat'
 if ! command -v mise &>/dev/null; then
-  die "mise is required but not installed. Run 'make install_mise' first."
+  die "Error: Command not found: mise. Run 'make install_mise'."
 fi
 
 eval "$(mise activate bash)"

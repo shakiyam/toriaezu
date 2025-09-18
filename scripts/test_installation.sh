@@ -13,13 +13,13 @@ echo_info "Running provision.sh all to install all tools..."
 if ./provision.sh all; then
   echo_success "All tools installation completed"
 else
-  echo_error "provision.sh all failed"
+  echo_error "Error: provision.sh all failed"
   exit 1
 fi
 
 echo_info "Getting tool list and verifying installations..."
 list_output=$(./scripts/list.sh 2>&1) || {
-  echo_error "list.sh failed"
+  echo_error "Error: list.sh failed"
   exit 1
 }
 
@@ -71,6 +71,6 @@ echo
 if ((not_installed_count == 0)); then
   echo_success "All testable tools installed successfully!"
 else
-  echo_error "Not installed: ${not_installed_tools[*]}"
+  echo_error "Error: Not installed: ${not_installed_tools[*]}"
   exit 1
 fi
