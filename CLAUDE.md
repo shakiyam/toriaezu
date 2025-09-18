@@ -36,17 +36,22 @@ This is the **toriaezu** project - an environment setup tool that automates the 
 
 ### Key Design Patterns
 1. **Modular Installation**: Each tool has its own `install_*.sh` script in the `scripts/` directory
-2. **Dependency Management**: Makefile handles inter-tool dependencies (e.g., csvq requires Go)
-3. **Cross-Platform Support**: Scripts detect OS and use appropriate package manager (dnf for Oracle Linux, apt for Ubuntu)
-4. **Star System**: Tools marked with (*) in Makefile comments are installed by default
+2. **Dependency Management**: Makefile handles inter-tool dependencies (e.g., csvq requires Go, most tools require mise)
+3. **Version Management**: Many development tools use mise for consistent version management across environments
+4. **Cross-Platform Support**: Scripts detect OS and use appropriate package manager (dnf for Oracle Linux, apt for Ubuntu) for system tools
+5. **Star System**: Tools marked with (*) in Makefile comments are installed by default
 
 ### Installation Flow
 1. User runs `./provision.sh`
 2. Script sets up environment and calls `make toriaezu`
 3. Makefile runs all star targets based on `scripts/star_targets.sh` output
 4. Each installation script:
-   - Checks if tool is already installed
-   - Installs using appropriate method (package manager, binary download, or source)
+   - Checks if required dependencies (like mise) are available
+   - Installs using appropriate method:
+     - Development tools: via mise for version management
+     - System tools: via package manager (dnf/apt)
+     - Binary tools: direct download from GitHub releases
+   - Activates mise environment when needed
    - Verifies installation success
 
 ### Code Standards
