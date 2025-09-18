@@ -40,29 +40,29 @@ get_github_latest_release() {
 }
 
 should_update_package_index() {
-  local -r cache="/tmp/.toriaezu_apt_update_timestamp"
-  local -r cache_duration=3600
+  local -r timestamp_file="/tmp/.toriaezu_apt_update_timestamp"
+  local -r update_interval=3600
   local -r sources_list="/etc/apt/sources.list"
   local -r sources_dir="/etc/apt/sources.list.d"
   local -r keyrings_dir="/etc/apt/keyrings"
 
-  if [[ ! -f "$cache" ]]; then
+  if [[ ! -f "$timestamp_file" ]]; then
     return 0
   fi
-  if [[ -d "$sources_dir" ]] && find "$sources_dir" -newer "$cache" -print -quit 2>/dev/null | grep -q .; then
+  if [[ -d "$sources_dir" ]] && find "$sources_dir" -newer "$timestamp_file" -print -quit 2>/dev/null | grep -q .; then
     echo_info "Repository configuration changed"
     return 0
   fi
-  if [[ -d "$keyrings_dir" ]] && find "$keyrings_dir" -newer "$cache" -print -quit 2>/dev/null | grep -q .; then
+  if [[ -d "$keyrings_dir" ]] && find "$keyrings_dir" -newer "$timestamp_file" -print -quit 2>/dev/null | grep -q .; then
     echo_info "GPG keyrings updated"
     return 0
   fi
-  if [[ -f "$sources_list" && "$sources_list" -nt "$cache" ]]; then
+  if [[ -f "$sources_list" && "$sources_list" -nt "$timestamp_file" ]]; then
     echo_info "Sources list modified"
     return 0
   fi
-  if [[ $(($(date +%s) - $(stat -c %Y "$cache" 2>/dev/null || echo 0))) -gt $cache_duration ]]; then
-    echo_info "Package cache expired"
+  if [[ $(($(date +%s) - $(stat -c %Y "$timestamp_file" 2>/dev/null || echo 0))) -gt $update_interval ]]; then
+    echo_info "Package index update interval expired"
     return 0
   fi
   return 1
@@ -101,7 +101,7 @@ install_package() {
         sudo apt-get update
         mark_package_index_updated
       else
-        echo_info "Using cached package index (less than 1 hour old)"
+        echo_info "Package index is recent (less than 1 hour old)"
       fi
       sudo DEBIAN_FRONTEND=noninteractive apt-get install -y "${packages[@]}"
       ;;
