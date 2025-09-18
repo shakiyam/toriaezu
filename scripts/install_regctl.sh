@@ -5,22 +5,13 @@ set -eEu -o pipefail
 . "$(dirname "${BASH_SOURCE[0]}")/common.sh"
 
 echo_info 'Install regctl'
-LATEST=$(get_github_latest_release "regclient/regclient")
-readonly LATEST
-case $(uname -m) in
-  x86_64)
-    ARCHITECTURE=amd64
-    ;;
-  aarch64)
-    ARCHITECTURE=arm64
-    ;;
-  *)
-    die "Error: Unsupported architecture: $(uname -m)"
-    ;;
-esac
-readonly ARCHITECTURE
-curl -fL# --proto '=https' --tlsv1.2 "https://github.com/regclient/regclient/releases/download/${LATEST}/regctl-linux-${ARCHITECTURE}" \
-  | sudo install -m 755 /dev/stdin /usr/local/bin/regctl
+if ! command -v mise &>/dev/null; then
+  die "Error: Command not found: mise. Run 'make install_mise'."
+fi
+
+eval "$(mise activate bash)"
+mise use --global regctl@latest
+eval "$(mise activate bash)"
 
 echo_info 'Verify regctl installation'
 verify_installation regctl
