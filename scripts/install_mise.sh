@@ -40,10 +40,3 @@ eval "$(mise activate bash)"
 
 echo_info 'Verify mise installation'
 verify_installation mise
-
-echo_info 'Install cosign'
-mise use --global cosign@latest
-eval "$(mise activate bash)"
-
-echo_info 'Verify cosign installation'
-verify_installation cosign
