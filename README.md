@@ -28,6 +28,7 @@ For other software installation instructions, run `make help` and read the resul
 * [dockviz](https://github.com/justone/dockviz)
 * [enhancd](https://github.com/b4b4r07/enhancd) (*)
 * [eza](https://github.com/eza-community/eza) (*)
+* [fd](https://github.com/sharkdp/fd) (*)
 * [fish](https://fishshell.com/) (*)
 * [Fisher](https://github.com/jorgebucaran/fisher) (*)
 * [fzf](https://github.com/junegunn/fzf) (*)
@@ -42,6 +43,7 @@ For other software installation instructions, run `make help` and read the resul
 * OCI CLI
 * [regctl](https://github.com/regclient/regclient) (*)
 * [ripgrep](https://github.com/BurntSushi/ripgrep) (*)
+* [ruff](https://github.com/astral-sh/ruff)
 * [s3fs](https://github.com/s3fs-fuse/s3fs-fuse)
 * [ShellCheck](https://github.com/koalaman/shellcheck) (*)
 * [shfmt](https://github.com/mvdan/sh) (*)

@@ -47,6 +47,9 @@ install_enhancd: install_fisher install_fzf ## Install enhancd (*)
 install_eza: install_mise ## Install eza (*)
 	@./scripts/install_eza.sh
 
+install_fd: install_mise ## Install fd (*)
+	@./scripts/install_fd.sh
+
 install_fzf: ## Install fzf (*)
 	@./scripts/install_fzf.sh
 
@@ -88,6 +91,9 @@ install_regctl: ## Install regctl (*)
 
 install_rg: ## Install ripgrep (*)
 	@./scripts/install_rg.sh
+
+install_ruff: install_mise ## Install ruff
+	@./scripts/install_ruff.sh
 
 install_s3fs: ## Install s3fs
 	@./scripts/install_s3fs.sh
