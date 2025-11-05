@@ -26,6 +26,9 @@ install_claude-code: install_mise install_node ## Install Claude Code
 install_csvq: install_go ## Install csvq (*)
 	@./scripts/install_csvq.sh
 
+install_delta: install_mise ## Install delta (*)
+	@./scripts/install_delta.sh
+
 install_docker: ## Install Docker Engine (*)
 	@./scripts/install_docker.sh
 
