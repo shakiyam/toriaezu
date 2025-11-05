@@ -1,6 +1,9 @@
 #!/bin/bash
 set -eEu -o pipefail
 
+# Prevent unbound variable error: mise activate bash references PROMPT_COMMAND under set -u
+PROMPT_COMMAND="${PROMPT_COMMAND:-}"
+
 # shellcheck disable=SC1091
 . "$(dirname "${BASH_SOURCE[0]}")/colored_echo.sh"
 
