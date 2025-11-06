@@ -71,7 +71,7 @@ install_git: ## Install Git (*)
 install_go: install_mise ## Install Go Programming Language
 	@./scripts/install_go.sh
 
-install_hadolint: install_mise ## Install hadolint (*)
+install_hadolint: install_mise ## Install hadolint
 	@./scripts/install_hadolint.sh
 
 install_jq: ## Install jq (*)
@@ -92,7 +92,7 @@ install_node: install_mise ## Install Node.js
 install_oci: ## Install OCI CLI
 	@./scripts/install_oci.sh
 
-install_regctl: ## Install regctl (*)
+install_regctl: ## Install regctl
 	@./scripts/install_regctl.sh
 
 install_rg: ## Install ripgrep (*)
@@ -104,10 +104,10 @@ install_ruff: install_mise ## Install ruff
 install_s3fs: ## Install s3fs
 	@./scripts/install_s3fs.sh
 
-install_shellcheck: install_mise ## Install ShellCheck (*)
+install_shellcheck: install_mise ## Install ShellCheck
 	@./scripts/install_shellcheck.sh
 
-install_shfmt: install_mise ## Install shfmt (*)
+install_shfmt: install_mise ## Install shfmt
 	@./scripts/install_shfmt.sh
 
 install_tmux: ## Install tmux

@@ -36,19 +36,19 @@ For other software installation instructions, run `make help` and read the resul
 * [fzf](https://github.com/junegunn/fzf) (*)
 * Git (*)
 * Go Programming Language
-* [hadolint](https://github.com/hadolint/hadolint) (*)
+* [hadolint](https://github.com/hadolint/hadolint)
 * jq (*)
 * kubectl
 * [mise](https://mise.jdx.dev/) (*)
 * NFS client
 * Node.js
 * OCI CLI
-* [regctl](https://github.com/regclient/regclient) (*)
+* [regctl](https://github.com/regclient/regclient)
 * [ripgrep](https://github.com/BurntSushi/ripgrep) (*)
 * [ruff](https://github.com/astral-sh/ruff)
 * [s3fs](https://github.com/s3fs-fuse/s3fs-fuse)
-* [ShellCheck](https://github.com/koalaman/shellcheck) (*)
-* [shfmt](https://github.com/mvdan/sh) (*)
+* [ShellCheck](https://github.com/koalaman/shellcheck)
+* [shfmt](https://github.com/mvdan/sh)
 * tmux
 * UnZip (*)
 * XZ Utils (*)
