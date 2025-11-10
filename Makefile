@@ -80,6 +80,9 @@ install_jq: ## Install jq (*)
 install_kubectl: install_mise ## Install kubectl
 	@./scripts/install_kubectl.sh
 
+install_markdownlint-cli2: install_mise ## Install markdownlint-cli2
+	@./scripts/install_markdownlint-cli2.sh
+
 install_mise: ## Install mise (*)
 	@./scripts/install_mise.sh
 

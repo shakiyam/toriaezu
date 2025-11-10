@@ -9,6 +9,7 @@ This is the **toriaezu** project - an environment setup tool that automates the 
 ## Key Commands
 
 ### Build and Installation Commands
+
 - `make help` - Show all available targets and their descriptions
 - `make toriaezu` - Install all default (starred) tools
 - `make all` - Install ALL available tools
@@ -16,7 +17,9 @@ This is the **toriaezu** project - an environment setup tool that automates the 
 - `make list` - List all available tools
 
 ### Development Commands
+
 *Note: These development commands are not shown in `make help` but are available for development use*
+
 - `make shellcheck` - Lint shell scripts
 - `make shfmt` - Lint shell script formatting
 - `make fishlint` - Lint Fish scripts
@@ -29,12 +32,14 @@ This is the **toriaezu** project - an environment setup tool that automates the 
 ## Architecture
 
 ### Directory Structure
+
 - `scripts/` - Individual installation scripts for each tool
 - `bin/` - Utility scripts (dclogs, dcls)
 - `Makefile` - Central build orchestration with dependency management
 - `provision.sh` - Main entry point that runs `make toriaezu`
 
 ### Key Design Patterns
+
 1. **Modular Installation**: Each tool has its own `install_*.sh` script in the `scripts/` directory
 2. **Dependency Management**: Makefile handles inter-tool dependencies (e.g., csvq requires Go, most tools require mise)
 3. **Version Management**: Many development tools use mise for consistent version management across environments
@@ -42,6 +47,7 @@ This is the **toriaezu** project - an environment setup tool that automates the 
 5. **Star System**: Tools marked with (*) in Makefile comments are installed by default
 
 ### Installation Flow
+
 1. User runs `./provision.sh`
 2. Script sets up environment and calls `make toriaezu`
 3. Makefile runs all star targets based on `scripts/star_targets.sh` output
@@ -55,6 +61,7 @@ This is the **toriaezu** project - an environment setup tool that automates the 
    - Verifies installation success
 
 ### Code Standards
+
 - Shell scripts follow strict bash practices with error handling
 - Bash scripts (.sh) use 2-space indentation
 - Fish scripts (.fish) use 4-space indentation
