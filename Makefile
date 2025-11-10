@@ -131,31 +131,34 @@ list: ## List tools
 help: ## Print this help
 	@./scripts/help.sh $(MAKEFILE_LIST)
 
-shellcheck: # Lint shell scripts
+help-dev: ## Print developer help
+	@./scripts/help-dev.sh $(MAKEFILE_LIST)
+
+shellcheck: #@ Lint shell scripts
 	@shellcheck provision.sh bin/* scripts/*.sh
 
-shfmt: # Lint shell script formatting
+shfmt: #@ Lint shell script formatting
 	@shfmt -l -d -i 2 -ci -bn provision.sh bin/* scripts/*.sh
 
-fishlint: # Lint Fish scripts
+fishlint: #@ Lint Fish scripts
 	@./scripts/fishlint.fish scripts/*.fish
 
-hadolint: # Lint Dockerfiles
+hadolint: #@ Lint Dockerfiles
 	@hadolint Dockerfile
 
-lint: shellcheck shfmt fishlint hadolint # Run all linting tasks
+lint: shellcheck shfmt fishlint hadolint #@ Run all linting tasks
 	@echo "All linting tasks completed"
 
-test-oraclelinux8: # Run Oracle Linux 8 test container
+test-oraclelinux8: #@ Run Oracle Linux 8 test container
 	@docker compose run --rm oraclelinux8
 
-test-oraclelinux9: # Run Oracle Linux 9 test container
+test-oraclelinux9: #@ Run Oracle Linux 9 test container
 	@docker compose run --rm oraclelinux9
 
-test-ubuntu24: # Run Ubuntu 24.04 test container
+test-ubuntu24: #@ Run Ubuntu 24.04 test container
 	@docker compose run --rm ubuntu24
 
-test: # Run automated tests in all Docker containers
+test: #@ Run automated tests in all Docker containers
 	@echo "Running automated tests..."
 	@echo "Testing Oracle Linux 8..."
 	@docker compose run --rm oraclelinux8 /home/testuser/toriaezu/scripts/test_installation.sh

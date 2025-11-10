@@ -18,13 +18,15 @@ This is the **toriaezu** project - an environment setup tool that automates the 
 
 ### Development Commands
 
-*Note: These development commands are not shown in `make help` but are available for development use*
+*Note: Use `make help-dev` to see all development targets*
 
+- `make help-dev` - Show all development targets (also shown in `make help`)
 - `make shellcheck` - Lint shell scripts
 - `make shfmt` - Lint shell script formatting
 - `make fishlint` - Lint Fish scripts
 - `make hadolint` - Lint Dockerfile
 - `make lint` - Run all linting tasks
+- `make test` - Run automated tests in all Docker containers
 - `make test-oraclelinux8` - Run Oracle Linux 8 test container
 - `make test-oraclelinux9` - Run Oracle Linux 9 test container
 - `make test-ubuntu24` - Run Ubuntu 24.04 test container
@@ -68,3 +70,9 @@ This is the **toriaezu** project - an environment setup tool that automates the 
 - Makefile uses tabs for indentation
 - ShellCheck directives used where needed
 - Scripts are designed to be idempotent
+
+### Makefile Comment Markers
+
+- `##` - User-facing targets (shown in `make help`)
+- `#@` - Developer-facing targets (shown in `make help-dev` only)
+- `(*)` - Star marker at end of comment indicates default installation targets
