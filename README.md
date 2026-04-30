@@ -35,6 +35,7 @@ For other software installation instructions, run `make help` and read the resul
 * [Fisher](https://github.com/jorgebucaran/fisher) (*)
 * [fzf](https://github.com/junegunn/fzf) (*)
 * Git (*)
+* [GitHub CLI](https://github.com/cli/cli)
 * Go Programming Language
 * [hadolint](https://github.com/hadolint/hadolint)
 * jq (*)

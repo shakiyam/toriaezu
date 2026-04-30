@@ -65,6 +65,9 @@ install_fish: ## Install fish shell (*)
 install_fisher: install_fish ## Install Fisher (*)
 	@./scripts/install_fisher.fish
 
+install_gh: install_mise ## Install GitHub CLI
+	@./scripts/install_gh.sh
+
 install_git: ## Install Git (*)
 	@./scripts/install_git.sh
 
