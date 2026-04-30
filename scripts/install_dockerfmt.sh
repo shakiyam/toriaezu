@@ -5,23 +5,13 @@ set -eEu -o pipefail
 . "$(dirname "${BASH_SOURCE[0]}")/common.sh"
 
 echo_info 'Install dockerfmt'
-LATEST=$(get_github_latest_release "reteps/dockerfmt")
-readonly LATEST
-case $(uname -m) in
-  x86_64)
-    ARCHITECTURE=amd64
-    ;;
-  aarch64)
-    ARCHITECTURE=arm64
-    ;;
-  *)
-    die "Error: Unsupported architecture: $(uname -m)"
-    ;;
-esac
-readonly ARCHITECTURE
-curl -fL# --proto '=https' --tlsv1.2 "https://github.com/reteps/dockerfmt/releases/download/${LATEST}/dockerfmt-${LATEST}-linux-${ARCHITECTURE}.tar.gz" \
-  | tar xzf - -O dockerfmt \
-  | sudo install -m 755 /dev/stdin /usr/local/bin/dockerfmt
+if ! command -v mise &>/dev/null; then
+  die "Error: Command not found: mise. Run 'make install_mise'."
+fi
+
+eval "$(mise activate bash)"
+mise use --global aqua:reteps/dockerfmt@latest
+eval "$(mise activate bash)"
 
 echo_info 'Verify dockerfmt installation'
 verify_installation dockerfmt
