@@ -35,7 +35,7 @@ install_delta: install_mise ## Install delta (*)
 install_docker: ## Install Docker Engine (*)
 	@./scripts/install_docker.sh
 
-install_docker-compose: install_docker ## Install Docker Compose (*)
+install_docker-compose: install_docker install_mise ## Install Docker Compose (*)
 	@./scripts/install_docker-compose.sh
 
 install_dockerfmt: install_mise ## Install dockerfmt

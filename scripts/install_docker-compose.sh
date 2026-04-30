@@ -7,17 +7,40 @@ OS_ID=$(get_os_id)
 readonly OS_ID
 
 echo_info 'Install Docker Compose'
-LATEST=$(get_github_latest_release "docker/compose")
-readonly LATEST
+if ! command -v mise &>/dev/null; then
+  die "Error: Command not found: mise. Run 'make install_mise'."
+fi
+
+echo_info 'Cleanup legacy Docker Compose installations'
 case $OS_ID in
   ol)
-    curl -fL# --proto '=https' --tlsv1.2 "https://github.com/docker/compose/releases/download/${LATEST}/docker-compose-linux-$(uname -m)" \
-      | sudo install -m 755 /dev/stdin /usr/local/bin/docker-compose
+    sudo rm -f /usr/local/bin/docker-compose
     ;;
   ubuntu)
-    sudo mkdir -p /usr/local/lib/docker/cli-plugins
-    curl -fL# --proto '=https' --tlsv1.2 "https://github.com/docker/compose/releases/download/${LATEST}/docker-compose-linux-$(uname -m)" \
-      | sudo install -m 755 /dev/stdin /usr/local/lib/docker/cli-plugins/docker-compose
+    sudo rm -f /usr/local/lib/docker/cli-plugins/docker-compose
+    ;;
+esac
+
+eval "$(mise activate bash)"
+mise use --global aqua:docker/compose@latest
+eval "$(mise activate bash)"
+
+# The aqua package ships the binary as `docker-cli-plugin-docker-compose`,
+# so mise does not auto-create a `docker-compose` shim. Link it manually via
+# mise's `latest` alias so future `mise upgrade` is picked up transparently.
+COMPOSE_BIN="$(dirname "$(mise where aqua:docker/compose)")/latest/docker-cli-plugin-docker-compose"
+readonly COMPOSE_BIN
+
+case $OS_ID in
+  ol)
+    echo_info 'Link docker-compose into ~/.local/bin'
+    mkdir -p "${HOME}/.local/bin"
+    ln -sf "$COMPOSE_BIN" "${HOME}/.local/bin/docker-compose"
+    ;;
+  ubuntu)
+    echo_info 'Register Docker Compose as Docker CLI plugin'
+    mkdir -p "${HOME}/.docker/cli-plugins"
+    ln -sf "$COMPOSE_BIN" "${HOME}/.docker/cli-plugins/docker-compose"
     ;;
 esac
 
