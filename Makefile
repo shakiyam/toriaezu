@@ -140,6 +140,9 @@ install_yamlfmt: install_mise ## Install yamlfmt
 install_zip: ## Install Zip (*)
 	@./scripts/install_zip.sh
 
+install_zizmor: install_mise ## Install zizmor
+	@./scripts/install_zizmor.sh
+
 list: ## List tools
 	@./scripts/list.sh
 

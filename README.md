@@ -59,6 +59,7 @@ For other software installation instructions, run `make help` and read the resul
 * XZ Utils (*)
 * [yamlfmt](https://github.com/google/yamlfmt)
 * Zip (*)
+* [zizmor](https://github.com/zizmorcore/zizmor)
 
 Target OS
 ---------
