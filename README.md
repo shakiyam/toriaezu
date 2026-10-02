@@ -57,6 +57,7 @@ For other software installation instructions, run `make help` and read the resul
 * [Trivy](https://github.com/aquasecurity/trivy)
 * UnZip (*)
 * XZ Utils (*)
+* [yamlfmt](https://github.com/google/yamlfmt)
 * Zip (*)
 
 Target OS

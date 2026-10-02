@@ -134,6 +134,9 @@ install_unzip: ## Install UnZip (*)
 install_xz: ## Install XZ Utils (*)
 	@./scripts/install_xz.sh
 
+install_yamlfmt: install_mise ## Install yamlfmt
+	@./scripts/install_yamlfmt.sh
+
 install_zip: ## Install Zip (*)
 	@./scripts/install_zip.sh
 
