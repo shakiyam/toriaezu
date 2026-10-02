@@ -35,6 +35,9 @@ install_csvq: install_go ## Install csvq (*)
 install_delta: install_mise ## Install delta (*)
 	@./scripts/install_delta.sh
 
+install_dive: install_mise ## Install dive
+	@./scripts/install_dive.sh
+
 install_docker: ## Install Docker Engine (*)
 	@./scripts/install_docker.sh
 

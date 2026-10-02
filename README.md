@@ -25,6 +25,7 @@ For other software installation instructions, run `make help` and read the resul
 * [Claude Code](https://claude.ai/code)
 * [csvq](https://github.com/mithrandie/csvq) (*)
 * [delta](https://github.com/dandavison/delta) (*)
+* [dive](https://github.com/wagoodman/dive)
 * Docker Engine or Podman (*)
 * Docker Compose (*)
 * [dockerfmt](https://github.com/reteps/dockerfmt)
