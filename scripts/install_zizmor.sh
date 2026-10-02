@@ -11,7 +11,7 @@ readonly OS_VERSION
 
 echo_info 'Install zizmor'
 if [[ "$OS_ID" == "ol" && "${OS_VERSION%%.*}" == "8" ]]; then
-  echo_warn 'zizmor is not supported on Oracle Linux 8 (requires GLIBC 2.29 or later)'
+  echo_warn 'zizmor is not supported on Oracle Linux 8 (requires GLIBC 2.34 or later)'
   exit 0
 fi
 if ! command -v mise &>/dev/null; then

@@ -29,7 +29,7 @@ if [[ -f /.dockerenv ]] || [[ -n "${DOCKER_CONTAINER:-}" ]]; then
   skip_reasons["OCI CLI"]="requires Docker/Podman, not available in container"
 fi
 if [[ "$ID" == "ol" && "${VERSION_ID%%.*}" == "8" ]]; then
-  skip_reasons["zizmor"]="requires GLIBC 2.29 or later, not available on Oracle Linux 8"
+  skip_reasons["zizmor"]="requires GLIBC 2.34 or later, not available on Oracle Linux 8"
 fi
 
 installed_count=0
