@@ -10,9 +10,9 @@ if ! command -v mise &>/dev/null; then
 fi
 
 eval "$(mise activate bash)"
-LATEST=$(get_github_latest_release "justone/dockviz")
-readonly LATEST
-go install "github.com/justone/dockviz@$LATEST"
+rm -f "$HOME/.local/bin/dockviz" # Remove binary installed by go install in older versions
+mise use --global go:github.com/justone/dockviz@latest
+eval "$(mise activate bash)"
 
 echo_info 'Verify dockviz installation'
 verify_installation dockviz
