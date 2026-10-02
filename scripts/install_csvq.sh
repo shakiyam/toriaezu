@@ -10,9 +10,9 @@ if ! command -v mise &>/dev/null; then
 fi
 
 eval "$(mise activate bash)"
-LATEST=$(get_github_latest_release "mithrandie/csvq")
-readonly LATEST
-go install "github.com/mithrandie/csvq@$LATEST"
+rm -f "$HOME/.local/bin/csvq" # Remove binary installed by go install in older versions
+mise use --global go:github.com/mithrandie/csvq@latest
+eval "$(mise activate bash)"
 
 echo_info 'Verify csvq installation'
 verify_installation csvq
