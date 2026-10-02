@@ -8,11 +8,12 @@ RUN if command -v dnf >/dev/null 2>&1; then \
     elif command -v apt-get >/dev/null 2>&1; then \
       apt-get update && apt-get install -y --no-install-recommends sudo && apt-get clean && rm -rf /var/lib/apt/lists/*; \
     fi \
-      && useradd -m -s /bin/bash testuser \
+      && groupadd -g 10001 testuser \
+      && useradd -m -u 10001 -g 10001 -s /bin/bash testuser \
       && echo "testuser ALL=(ALL) NOPASSWD:ALL" | tee /etc/sudoers.d/testuser >/dev/null \
       && chmod 440 /etc/sudoers.d/testuser
 WORKDIR /home/testuser/toriaezu
-COPY --chown=testuser:testuser . .
-USER testuser
+COPY --chown=10001:10001 . .
+USER 10001:10001
 ENV PATH="/home/testuser/.local/bin:/home/testuser/go/bin:${PATH}:/usr/local/go/bin"
 CMD ["/bin/bash"]
