@@ -54,6 +54,7 @@ For other software installation instructions, run `make help` and read the resul
 * [ShellCheck](https://github.com/koalaman/shellcheck)
 * [shfmt](https://github.com/mvdan/sh)
 * tmux
+* [Trivy](https://github.com/aquasecurity/trivy)
 * UnZip (*)
 * XZ Utils (*)
 * Zip (*)

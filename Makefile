@@ -125,6 +125,9 @@ install_shfmt: install_mise ## Install shfmt
 install_tmux: ## Install tmux
 	@./scripts/install_tmux.sh
 
+install_trivy: install_mise ## Install Trivy
+	@./scripts/install_trivy.sh
+
 install_unzip: ## Install UnZip (*)
 	@./scripts/install_unzip.sh
 
