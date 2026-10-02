@@ -15,8 +15,9 @@ show_version() {
 
   printf %-30s "$display_name"
   local output
-  if output=$(eval "$command" 2>&1); then
-    echo "$output" | awk "NR==$line_number"
+  local line
+  if output=$(eval "$command" 2>/dev/null) && line=$(echo "$output" | awk "NR==$line_number") && [[ -n "$line" ]]; then
+    echo "$line"
   else
     echo_warn "not found"
   fi

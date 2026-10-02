@@ -50,11 +50,11 @@ while IFS= read -r line; do
   fi
 
   version_info=$(echo "$line" | cut -c31- | sed 's/^[[:space:]]*//')
-  if [[ "$version_info" == *"not found"* ]]; then
+  if [[ -z "$version_info" || "$version_info" == "not found" ]]; then
     echo_warn "✗ $tool_name"
     not_installed_tools+=("$tool_name")
     ((++not_installed_count))
-  elif [[ -n "$version_info" ]]; then
+  else
     echo_success "✓ $tool_name"
     ((++installed_count))
   fi
