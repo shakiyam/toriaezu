@@ -23,13 +23,15 @@ list_output=$(./scripts/list.sh 2>&1) || {
   exit 1
 }
 
-in_container=false
+declare -A skip_reasons=()
 if [[ -f /.dockerenv ]] || [[ -n "${DOCKER_CONTAINER:-}" ]]; then
-  in_container=true
   echo_info "Running in container - will skip Docker-dependent tools"
+  skip_reasons["OCI CLI"]="requires Docker/Podman, not available in container"
+fi
+if [[ "$ID" == "ol" && "${VERSION_ID%%.*}" == "8" ]]; then
+  skip_reasons["zizmor"]="requires GLIBC 2.29 or later, not available on Oracle Linux 8"
 fi
 
-skip_in_container=("OCI CLI")
 installed_count=0
 not_installed_count=0
 skipped_count=0
@@ -41,14 +43,10 @@ while IFS= read -r line; do
   tool_name=$(echo "$line" | cut -c1-30 | sed 's/[[:space:]]*$//')
   [[ -z "$tool_name" ]] && continue
 
-  if [[ "$in_container" == true ]]; then
-    for skip_tool in "${skip_in_container[@]}"; do
-      if [[ "$tool_name" == "$skip_tool" ]]; then
-        echo_info "⊘ $tool_name (skipped in container)"
-        ((++skipped_count))
-        continue 2
-      fi
-    done
+  if [[ -n "${skip_reasons[$tool_name]:-}" ]]; then
+    echo_info "⊘ $tool_name (skipped: ${skip_reasons[$tool_name]})"
+    ((++skipped_count))
+    continue
   fi
 
   version_info=$(echo "$line" | cut -c31- | sed 's/^[[:space:]]*//')
@@ -62,7 +60,7 @@ while IFS= read -r line; do
   fi
 done <<<"$list_output"
 
-if [[ "$in_container" == true && "$skipped_count" -gt 0 ]]; then
+if ((skipped_count > 0)); then
   echo_info "Installed: $installed_count, Not installed: $not_installed_count, Skipped: $skipped_count"
 else
   echo_info "Installed: $installed_count, Not installed: $not_installed_count"
