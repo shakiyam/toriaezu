@@ -24,6 +24,7 @@ show_version() {
 
 echo_info 'Installed Software:'
 
+show_version "actionlint" 1 "actionlint --version"
 show_version "atuin" 1 "atuin --version"
 show_version "bat" 1 "bat --version"
 show_version "chezmoi" 1 "chezmoi --version"

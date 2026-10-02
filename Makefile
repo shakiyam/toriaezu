@@ -14,6 +14,9 @@ STAR_TARGETS := $(shell ./scripts/star_targets.sh $(MAKEFILE_LIST))
 toriaezu: $(STAR_TARGETS) ## Install star(*) tools
 	@:
 
+install_actionlint: install_mise ## Install actionlint
+	@./scripts/install_actionlint.sh
+
 install_atuin: install_mise ## Install atuin (*)
 	@./scripts/install_atuin.sh
 

@@ -18,6 +18,7 @@ Installed Software
 All software with an asterisk is installed by default.
 For other software installation instructions, run `make help` and read the results.
 
+* [actionlint](https://github.com/rhysd/actionlint)
 * [atuin](https://github.com/atuinsh/atuin) (*)
 * [bat](https://github.com/sharkdp/bat) (*)
 * [chezmoi](https://www.chezmoi.io/) (*)
