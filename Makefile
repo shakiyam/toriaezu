@@ -83,6 +83,9 @@ install_go: install_mise ## Install Go Programming Language
 install_hadolint: install_mise ## Install hadolint
 	@./scripts/install_hadolint.sh
 
+install_hunk: install_mise ## Install hunk
+	@./scripts/install_hunk.sh
+
 install_jq: ## Install jq (*)
 	@./scripts/install_jq.sh
 
