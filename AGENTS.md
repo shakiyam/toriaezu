@@ -56,9 +56,9 @@ This is the **toriaezu** project - an environment setup tool that automates the 
 4. Each installation script:
    - Checks if required dependencies (like mise) are available
    - Installs using appropriate method:
-     - Development tools: via mise for version management
+     - Most tools: via mise, using the registry short name by default, or an explicit backend (`aqua:`, `github:`, `go:`) when the tool is not in the registry or its default build does not run on a target OS (see each `install_*.sh`)
      - System tools: via package manager (dnf/apt)
-     - Binary tools: direct download from GitHub releases
+     - Others (e.g., mise itself, Fisher): direct download
    - Activates mise environment when needed
    - Verifies installation success
 
