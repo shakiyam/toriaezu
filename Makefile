@@ -23,7 +23,7 @@ install_atuin: install_mise ## Install atuin (*)
 install_bat: install_mise ## Install bat (*)
 	@./scripts/install_bat.sh
 
-install_chezmoi: ## Install chezmoi (*)
+install_chezmoi: install_mise ## Install chezmoi (*)
 	@./scripts/install_chezmoi.sh
 
 install_claude-code: install_mise install_node ## Install Claude Code
