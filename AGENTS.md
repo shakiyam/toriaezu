@@ -36,7 +36,8 @@ This is the **toriaezu** project - an environment setup tool that automates the 
 ### Directory Structure
 
 - `scripts/` - Individual installation scripts for each tool
-- `bin/` - Utility scripts (dclogs, dcls)
+- `bin/` - Utility scripts (bash or fish) installed to `~/.local/bin` by `install_*.sh`
+- `tests/` - Tests for utility scripts, run by `make test-<name>`
 - `Makefile` - Central build orchestration with dependency management
 - `provision.sh` - Main entry point that runs `make toriaezu`
 

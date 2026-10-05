@@ -83,6 +83,9 @@ install_go: install_mise ## Install Go Programming Language
 install_hadolint: install_mise ## Install hadolint
 	@./scripts/install_hadolint.sh
 
+install_history-cleanup: install_atuin install_fish ## Install history-cleanup
+	@./scripts/install_history-cleanup.sh
+
 install_hunk: install_mise ## Install hunk
 	@./scripts/install_hunk.sh
 
@@ -156,19 +159,22 @@ help-dev: ## Print developer help
 	@./scripts/help-dev.sh $(MAKEFILE_LIST)
 
 shellcheck: #@ Lint shell scripts
-	@shellcheck provision.sh bin/* scripts/*.sh
+	@shellcheck provision.sh bin/dclogs bin/dcls scripts/*.sh
 
 shfmt: #@ Lint shell script formatting
-	@shfmt -l -d -i 2 -ci -bn provision.sh bin/* scripts/*.sh
+	@shfmt -l -d -i 2 -ci -bn provision.sh bin/dclogs bin/dcls scripts/*.sh
 
 fishlint: #@ Lint Fish scripts
-	@./scripts/fishlint.fish scripts/*.fish
+	@./scripts/fishlint.fish scripts/*.fish bin/*.fish tests/*.fish
 
 hadolint: #@ Lint Dockerfiles
 	@hadolint Dockerfile
 
 lint: shellcheck shfmt fishlint hadolint #@ Run all linting tasks
 	@echo "All linting tasks completed"
+
+test-history-cleanup: #@ Run history-cleanup tests with isolated histories
+	@./tests/history-cleanup.test.fish
 
 test-oraclelinux8: #@ Run Oracle Linux 8 test container
 	@docker compose run --rm oraclelinux8
