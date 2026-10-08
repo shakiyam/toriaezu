@@ -51,7 +51,7 @@ This is the **toriaezu** project - an environment setup tool that automates the 
 ### Key Design Patterns
 
 1. **Modular Installation**: Each tool has its own `install_*.sh` script in the `scripts/` directory
-2. **Dependency Management**: Makefile handles inter-tool dependencies (e.g., csvq requires Go, most tools require mise)
+2. **Dependency Management**: Makefile handles inter-tool dependencies (e.g., dockviz requires Docker and Go, most tools require mise)
 3. **Version Management**: Many development tools use mise for consistent version management across environments
 4. **Cross-Platform Support**: Scripts detect OS and use appropriate package manager (dnf for Oracle Linux, apt for Ubuntu) for system tools
 5. **Tool Groups**: `BASE_TARGETS`, `DEV_TARGETS`, and `CONTAINER_TARGETS` in Makefile list the install targets of each group explicitly; tools in no group are installed individually

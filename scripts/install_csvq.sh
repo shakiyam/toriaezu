@@ -11,7 +11,8 @@ fi
 
 eval "$(mise activate bash)"
 rm -f "$HOME/.local/bin/csvq" # Remove binary installed by go install in older versions
-mise use --global go:github.com/mithrandie/csvq@latest
+mise unuse --global go:github.com/mithrandie/csvq
+mise use --global github:mithrandie/csvq@latest
 eval "$(mise activate bash)"
 
 echo_info 'Verify csvq installation'
