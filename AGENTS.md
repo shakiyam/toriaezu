@@ -27,10 +27,14 @@ This is the **toriaezu** project - an environment setup tool that automates the 
 - `make shfmt` - Lint shell script formatting
 - `make fishlint` - Lint Fish scripts
 - `make hadolint` - Lint Dockerfile
-- `make test` - Run automated tests in all Docker containers
-- `make test-oraclelinux8` - Run Oracle Linux 8 test container
-- `make test-oraclelinux9` - Run Oracle Linux 9 test container
-- `make test-ubuntu24` - Run Ubuntu 24.04 test container
+- `make test` - Run installation tests in all containers
+- `make test-history-cleanup` - Run history-cleanup tests with isolated histories
+- `make test-oraclelinux8` - Run installation tests in Oracle Linux 8 container
+- `make test-oraclelinux9` - Run installation tests in Oracle Linux 9 container
+- `make test-ubuntu24` - Run installation tests in Ubuntu 24.04 container
+- `make shell-oraclelinux8` - Open a shell in Oracle Linux 8 test container
+- `make shell-oraclelinux9` - Open a shell in Oracle Linux 9 test container
+- `make shell-ubuntu24` - Open a shell in Ubuntu 24.04 test container
 
 ## Architecture
 
@@ -38,7 +42,7 @@ This is the **toriaezu** project - an environment setup tool that automates the 
 
 - `scripts/` - Individual installation scripts for each tool
 - `bin/` - Utility scripts (bash or fish) installed to `~/.local/bin` by `install_*.sh`
-- `tests/` - Tests for utility scripts, run by `make test-<name>`
+- `tests/` - Tests for utility scripts, run by `make test-<utility>`
 - `Makefile` - Central build orchestration with dependency management
 - `provision.sh` - Main entry point that runs `make toriaezu`
 

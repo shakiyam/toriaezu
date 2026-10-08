@@ -222,24 +222,26 @@ fishlint: #@ Lint Fish scripts
 hadolint: #@ Lint Dockerfiles
 	@hadolint Dockerfile
 
-test: #@ Run automated tests in all Docker containers
-	@echo "Running automated tests..."
-	@echo "Testing Oracle Linux 8..."
-	@docker compose run --rm oraclelinux8 /home/testuser/toriaezu/scripts/test_installation.sh
-	@echo "Testing Oracle Linux 9..."
-	@docker compose run --rm oraclelinux9 /home/testuser/toriaezu/scripts/test_installation.sh
-	@echo "Testing Ubuntu 24.04..."
-	@docker compose run --rm ubuntu24 /home/testuser/toriaezu/scripts/test_installation.sh
-	@echo "All tests completed"
+test: test-oraclelinux8 test-oraclelinux9 test-ubuntu24 #@ Run installation tests in all containers
+	@echo "All installation tests completed"
 
 test-history-cleanup: #@ Run history-cleanup tests with isolated histories
 	@./tests/history-cleanup.test.fish
 
-test-oraclelinux8: #@ Run Oracle Linux 8 test container
+test-oraclelinux8: #@ Run installation tests in Oracle Linux 8 container
+	@docker compose run --rm oraclelinux8 /home/testuser/toriaezu/scripts/test_installation.sh
+
+test-oraclelinux9: #@ Run installation tests in Oracle Linux 9 container
+	@docker compose run --rm oraclelinux9 /home/testuser/toriaezu/scripts/test_installation.sh
+
+test-ubuntu24: #@ Run installation tests in Ubuntu 24.04 container
+	@docker compose run --rm ubuntu24 /home/testuser/toriaezu/scripts/test_installation.sh
+
+shell-oraclelinux8: #@ Open a shell in Oracle Linux 8 test container
 	@docker compose run --rm oraclelinux8
 
-test-oraclelinux9: #@ Run Oracle Linux 9 test container
+shell-oraclelinux9: #@ Open a shell in Oracle Linux 9 test container
 	@docker compose run --rm oraclelinux9
 
-test-ubuntu24: #@ Run Ubuntu 24.04 test container
+shell-ubuntu24: #@ Open a shell in Ubuntu 24.04 test container
 	@docker compose run --rm ubuntu24
