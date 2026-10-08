@@ -10,38 +10,93 @@ ALL_INSTALL_TARGETS := $(shell grep -E -o ^install_[0-9A-Za-z_-]+: $(MAKEFILE_LI
 all: $(ALL_INSTALL_TARGETS)
 	@:
 
-STAR_TARGETS := $(shell ./scripts/star_targets.sh $(MAKEFILE_LIST))
-toriaezu: $(STAR_TARGETS) ## Install star(*) tools
+toriaezu: base ## Install default tools (same as base)
 	@:
+
+BASE_TARGETS := \
+	install_atuin \
+	install_bat \
+	install_chezmoi \
+	install_delta \
+	install_enhancd \
+	install_eza \
+	install_fd \
+	install_fish \
+	install_fisher \
+	install_fzf \
+	install_git \
+	install_jq \
+	install_mise \
+	install_rg \
+	install_unzip \
+	install_xz \
+	install_zip
+base: $(BASE_TARGETS) ## Install base tools
+	@:
+
+DEV_TARGETS := \
+	install_actionlint \
+	install_claude-code \
+	install_dockerfmt \
+	install_gh \
+	install_hadolint \
+	install_herdr \
+	install_hunk \
+	install_markdownlint-cli2 \
+	install_node \
+	install_ruff \
+	install_shellcheck \
+	install_shfmt \
+	install_trivy \
+	install_yamlfmt \
+	install_zizmor
+dev: $(DEV_TARGETS) ## Install development tools
+	@:
+
+CONTAINER_TARGETS := \
+	install_docker \
+	install_docker-compose \
+	install_dtools
+container: $(CONTAINER_TARGETS) ## Install container tools
+	@:
+
+list: ## List tools
+	@./scripts/list.sh
+
+help: ## Print this help
+	@./scripts/help.sh $(MAKEFILE_LIST)
+
+help-dev: ## Print developer help
+	@./scripts/help-dev.sh $(MAKEFILE_LIST)
 
 install_actionlint: install_mise ## Install actionlint
 	@./scripts/install_actionlint.sh
 
-install_atuin: install_mise ## Install atuin (*)
+install_atuin: install_mise ## Install atuin
 	@./scripts/install_atuin.sh
 
-install_bat: install_mise ## Install bat (*)
+install_bat: install_mise ## Install bat
 	@./scripts/install_bat.sh
 
-install_chezmoi: install_mise ## Install chezmoi (*)
+install_chezmoi: install_mise ## Install chezmoi
 	@./scripts/install_chezmoi.sh
 
 install_claude-code: install_mise install_node ## Install Claude Code
 	@./scripts/install_claude-code.sh
 
-install_csvq: install_go ## Install csvq (*)
+install_csvq: install_go ## Install csvq
 	@./scripts/install_csvq.sh
 
-install_delta: install_mise ## Install delta (*)
+install_delta: install_mise ## Install delta
 	@./scripts/install_delta.sh
 
 install_dive: install_mise ## Install dive
 	@./scripts/install_dive.sh
 
-install_docker: ## Install Docker Engine (*)
+install_docker: ## Install Docker Engine
 	@./scripts/install_docker.sh
 
-install_docker-compose: install_docker install_mise ## Install Docker Compose (*)
+install_docker-compose: install_docker install_mise ## Install Docker Compose
 	@./scripts/install_docker-compose.sh
 
 install_dockerfmt: install_mise ## Install dockerfmt
@@ -50,31 +105,31 @@ install_dockerfmt: install_mise ## Install dockerfmt
 install_dockviz: install_docker install_go ## Install dockviz
 	@./scripts/install_dockviz.sh
 
-install_dtools: install_fzf ## Install some docker tools (*)
+install_dtools: install_fzf ## Install some docker tools
 	@./scripts/install_dtools.sh
 
-install_enhancd: install_fisher install_fzf ## Install enhancd (*)
+install_enhancd: install_fisher install_fzf ## Install enhancd
 	@./scripts/install_enhancd.fish
 
-install_eza: install_mise ## Install eza (*)
+install_eza: install_mise ## Install eza
 	@./scripts/install_eza.sh
 
-install_fd: install_mise ## Install fd (*)
+install_fd: install_mise ## Install fd
 	@./scripts/install_fd.sh
 
-install_fzf: ## Install fzf (*)
+install_fzf: ## Install fzf
 	@./scripts/install_fzf.sh
 
-install_fish: ## Install fish shell (*)
+install_fish: ## Install fish shell
 	@./scripts/install_fish.sh
 
-install_fisher: install_fish ## Install Fisher (*)
+install_fisher: install_fish ## Install Fisher
 	@./scripts/install_fisher.fish
 
 install_gh: install_mise ## Install GitHub CLI
 	@./scripts/install_gh.sh
 
-install_git: ## Install Git (*)
+install_git: ## Install Git
 	@./scripts/install_git.sh
 
 install_go: install_mise ## Install Go Programming Language
@@ -92,7 +147,7 @@ install_history-cleanup: install_atuin install_fish ## Install history-cleanup
 install_hunk: install_mise ## Install hunk
 	@./scripts/install_hunk.sh
 
-install_jq: ## Install jq (*)
+install_jq: ## Install jq
 	@./scripts/install_jq.sh
 
 install_kubectl: install_mise ## Install kubectl
@@ -101,7 +156,7 @@ install_kubectl: install_mise ## Install kubectl
 install_markdownlint-cli2: install_mise install_node ## Install markdownlint-cli2
 	@./scripts/install_markdownlint-cli2.sh
 
-install_mise: ## Install mise (*)
+install_mise: ## Install mise
 	@./scripts/install_mise.sh
 
 install_nfs: ## Install NFS client and mount
@@ -116,7 +171,7 @@ install_oci: ## Install OCI CLI
 install_regctl: ## Install regctl
 	@./scripts/install_regctl.sh
 
-install_rg: ## Install ripgrep (*)
+install_rg: ## Install ripgrep
 	@./scripts/install_rg.sh
 
 install_ruff: install_mise ## Install ruff
@@ -137,29 +192,20 @@ install_tmux: ## Install tmux
 install_trivy: install_mise ## Install Trivy
 	@./scripts/install_trivy.sh
 
-install_unzip: ## Install UnZip (*)
+install_unzip: ## Install UnZip
 	@./scripts/install_unzip.sh
 
-install_xz: ## Install XZ Utils (*)
+install_xz: ## Install XZ Utils
 	@./scripts/install_xz.sh
 
 install_yamlfmt: install_mise ## Install yamlfmt
 	@./scripts/install_yamlfmt.sh
 
-install_zip: ## Install Zip (*)
+install_zip: ## Install Zip
 	@./scripts/install_zip.sh
 
 install_zizmor: install_mise ## Install zizmor
 	@./scripts/install_zizmor.sh
-
-list: ## List tools
-	@./scripts/list.sh
-
-help: ## Print this help
-	@./scripts/help.sh $(MAKEFILE_LIST)
-
-help-dev: ## Print developer help
-	@./scripts/help-dev.sh $(MAKEFILE_LIST)
 
 shellcheck: #@ Lint shell scripts
 	@shellcheck provision.sh bin/dclogs bin/dcls scripts/*.sh

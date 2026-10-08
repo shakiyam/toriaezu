@@ -11,7 +11,8 @@ This is the **toriaezu** project - an environment setup tool that automates the 
 ### Build and Installation Commands
 
 - `make help` - Show all available targets and their descriptions
-- `make toriaezu` - Install all default (starred) tools
+- `make toriaezu` - Install default tools (same as `make base`)
+- `make base` / `make dev` / `make container` - Install a tool group (base, development, or container tools)
 - `make all` - Install ALL available tools
 - `make install_<tool>` - Install a specific tool (e.g., `make install_docker`)
 - `make list` - List all available tools
@@ -47,13 +48,13 @@ This is the **toriaezu** project - an environment setup tool that automates the 
 2. **Dependency Management**: Makefile handles inter-tool dependencies (e.g., csvq requires Go, most tools require mise)
 3. **Version Management**: Many development tools use mise for consistent version management across environments
 4. **Cross-Platform Support**: Scripts detect OS and use appropriate package manager (dnf for Oracle Linux, apt for Ubuntu) for system tools
-5. **Star System**: Tools marked with (*) in Makefile comments are installed by default
+5. **Tool Groups**: `BASE_TARGETS`, `DEV_TARGETS`, and `CONTAINER_TARGETS` in Makefile list the install targets of each group explicitly; tools in no group are installed individually
 
 ### Installation Flow
 
 1. User runs `./provision.sh`
-2. Script sets up environment and calls `make toriaezu`
-3. Makefile runs all star targets based on `scripts/star_targets.sh` output
+2. Script sets up environment and calls `make toriaezu`, or `make` with the given arguments (e.g., `./provision.sh base dev container`)
+3. Makefile runs the install targets of the requested groups and their dependencies
 4. Each installation script:
    - Checks if required dependencies (like mise) are available
    - Installs using appropriate method:
@@ -76,4 +77,3 @@ This is the **toriaezu** project - an environment setup tool that automates the 
 
 - `##` - User-facing targets (shown in `make help`)
 - `#@` - Developer-facing targets (shown in `make help-dev` only)
-- `(*)` - Star marker at end of comment indicates default installation targets
