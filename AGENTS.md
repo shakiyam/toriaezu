@@ -22,11 +22,11 @@ This is the **toriaezu** project - an environment setup tool that automates the 
 *Note: Use `make help-dev` to see all development targets*
 
 - `make help-dev` - Show all development targets (also shown in `make help`)
+- `make lint` - Run all linting tasks
 - `make shellcheck` - Lint shell scripts
 - `make shfmt` - Lint shell script formatting
 - `make fishlint` - Lint Fish scripts
 - `make hadolint` - Lint Dockerfile
-- `make lint` - Run all linting tasks
 - `make test` - Run automated tests in all Docker containers
 - `make test-oraclelinux8` - Run Oracle Linux 8 test container
 - `make test-oraclelinux9` - Run Oracle Linux 9 test container

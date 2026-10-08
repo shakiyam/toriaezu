@@ -207,6 +207,9 @@ install_zip: ## Install Zip
 install_zizmor: install_mise ## Install zizmor
 	@./scripts/install_zizmor.sh
 
+lint: shellcheck shfmt fishlint hadolint #@ Run all linting tasks
+	@echo "All linting tasks completed"
+
 shellcheck: #@ Lint shell scripts
 	@shellcheck provision.sh bin/dclogs bin/dcls scripts/*.sh
 
@@ -219,8 +222,15 @@ fishlint: #@ Lint Fish scripts
 hadolint: #@ Lint Dockerfiles
 	@hadolint Dockerfile
 
-lint: shellcheck shfmt fishlint hadolint #@ Run all linting tasks
-	@echo "All linting tasks completed"
+test: #@ Run automated tests in all Docker containers
+	@echo "Running automated tests..."
+	@echo "Testing Oracle Linux 8..."
+	@docker compose run --rm oraclelinux8 /home/testuser/toriaezu/scripts/test_installation.sh
+	@echo "Testing Oracle Linux 9..."
+	@docker compose run --rm oraclelinux9 /home/testuser/toriaezu/scripts/test_installation.sh
+	@echo "Testing Ubuntu 24.04..."
+	@docker compose run --rm ubuntu24 /home/testuser/toriaezu/scripts/test_installation.sh
+	@echo "All tests completed"
 
 test-history-cleanup: #@ Run history-cleanup tests with isolated histories
 	@./tests/history-cleanup.test.fish
@@ -233,13 +243,3 @@ test-oraclelinux9: #@ Run Oracle Linux 9 test container
 
 test-ubuntu24: #@ Run Ubuntu 24.04 test container
 	@docker compose run --rm ubuntu24
-
-test: #@ Run automated tests in all Docker containers
-	@echo "Running automated tests..."
-	@echo "Testing Oracle Linux 8..."
-	@docker compose run --rm oraclelinux8 /home/testuser/toriaezu/scripts/test_installation.sh
-	@echo "Testing Oracle Linux 9..."
-	@docker compose run --rm oraclelinux9 /home/testuser/toriaezu/scripts/test_installation.sh
-	@echo "Testing Ubuntu 24.04..."
-	@docker compose run --rm ubuntu24 /home/testuser/toriaezu/scripts/test_installation.sh
-	@echo "All tests completed"
