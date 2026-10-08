@@ -105,7 +105,7 @@ install_dockerfmt: install_mise ## Install dockerfmt
 install_dockviz: install_docker install_go ## Install dockviz
 	@./scripts/install_dockviz.sh
 
-install_dtools: install_fzf ## Install some docker tools
+install_dtools: install_csvq install_fzf ## Install some docker tools
 	@./scripts/install_dtools.sh
 
 install_enhancd: install_fisher install_fzf ## Install enhancd
