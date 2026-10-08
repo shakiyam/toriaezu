@@ -40,6 +40,7 @@ For other software installation instructions, run `make help` and read the resul
 * [GitHub CLI](https://github.com/cli/cli)
 * Go Programming Language
 * [hadolint](https://github.com/hadolint/hadolint)
+* [herdr](https://herdr.dev/)
 * [hunk](https://github.com/modem-dev/hunk)
 * jq (*)
 * kubectl

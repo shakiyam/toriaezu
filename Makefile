@@ -83,6 +83,9 @@ install_go: install_mise ## Install Go Programming Language
 install_hadolint: install_mise ## Install hadolint
 	@./scripts/install_hadolint.sh
 
+install_herdr: install_mise ## Install herdr
+	@./scripts/install_herdr.sh
+
 install_history-cleanup: install_atuin install_fish ## Install history-cleanup
 	@./scripts/install_history-cleanup.sh
 
