@@ -222,7 +222,7 @@ fishlint: #@ Lint Fish scripts
 hadolint: #@ Lint Dockerfiles
 	@hadolint Dockerfile
 
-test: test-oraclelinux8 test-oraclelinux9 test-ubuntu24 #@ Run installation tests in all containers
+test: test-oraclelinux8 test-oraclelinux9 test-ubuntu24 test-ubuntu26 #@ Run installation tests in all containers
 	@echo "All installation tests completed"
 
 test-history-cleanup: #@ Run history-cleanup tests with isolated histories
@@ -237,6 +237,9 @@ test-oraclelinux9: #@ Run installation tests in Oracle Linux 9 container
 test-ubuntu24: #@ Run installation tests in Ubuntu 24.04 container
 	@docker compose run --rm ubuntu24 /home/testuser/toriaezu/scripts/test_installation.sh
 
+test-ubuntu26: #@ Run installation tests in Ubuntu 26.04 container
+	@docker compose run --rm ubuntu26 /home/testuser/toriaezu/scripts/test_installation.sh
+
 shell-oraclelinux8: #@ Open a shell in Oracle Linux 8 test container
 	@docker compose run --rm oraclelinux8
 
@@ -245,3 +248,6 @@ shell-oraclelinux9: #@ Open a shell in Oracle Linux 9 test container
 
 shell-ubuntu24: #@ Open a shell in Ubuntu 24.04 test container
 	@docker compose run --rm ubuntu24
+
+shell-ubuntu26: #@ Open a shell in Ubuntu 26.04 test container
+	@docker compose run --rm ubuntu26

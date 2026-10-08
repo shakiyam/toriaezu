@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-This is the **toriaezu** project - an environment setup tool that automates the installation of various development tools and utilities on Oracle Linux 8/9 and Ubuntu 24.04 LTS.
+This is the **toriaezu** project - an environment setup tool that automates the installation of various development tools and utilities on Oracle Linux 8/9 and Ubuntu 24.04/26.04 LTS.
 
 ## Key Commands
 
@@ -32,9 +32,11 @@ This is the **toriaezu** project - an environment setup tool that automates the 
 - `make test-oraclelinux8` - Run installation tests in Oracle Linux 8 container
 - `make test-oraclelinux9` - Run installation tests in Oracle Linux 9 container
 - `make test-ubuntu24` - Run installation tests in Ubuntu 24.04 container
+- `make test-ubuntu26` - Run installation tests in Ubuntu 26.04 container
 - `make shell-oraclelinux8` - Open a shell in Oracle Linux 8 test container
 - `make shell-oraclelinux9` - Open a shell in Oracle Linux 9 test container
 - `make shell-ubuntu24` - Open a shell in Ubuntu 24.04 test container
+- `make shell-ubuntu26` - Open a shell in Ubuntu 26.04 test container
 
 ## Architecture
 

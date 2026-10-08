@@ -82,6 +82,7 @@ Target OS
 
 * Oracle Linux Server 9
 * Oracle Linux Server 8
+* Ubuntu 26.04 LTS
 * Ubuntu 24.04 LTS
 
 Author
