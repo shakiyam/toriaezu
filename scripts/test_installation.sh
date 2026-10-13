@@ -17,6 +17,14 @@ else
   exit 1
 fi
 
+echo_info "Re-running targets to verify idempotency..."
+if make install_chezmoi install_docker install_oci; then
+  echo_success "Re-run completed"
+else
+  echo_error "Error: Re-run failed"
+  exit 1
+fi
+
 echo_info "Getting tool list and verifying installations..."
 list_output=$(./scripts/list.sh 2>&1) || {
   echo_error "Error: list.sh failed"

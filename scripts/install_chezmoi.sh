@@ -30,8 +30,12 @@ verify_installation chezmoi
 
 echo_info 'Install chezmoi shell completions'
 sudo mkdir -p /usr/share/bash-completion/completions
+# Remove first: uutils install fails to overwrite from /dev/stdin (uutils/coreutils#11532)
+sudo rm -f /usr/share/bash-completion/completions/chezmoi
 chezmoi completion bash | sudo install -m 644 /dev/stdin /usr/share/bash-completion/completions/chezmoi
 sudo mkdir -p /usr/share/fish/vendor_completions.d
+# Remove first: uutils install fails to overwrite from /dev/stdin (uutils/coreutils#11532)
+sudo rm -f /usr/share/fish/vendor_completions.d/chezmoi.fish
 chezmoi completion fish | sudo install -m 644 /dev/stdin /usr/share/fish/vendor_completions.d/chezmoi.fish
 
 echo_info 'Initialize and apply dotfiles'

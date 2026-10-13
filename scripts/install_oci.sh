@@ -12,6 +12,8 @@ fi
 
 echo_info 'Install OCI CLI'
 DOCKER=$(command -v docker || command -v podman) || die "Error: Command not found: docker or podman"
+# Remove first: uutils install fails to overwrite from /dev/stdin (uutils/coreutils#11532)
+sudo rm -f /usr/local/bin/oci
 curl -fL# --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shakiyam/oci-cli-docker/main/oci \
   | sudo install -m 755 /dev/stdin /usr/local/bin/oci
 sudo -u "$(id -un)" "$DOCKER" pull ghcr.io/shakiyam/oci-cli

@@ -30,6 +30,8 @@ case $OS_ID in
         ;;
     esac
     readonly ARCHITECTURE
+    # Remove first: uutils install fails to overwrite from /dev/stdin (uutils/coreutils#11532)
+    sudo rm -f /etc/apt/sources.list.d/docker.list
     echo "deb [arch=$ARCHITECTURE signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
       | sudo install -m 644 /dev/stdin /etc/apt/sources.list.d/docker.list
     install_package docker-ce
