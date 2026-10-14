@@ -83,3 +83,9 @@ This is the **toriaezu** project - an environment setup tool that automates the 
 
 - `##` - User-facing targets (shown in `make help`)
 - `#@` - Developer-facing targets (shown in `make help-dev` only)
+
+### Adding a Supported OS Version
+
+- Add the version to the OS lists in README.md and the Overview above, and add its test container (`docker-compose.yml` and the `test-*`/`shell-*` targets in Makefile and this file)
+- Review per-version branches (`git grep -n OS_VERSION`); branches that list versions explicitly die on unknown versions
+- `make test` does not reach code that runs only outside containers (guarded by `/.dockerenv` checks, e.g. service setup and ARM64 multi-arch emulation in `install_docker.sh`); verify those paths on a real host, including aarch64
