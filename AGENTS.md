@@ -89,3 +89,9 @@ This is the **toriaezu** project - an environment setup tool that automates the 
 - Add the version to the OS lists in README.md and the Overview above, and add its test container (`docker-compose.yml` and the `test-*`/`shell-*` targets in Makefile and this file)
 - Review per-version branches (`git grep -n OS_VERSION`); branches that list versions explicitly die on unknown versions
 - `make test` does not reach code that runs only outside containers (guarded by `/.dockerenv` checks, e.g. service setup and ARM64 multi-arch emulation in `install_docker.sh`); verify those paths on a real host, including aarch64
+
+## Decisions
+
+- **Tool groups**: `base` is the minimum for every machine; `dev` excludes Docker because some development machines run without containers; `container` holds only tools for operating servers. Tools used rarely, needed only as dependencies, or wanted only on some machines stay in no group
+- **Makefile target order**: User-facing targets follow the `make help` reading order (groups, then `list`/`help`/`help-dev`, then `install_*` alphabetically) instead of putting `help` first; developer targets are grouped by category, each aggregate before its parts
+- **Test scope**: `make test` checks installation on each OS; tests of utility scripts (`make test-<utility>`) check their logic and run separately

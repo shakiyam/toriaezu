@@ -136,6 +136,7 @@ install_package() {
   esac
 }
 
+# Checks only that the command is on PATH; make test checks that each tool starts by running list.sh
 verify_installation() {
   if [[ $# -eq 0 ]]; then
     die "Error: No command specified for verify_installation"

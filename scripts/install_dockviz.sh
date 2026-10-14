@@ -11,6 +11,7 @@ fi
 
 eval "$(mise activate bash)"
 rm -f "$HOME/.local/bin/dockviz" # Remove binary installed by go install in older versions
+# Build from source because no arm64 release binary is published
 mise use --global go:github.com/justone/dockviz@latest
 eval "$(mise activate bash)"
 

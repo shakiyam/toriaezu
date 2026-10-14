@@ -2,6 +2,7 @@ ARG BASE_IMAGE=oraclelinux:8
 # hadolint ignore=DL3006
 FROM ${BASE_IMAGE}
 SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
+# Numeric IDs satisfy hadolint DL3066; 1000 is taken by the ubuntu user in Ubuntu images
 # hadolint ignore=DL3008,DL3041
 RUN if command -v dnf >/dev/null 2>&1; then \
       dnf -y install sudo && dnf clean all; \

@@ -11,6 +11,7 @@ readonly OS_VERSION
 
 echo_info 'Install zizmor'
 if [[ "$OS_ID" == "ol" && "${OS_VERSION%%.*}" == "8" ]]; then
+  # The PyPI wheel would run, but it would add a uv or Python dependency for this tool alone
   echo_warn 'zizmor is not supported on Oracle Linux 8 (requires GLIBC 2.34 or later)'
   exit 0
 fi
