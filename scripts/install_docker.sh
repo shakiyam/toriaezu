@@ -6,6 +6,8 @@ set -eEu -o pipefail
 
 OS_ID=$(get_os_id)
 readonly OS_ID
+OS_VERSION=$(get_os_version)
+readonly OS_VERSION
 
 echo_info 'Install Docker Engine'
 case $OS_ID in
@@ -78,7 +80,17 @@ if [[ $(uname -m) == "aarch64" ]] && ! ([[ -f /.dockerenv ]] || grep -q 'docker\
       ;;
     ubuntu)
       echo_info 'Enable multi-arch emulation for Docker'
-      install_package qemu-user-static binfmt-support
+      case ${OS_VERSION%%.*} in
+        24)
+          install_package qemu-user-static binfmt-support
+          ;;
+        26)
+          install_package qemu-user-binfmt
+          ;;
+        *)
+          die "Error: Unknown Ubuntu version: $OS_VERSION"
+          ;;
+      esac
       sudo systemctl restart systemd-binfmt
       echo_info 'Multi-architecture support enabled for AMD64 containers on ARM64'
       ;;
