@@ -81,7 +81,7 @@ install_bat: install_mise ## Install bat
 install_chezmoi: install_mise ## Install chezmoi
 	@./scripts/install_chezmoi.sh
 
-install_claude-code: install_mise install_node ## Install Claude Code
+install_claude-code: install_mise ## Install Claude Code
 	@./scripts/install_claude-code.sh
 
 install_csvq: install_go install_mise ## Install csvq
