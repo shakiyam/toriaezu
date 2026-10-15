@@ -9,6 +9,8 @@ services:
       - ./bin:/home/testuser/toriaezu/bin:ro
       - ./Makefile:/home/testuser/toriaezu/Makefile:ro
       - ./provision.sh:/home/testuser/toriaezu/provision.sh:ro
+    environment:
+      - MISE_GITHUB_TOKEN
     command: /bin/bash
     tty: true
     stdin_open: true
@@ -23,6 +25,8 @@ services:
       - ./bin:/home/testuser/toriaezu/bin:ro
       - ./Makefile:/home/testuser/toriaezu/Makefile:ro
       - ./provision.sh:/home/testuser/toriaezu/provision.sh:ro
+    environment:
+      - MISE_GITHUB_TOKEN
     command: /bin/bash
     tty: true
     stdin_open: true
@@ -37,6 +41,8 @@ services:
       - ./bin:/home/testuser/toriaezu/bin:ro
       - ./Makefile:/home/testuser/toriaezu/Makefile:ro
       - ./provision.sh:/home/testuser/toriaezu/provision.sh:ro
+    environment:
+      - MISE_GITHUB_TOKEN
     command: /bin/bash
     tty: true
     stdin_open: true
@@ -51,6 +57,8 @@ services:
       - ./bin:/home/testuser/toriaezu/bin:ro
       - ./Makefile:/home/testuser/toriaezu/Makefile:ro
       - ./provision.sh:/home/testuser/toriaezu/provision.sh:ro
+    environment:
+      - MISE_GITHUB_TOKEN
     command: /bin/bash
     tty: true
     stdin_open: true

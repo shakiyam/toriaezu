@@ -47,6 +47,7 @@ This is the **toriaezu** project - an environment setup tool that automates the 
 - `tests/` - Tests for utility scripts, run by `make test-<utility>`
 - `Makefile` - Central build orchestration with dependency management
 - `provision.sh` - Main entry point that runs `make toriaezu`
+- `.github/workflows/ci.yml` - Runs the installation test of each OS on x86_64 GitHub-hosted runners
 
 ### Key Design Patterns
 
@@ -86,7 +87,7 @@ This is the **toriaezu** project - an environment setup tool that automates the 
 
 ### Adding a Supported OS Version
 
-- Add the version to the OS lists in README.md and the Overview above, and add its test container (`docker-compose.yml` and the `test-*`/`shell-*` targets in Makefile and this file)
+- Add the version to the OS lists in README.md and the Overview above, and add its test container (`docker-compose.yml`, the `test-*`/`shell-*` targets in Makefile and this file, and the matrix in `.github/workflows/ci.yml`)
 - Review per-version branches (`git grep -n OS_VERSION`); branches that list versions explicitly die on unknown versions
 - `make test` does not reach code that runs only outside containers (guarded by `/.dockerenv` checks, e.g. service setup and ARM64 multi-arch emulation in `install_docker.sh`); verify those paths on a real host, including aarch64
 
@@ -95,3 +96,5 @@ This is the **toriaezu** project - an environment setup tool that automates the 
 - **Tool groups**: `base` is the minimum for every machine; `dev` excludes Docker because some development machines run without containers; `container` holds only tools for operating servers. Tools used rarely, needed only as dependencies, or wanted only on some machines stay in no group
 - **Makefile target order**: User-facing targets follow the `make help` reading order (groups, then `list`/`help`/`help-dev`, then `install_*` alphabetically) instead of putting `help` first; developer targets are grouped by category, each aggregate before its parts
 - **Test scope**: `make test` checks installation on each OS; tests of utility scripts (`make test-<utility>`) check their logic and run separately
+- **Test architectures**: The development host is arm64, so `make test` covers arm64 locally and CI covers x86_64; emulating x86_64 locally is too slow and breaks setuid `sudo`
+- **Token in test containers**: Containers receive only `MISE_GITHUB_TOKEN`, which CI sets to avoid GitHub API rate limits; local shells export `GITHUB_TOKEN`, so passing that would expose a personal token to every installer
