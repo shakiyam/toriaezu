@@ -18,8 +18,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        # oraclelinux8 is excluded until mise puts aqua binaries in archive subdirectories on PATH there (see TODO.md)
         os:
-          - oraclelinux8
           - oraclelinux9
           - ubuntu24
           - ubuntu26
