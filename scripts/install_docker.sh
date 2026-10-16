@@ -41,7 +41,7 @@ case $OS_ID in
 esac
 
 echo_info 'Setup Docker Engine'
-if [[ -f /.dockerenv ]] || grep -q 'docker\|lxc' /proc/1/cgroup 2>/dev/null; then
+if is_container; then
   echo_warn 'Running in container environment, skipping systemctl setup'
 else
   LOGNAME="${SUDO_USER:-$(logname 2>/dev/null || id -nu)}"
@@ -71,7 +71,7 @@ case $OS_ID in
     ;;
 esac
 
-if [[ $(uname -m) == "aarch64" ]] && ! ([[ -f /.dockerenv ]] || grep -q 'docker\|lxc' /proc/1/cgroup 2>/dev/null); then
+if [[ $(uname -m) == "aarch64" ]] && ! is_container; then
   echo_info 'Setup multi-architecture support for ARM64 hosts'
   case $OS_ID in
     ol)

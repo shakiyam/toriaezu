@@ -31,6 +31,11 @@ get_os_version() {
   echo "$VERSION_ID"
 }
 
+# Detects Docker (/.dockerenv), Podman (/run/.containerenv), and cgroup v1 container runtimes
+is_container() {
+  [[ -f /.dockerenv || -f /run/.containerenv ]] || grep -q 'docker\|lxc' /proc/1/cgroup 2>/dev/null
+}
+
 get_github_latest_release() {
   if [[ $# -eq 0 ]]; then
     die "Error: No repository specified for get_github_latest_release"

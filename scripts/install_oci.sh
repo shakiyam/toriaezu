@@ -5,7 +5,7 @@ set -eEu -o pipefail
 . "$(dirname "${BASH_SOURCE[0]}")/common.sh"
 
 # Skip OCI CLI installation in container environments
-if [[ -f /.dockerenv ]] || grep -q 'docker\|lxc' /proc/1/cgroup 2>/dev/null; then
+if is_container; then
   echo_warn 'Running in container environment, skipping OCI CLI installation (requires Docker/Podman)'
   exit 0
 fi

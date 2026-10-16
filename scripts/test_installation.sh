@@ -1,8 +1,8 @@
 #!/bin/bash
 set -eEu -o pipefail
 
-# shellcheck source=scripts/colored_echo.sh
-source "$(dirname "$0")/colored_echo.sh"
+# shellcheck disable=SC1091
+. "$(dirname "$0")/common.sh"
 
 echo_info "Starting installation tests"
 # shellcheck disable=SC1091
@@ -32,7 +32,7 @@ list_output=$(./scripts/list.sh 2>&1) || {
 }
 
 declare -A skip_reasons=()
-if [[ -f /.dockerenv ]] || [[ -n "${DOCKER_CONTAINER:-}" ]]; then
+if is_container; then
   echo_info "Running in container - will skip Docker-dependent tools"
   skip_reasons["OCI CLI"]="requires Docker/Podman, not available in container"
 fi
