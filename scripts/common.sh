@@ -37,9 +37,17 @@ get_github_latest_release() {
   fi
 
   local -r repo="$1"
-  curl -fsSL --proto '=https' --tlsv1.2 "https://api.github.com/repos/${repo}/releases/latest" 2>/dev/null \
-    | grep '"tag_name":' \
-    | sed -E 's/.*"([^"]+)".*/\1/' || die "Error: Failed to fetch latest release for ${repo}"
+  # Read the tag from the redirect instead of the REST API, whose unauthenticated rate limit is shared per IP address
+  local tag
+  if ! tag=$(curl -sSI --proto '=https' --tlsv1.2 "https://github.com/${repo}/releases/latest" \
+    | tr -d '\r' \
+    | awk -F'/' '/^[Ll]ocation:.*\/releases\/tag\//{print $NF}'); then
+    die "Error: Failed to fetch latest release for ${repo}"
+  fi
+  if [[ -z "$tag" ]]; then
+    die "Error: No release found for ${repo}"
+  fi
+  echo "$tag"
 }
 
 should_update_package_index() {
