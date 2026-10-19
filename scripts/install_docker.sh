@@ -52,6 +52,30 @@ if [[ $OS_ID == ol ]]; then
   sudo mkdir -p /etc/containers/containers.conf.d
   printf '[network]\nnetwork_backend = "netavark"\n' \
     | sudo install -m 644 /dev/stdin /etc/containers/containers.conf.d/50-netavark.conf
+
+  case ${OS_VERSION%%.*} in
+    8)
+      # cgroup v1 by default, where rootless Podman cannot apply resource limits
+      ;;
+    9)
+      # Only memory and pids are delegated by default, so rootless Podman cannot apply CPU limits
+      echo_info 'Delegate cgroup controllers to users'
+      sudo mkdir -p /etc/systemd/system/user@.service.d
+      printf '[Service]\nDelegate=cpu cpuset io memory pids\n' \
+        | sudo install -m 644 /dev/stdin /etc/systemd/system/user@.service.d/delegate.conf
+      if ! is_container; then
+        sudo systemctl daemon-reload
+        LOGNAME_UID=$(id -u "$LOGNAME")
+        readonly LOGNAME_UID
+        if ! grep -qsw cpu "/sys/fs/cgroup/user.slice/user-$LOGNAME_UID.slice/user@$LOGNAME_UID.service/cgroup.controllers"; then
+          echo_warn "Log out all sessions of $LOGNAME or reboot to delegate the cgroup controllers"
+        fi
+      fi
+      ;;
+    *)
+      die "Error: Unknown Oracle Linux version: $OS_VERSION"
+      ;;
+  esac
 fi
 
 echo_info 'Setup Docker Engine'

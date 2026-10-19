@@ -35,6 +35,16 @@ if [[ "$ID" == "ol" ]]; then
   fi
 fi
 
+if [[ "$ID" == "ol" && "${VERSION_ID%%.*}" == 9 ]]; then
+  echo_info "Verifying cgroup controller delegation..."
+  if grep -qs '^Delegate=cpu cpuset io memory pids$' /etc/systemd/system/user@.service.d/delegate.conf; then
+    echo_success "cgroup controllers are delegated to users"
+  else
+    echo_error "Error: cgroup controllers are not delegated to users"
+    exit 1
+  fi
+fi
+
 echo_info "Getting tool list and verifying installations..."
 list_output=$(./scripts/list.sh 2>&1) || {
   echo_error "Error: list.sh failed"
