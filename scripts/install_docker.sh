@@ -8,11 +8,13 @@ OS_ID=$(get_os_id)
 readonly OS_ID
 OS_VERSION=$(get_os_version)
 readonly OS_VERSION
+LOGNAME="${SUDO_USER:-$(logname 2>/dev/null || id -nu)}"
+readonly LOGNAME
 
 echo_info 'Install Docker Engine'
 case $OS_ID in
   ol)
-    install_package podman podman-plugins
+    install_package podman podman-plugins netavark aardvark-dns
     ;;
   ubuntu)
     install_package gnupg lsb-release
@@ -40,12 +42,22 @@ case $OS_ID in
     ;;
 esac
 
+if [[ $OS_ID == ol ]]; then
+  # CNI, the default on Oracle Linux 8, orders DNS servers randomly for containers on multiple networks (podman#14262)
+  echo_info 'Configure Podman network backend'
+  if ! is_container && [[ $(sudo -u "$LOGNAME" XDG_RUNTIME_DIR=/run/user/"$(id -u "$LOGNAME")" podman info --format '{{.Host.NetworkBackend}}') == cni ]]; then
+    echo_warn 'Switching Podman from CNI to netavark; existing CNI networks and containers stop working'
+    echo_warn 'Run "podman system reset" to finish the switch (it deletes all images, containers, volumes, and networks)'
+  fi
+  sudo mkdir -p /etc/containers/containers.conf.d
+  printf '[network]\nnetwork_backend = "netavark"\n' \
+    | sudo install -m 644 /dev/stdin /etc/containers/containers.conf.d/50-netavark.conf
+fi
+
 echo_info 'Setup Docker Engine'
 if is_container; then
   echo_warn 'Running in container environment, skipping systemctl setup'
 else
-  LOGNAME="${SUDO_USER:-$(logname 2>/dev/null || id -nu)}"
-  readonly LOGNAME
   case $OS_ID in
     ol)
       sudo -u "$LOGNAME" XDG_RUNTIME_DIR=/run/user/"$(id -u "$LOGNAME")" systemctl --user daemon-reload
@@ -65,6 +77,13 @@ echo_info 'Verify Docker installation'
 case $OS_ID in
   ol)
     verify_installation podman
+    if ! is_container; then
+      NETWORK_BACKEND=$(sudo -u "$LOGNAME" XDG_RUNTIME_DIR=/run/user/"$(id -u "$LOGNAME")" podman info --format '{{.Host.NetworkBackend}}')
+      readonly NETWORK_BACKEND
+      if [[ $NETWORK_BACKEND != netavark ]]; then
+        die "Error: Podman uses $NETWORK_BACKEND instead of netavark"
+      fi
+    fi
     ;;
   ubuntu)
     verify_installation docker

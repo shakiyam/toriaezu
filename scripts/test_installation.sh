@@ -25,6 +25,16 @@ else
   exit 1
 fi
 
+if [[ "$ID" == "ol" ]]; then
+  echo_info "Verifying Podman network backend configuration..."
+  if rpm -q netavark aardvark-dns && grep -qs '^network_backend = "netavark"$' /etc/containers/containers.conf.d/*.conf; then
+    echo_success "Podman is configured to use netavark"
+  else
+    echo_error "Error: Podman is not configured to use netavark"
+    exit 1
+  fi
+fi
+
 echo_info "Getting tool list and verifying installations..."
 list_output=$(./scripts/list.sh 2>&1) || {
   echo_error "Error: list.sh failed"
