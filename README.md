@@ -32,6 +32,7 @@ Run `make help` to list all targets.
 * [Fisher](https://github.com/jorgebucaran/fisher)
 * [fzf](https://github.com/junegunn/fzf)
 * Git
+* [GitHub CLI](https://github.com/cli/cli)
 * jq
 * [mise](https://mise.jdx.dev/)
 * [ripgrep](https://github.com/BurntSushi/ripgrep)
@@ -44,7 +45,6 @@ Run `make help` to list all targets.
 * [actionlint](https://github.com/rhysd/actionlint)
 * [Claude Code](https://claude.ai/code)
 * [dockerfmt](https://github.com/reteps/dockerfmt)
-* [GitHub CLI](https://github.com/cli/cli)
 * [hadolint](https://github.com/hadolint/hadolint)
 * [herdr](https://herdr.dev/)
 * [hunk](https://github.com/modem-dev/hunk)

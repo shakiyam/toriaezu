@@ -24,6 +24,7 @@ BASE_TARGETS := \
 	install_fish \
 	install_fisher \
 	install_fzf \
+	install_gh \
 	install_git \
 	install_jq \
 	install_mise \
@@ -38,7 +39,6 @@ DEV_TARGETS := \
 	install_actionlint \
 	install_claude-code \
 	install_dockerfmt \
-	install_gh \
 	install_hadolint \
 	install_herdr \
 	install_hunk \
