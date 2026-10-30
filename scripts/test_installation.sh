@@ -45,6 +45,21 @@ if [[ "$ID" == "ol" && "${VERSION_ID%%.*}" == 9 ]]; then
   fi
 fi
 
+echo_info "Verifying herdr reinstalls its Claude Code integration on install..."
+eval "$(mise activate bash)"
+mkdir -p "$HOME/.claude"
+# Remove the hook installed by install_herdr.sh so that only the postinstall can restore it
+rm -f "$HOME/.claude/hooks/herdr-agent-state.sh"
+# Capture output before grep -q, which would make the writer fail with SIGPIPE under pipefail
+if mise install -f herdr \
+  && herdr_status=$(herdr integration status) \
+  && grep -q '^claude: current ' <<<"$herdr_status"; then
+  echo_success "herdr reinstalls its Claude Code integration"
+else
+  echo_error "Error: herdr does not reinstall its Claude Code integration"
+  exit 1
+fi
+
 echo_info "Getting tool list and verifying installations..."
 list_output=$(./scripts/list.sh 2>&1) || {
   echo_error "Error: list.sh failed"
