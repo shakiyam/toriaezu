@@ -1,4 +1,4 @@
-#!/usr/bin/fish
+#!/usr/bin/fish --no-config
 
 set script_dir (dirname (status --current-filename))
 source "$script_dir/colored_echo.fish"
