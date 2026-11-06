@@ -207,6 +207,9 @@ install_zip: ## Install Zip
 install_zizmor: install_mise ## Install zizmor
 	@./scripts/install_zizmor.sh
 
+install_zram: ## Install zram swap
+	@./scripts/install_zram.sh
+
 lint: shellcheck shfmt fishlint hadolint #@ Run all linting tasks
 	@echo "All linting tasks completed"
 

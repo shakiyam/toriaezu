@@ -18,7 +18,7 @@ else
 fi
 
 echo_info "Re-running targets to verify idempotency..."
-if make install_chezmoi install_docker install_oci; then
+if make install_chezmoi install_docker install_oci install_zram; then
   echo_success "Re-run completed"
 else
   echo_error "Error: Re-run failed"
@@ -41,6 +41,21 @@ if [[ "$ID" == "ol" && "${VERSION_ID%%.*}" == 9 ]]; then
     echo_success "cgroup controllers are delegated to users"
   else
     echo_error "Error: cgroup controllers are not delegated to users"
+    exit 1
+  fi
+fi
+
+if [[ "$ID" == "ubuntu" ]]; then
+  echo_info "Verifying zram swap configuration..."
+  if dpkg -s systemd-zram-generator &>/dev/null \
+    && grep -qs '^compression-algorithm = zstd$' /etc/systemd/zram-generator.conf.d/*.conf \
+    && grep -qs '^zram-size = ram / 2$' /etc/systemd/zram-generator.conf.d/*.conf \
+    && grep -qs '^swap-priority = 100$' /etc/systemd/zram-generator.conf.d/*.conf \
+    && grep -qs '^vm.swappiness = 150$' /etc/sysctl.d/99-zram.conf \
+    && grep -qs '^vm.page-cluster = 0$' /etc/sysctl.d/99-zram.conf; then
+    echo_success "zram swap is configured"
+  else
+    echo_error "Error: zram swap is not configured"
     exit 1
   fi
 fi
@@ -68,8 +83,12 @@ list_output=$(./scripts/list.sh 2>&1) || {
 
 declare -A skip_reasons=()
 if is_container; then
-  echo_info "Running in container - will skip Docker-dependent tools"
+  echo_info "Running in container - will skip tools that need the host"
   skip_reasons["OCI CLI"]="requires Docker/Podman, not available in container"
+  skip_reasons["zram"]="requires a zram device, not available in container"
+fi
+if [[ "$ID" == "ol" ]]; then
+  skip_reasons["zram"]="supported only on Ubuntu"
 fi
 if [[ "$ID" == "ol" && "${VERSION_ID%%.*}" == "8" ]]; then
   skip_reasons["zizmor"]="requires GLIBC 2.34 or later, not available on Oracle Linux 8"

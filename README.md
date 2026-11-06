@@ -76,6 +76,7 @@ Run `make help` to list all targets.
 * [regctl](https://github.com/regclient/regclient)
 * [s3fs](https://github.com/s3fs-fuse/s3fs-fuse)
 * tmux
+* zram swap (Ubuntu only)
 
 Target OS
 ---------
