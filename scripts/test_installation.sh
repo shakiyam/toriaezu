@@ -83,13 +83,12 @@ list_output=$(./scripts/list.sh 2>&1) || {
 
 declare -A skip_reasons=()
 if is_container; then
-  echo_info "Running in container - will skip tools that need the host"
+  echo_info "Running in container - will skip Docker-dependent tools"
   skip_reasons["OCI CLI"]="requires Docker/Podman, not available in container"
-  skip_reasons["zram"]="requires a zram device, not available in container"
 fi
 if [[ "$ID" == "ol" ]]; then
   skip_reasons["systemd-oomd"]="supported only on Ubuntu"
-  skip_reasons["zram"]="supported only on Ubuntu"
+  skip_reasons["zram-generator"]="supported only on Ubuntu"
 fi
 if [[ "$ID" == "ol" && "${VERSION_ID%%.*}" == "8" ]]; then
   skip_reasons["zizmor"]="requires GLIBC 2.34 or later, not available on Oracle Linux 8"
