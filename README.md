@@ -75,6 +75,7 @@ Run `make help` to list all targets.
 * OCI CLI
 * [regctl](https://github.com/regclient/regclient)
 * [s3fs](https://github.com/s3fs-fuse/s3fs-fuse)
+* systemd-oomd (Ubuntu only)
 * tmux
 * zram swap (Ubuntu only)
 

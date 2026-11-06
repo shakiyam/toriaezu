@@ -18,7 +18,7 @@ else
 fi
 
 echo_info "Re-running targets to verify idempotency..."
-if make install_chezmoi install_docker install_oci install_zram; then
+if make install_chezmoi install_docker install_oci install_oomd install_zram; then
   echo_success "Re-run completed"
 else
   echo_error "Error: Re-run failed"
@@ -88,6 +88,7 @@ if is_container; then
   skip_reasons["zram"]="requires a zram device, not available in container"
 fi
 if [[ "$ID" == "ol" ]]; then
+  skip_reasons["systemd-oomd"]="supported only on Ubuntu"
   skip_reasons["zram"]="supported only on Ubuntu"
 fi
 if [[ "$ID" == "ol" && "${VERSION_ID%%.*}" == "8" ]]; then

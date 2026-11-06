@@ -168,6 +168,9 @@ install_node: install_mise ## Install Node.js
 install_oci: ## Install OCI CLI
 	@./scripts/install_oci.sh
 
+install_oomd: ## Install systemd-oomd
+	@./scripts/install_oomd.sh
+
 install_regctl: ## Install regctl
 	@./scripts/install_regctl.sh
 
