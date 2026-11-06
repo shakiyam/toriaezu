@@ -13,7 +13,10 @@ set files $argv
 set failed 0
 for f in $files
     if test -f "$f"
-        if not fish_indent --check "$f" 2>/dev/null
+        if not fish --no-execute "$f"
+            echo_error "Error: Syntax errors in $f"
+            set failed 1
+        else if not fish_indent --check "$f" 2>/dev/null
             echo_warn "$f needs formatting:"
             fish_indent "$f" | diff -u "$f" -
             set failed 1
